@@ -1,0 +1,2662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://tempuri.org/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiveOA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SGuid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiveOAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReceiveOAResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="tns:ArrayOfOA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOA">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OA" nillable="true" type="tns:OA" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OA">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ArticleID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubTitle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Inputer" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputerMobile" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubjectID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiveUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MY_note" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="zwid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="lwdw" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="wjtype" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="wjyear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="wjh" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCompleted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EditorName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OnTop" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendOA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Domain" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Port" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="A" type="tns:OA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendOAResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sguid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="oguid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateOAResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="receiveUser" type="tns:ArrayOfReceiveUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="note" type="tns:ArrayOfNote" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReceiveUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReceiveUser" nillable="true" type="tns:ReceiveUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReceiveUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArticleID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Guid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrueName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Received" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReceiveDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Device" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiveIP" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNote">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Note" nillable="true" type="tns:Note" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Note">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ZWID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrueName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contents" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NoteTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReceiverList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetReceiverListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReceiverListResult" type="tns:ArrayOfTree" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTree">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Tree" nillable="true" type="tns:Tree" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tree">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="children" type="tns:ArrayOfTree" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadScreen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="schoolname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="images" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadScreenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadScreenResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ComputerUseReg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="R" type="tns:ComputerRegEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ComputerRegEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CRID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SchoolName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChapterName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComputerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UploadMD5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Xyear" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="XTerm" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ComputerUseRegResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ComputerUseRegResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProManage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfJZProjectManageEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfJZProjectManageEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JZProjectManageEntity" nillable="true" type="tns:JZProjectManageEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JZProjectManageEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PCFile" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProArea" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProContentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Flag" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProBudget" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Financed" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepPerson" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepLinkno" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProContent" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="State" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChangeDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChangeUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuildAddr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PType" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProManageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProManageResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JZProjectState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SGuid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="pid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JZProjectStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JZProjectStateResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="tns:ArrayOfJZProjectManageEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JJProjectState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SGuid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="baid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JJProjectStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JJProjectStateResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="tns:ArrayOfBuildApplyEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBuildApplyEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BuildApplyEntity" nillable="true" type="tns:BuildApplyEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BuildApplyEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Begin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="End" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="BAID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuildAddr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplyDep" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplyDepName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplyDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuildContent" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuildNature" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Acreage" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Layers" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Structure" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BudgetAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BSources" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DutyUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DutyNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuildReason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplyUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Arrangement" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AState" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="JJProManage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfBuildApplyEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JJProManageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JJProManageResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfProject_FileEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProject_FileEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project_FileEntity" nillable="true" type="tns:Project_FileEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project_FileEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PFID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProStage" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProFileResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProTender">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfProject_TenderEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProject_TenderEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project_TenderEntity" nillable="true" type="tns:Project_TenderEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project_TenderEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FileID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BidNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BondBackDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReturn" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BSDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BEDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bond" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BondDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProTenderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProTenderResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AssetManage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfAssetEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAssetEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AssetEntity" nillable="true" type="tns:AssetEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AssetEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AFlag" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Flag" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AUnitName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="APrice" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="AImage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuyDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlanYear" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssetMark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpecificationModel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Suppliers" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuyUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AssetNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AUnit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Warehouse" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AssetGroup" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssetGroupName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AssetManageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AssetManageResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProAsset">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfAssetEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProAssetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProAssetResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfProject_CheckEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProject_CheckEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project_CheckEntity" nillable="true" type="tns:Project_CheckEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project_CheckEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PCID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BrandChecked" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SpecificationChecked" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConfigChecked" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountChecked" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DebuggingChecked" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GuaranteeChecked" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PackingChecked" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractChecked" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Evaluate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Opinion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PCDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PCFile" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProCheckResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProScrap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfAsset_ScrapEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAsset_ScrapEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Asset_ScrapEntity" nillable="true" type="tns:Asset_ScrapEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Asset_ScrapEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ASID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ASNum" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ASMark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ASDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreaterUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuditUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AuditDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AuditResult" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuditDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProScrapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProScrapResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProScrapAudit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfAsset_ScrapEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProScrapAuditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProScrapAuditResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AssetType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sdid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AssetTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AssetTypeResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssetType" type="tns:ArrayOfSysDataEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSysDataEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SysDataEntity" nillable="true" type="tns:SysDataEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SysDataEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsSysSet" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SDID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Teacher1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="zrs" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="wwc" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Teacher1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Teacher1Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurchaseReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pur" type="tns:ArrayOfPurchasrBillReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPurchasrBillReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PurchasrBillReport" nillable="true" type="tns:PurchasrBillReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PurchasrBillReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Purchase" type="tns:PurchaseEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="Purchase_Bill" type="tns:ArrayOfPurchase_BillEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PurchaseEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DepID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PLDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PurType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTitle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEstimate" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PState" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PSDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PLState" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPurchase_BillEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Purchase_BillEntity" nillable="true" type="tns:Purchase_BillEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Purchase_BillEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BModel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BPrice" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="BReason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PurchaseReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurchaseReportResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurchaseState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SGuid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="pid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurchaseStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurchaseStateResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="tns:ArrayOfPurchaseEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPurchaseEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PurchaseEntity" nillable="true" type="tns:PurchaseEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TenderReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pur" type="tns:ArrayOfTenderReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTenderReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TenderReport" nillable="true" type="tns:TenderReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TenderReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Tender" type="tns:Project_TenderEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="Accessory" type="tns:ArrayOfAccessoryEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAccessoryEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AccessoryEntity" nillable="true" type="tns:AccessoryEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccessoryEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccessID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessObjID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccessFlag" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ObjID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AOrder" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TenderReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TenderReportResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurContractReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pur" type="tns:ArrayOfContractReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfContractReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ContractReport" nillable="true" type="tns:ContractReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContractReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Contract" type="tns:Project_ContractEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="Accessory" type="tns:ArrayOfAccessoryEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project_ContractEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FileID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PCID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartyA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartyB" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SignDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartTime" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PCDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BidNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerYears" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerLinkUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PurContractReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurContractReportResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTeachersInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SGuid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Teachers" type="tns:ArrayOfExTeacher" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfExTeacher">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExTeacher" nillable="true" type="tns:ExTeacher" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExTeacher">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrueName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="XBM" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeptGuid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDCard" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Birthday" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ZZMM" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MZM" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Profession" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFullTime" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegPartyTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartWorkDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JSZG" type="tns:ArrayOfJSZG" />
+          <s:element minOccurs="0" maxOccurs="1" name="Educations" type="tns:ArrayOfEducation" />
+          <s:element minOccurs="1" maxOccurs="1" name="ZYJSGW" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ZYJSGWFL" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Grade" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Leaves" type="tns:ArrayOfExLeave" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClassHours" type="tns:ArrayOfExClassHour" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfJSZG">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JSZG" nillable="true" type="tns:JSZG" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JSZG">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GeDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CertPhoto" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEducation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Education" nillable="true" type="tns:Education" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Education">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrueName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDCard" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Name" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SchoolName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Degree" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExLeave">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExLeave" nillable="true" type="tns:ExLeave" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExLeave">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrueName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachment" type="tns:ArrayOfBase64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBase64Binary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExClassHour">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExClassHour" nillable="true" type="tns:ExClassHour" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExClassHour">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="XN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="XQ" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NJ" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClassHours" type="tns:ArrayOfExClassHourItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="BZ" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExClassHourItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExClassHourItem" nillable="true" type="tns:ExClassHourItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExClassHourItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Main" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClassHours" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendTeachersInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendTeachersInfoResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTeacherContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sguid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="teaContract" type="tns:Teacher_ContractEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Teacher_ContractEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TCID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TCycle" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TStartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TEndDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TCFile" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TState" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="OverDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendTeacherContractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendTeacherContractResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buff" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="savepath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveFileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Teacher">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:ArrayOfTeacherEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeacherEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TeacherEntity" nillable="true" type="tns:TeacherEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TeacherEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BackboneName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Backbone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Section" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExchangeState" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SchoolName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCancel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRetire" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TeaState" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PGName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SalaryGrade" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProfessGradeType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentProName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TopDegreeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstDegreeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostRole" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TSex" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobStartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BirthDay" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Politics" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDCard" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PartyTme" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstDegree" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstGetDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TopDegree" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TopGetDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstSchool" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TopSchool" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HighestDegree" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HighestGetDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="HighestSchool" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentProfessional" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Qualifications" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeachQualification1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeachQualification2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TQGetDate1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TQGetDate2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastContrDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TState" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TCourse" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TNation" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TSbuject" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OutDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFull" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProfessGrade" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TeacherExchange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:ArrayOfTeacher_ExchangeEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeacher_ExchangeEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Teacher_ExchangeEntity" nillable="true" type="tns:Teacher_ExchangeEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Teacher_ExchangeEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EResult" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsChange" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OdlDep" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NewDep" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="HealthDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepOpinion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcceptOpinion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaOpinion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherExchangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherExchangeResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TeacherContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:ArrayOfTeacher_ContractEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeacher_ContractEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Teacher_ContractEntity" nillable="true" type="tns:Teacher_ContractEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherContractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherContractResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TeacherHoliday">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:ArrayOfTeacher_HolidayEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeacher_HolidayEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Teacher_HolidayEntity" nillable="true" type="tns:Teacher_HolidayEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Teacher_HolidayEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="HType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HDays" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="THID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HStartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="HEndDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="HolidayDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="HFile" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherHolidayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherHolidayResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TeacherEducation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:ArrayOfTeacher_EducationEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeacher_EducationEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Teacher_EducationEntity" nillable="true" type="tns:Teacher_EducationEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Teacher_EducationEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EduCountryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GradeCountryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Begin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="End" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TEID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Education" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EduCountry" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EduSchool" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMajor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTeach" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="OutDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DegreeLevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DegreeName" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GradeCountry" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GradeSchool" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GrantDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="StudyType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AduitState" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherEducationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherEducationResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TeacherTrain">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:ArrayOfTeacher_TrainEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeacher_TrainEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Teacher_TrainEntity" nillable="true" type="tns:Teacher_TrainEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Teacher_TrainEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TTID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TYear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TStartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TEndDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrainAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="THours" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrainContent" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherTrainResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherTrainResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TeacherClassHour">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:ArrayOfClassHourEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClassHourEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClassHourEntity" nillable="true" type="tns:ClassHourEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClassHourEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IDCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="THID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GradeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainSubject" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MainHours" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartSubject" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PartHours" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotelHours" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Executive" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SchoolYear" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Semester" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isdel" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="THDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherClassHourResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherClassHourResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TeacherAssessment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:ArrayOfTeacherAssessmentEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeacherAssessmentEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TeacherAssessmentEntity" nillable="true" type="tns:TeacherAssessmentEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TeacherAssessmentEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TFalg" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TDepID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TAID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TSYear" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AssResult" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TSDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherAssessmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherAssessmentResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TeacherReward">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Teacher_Reward" type="tns:ArrayOfTeacher_RewardEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeacher_RewardEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Teacher_RewardEntity" nillable="true" type="tns:Teacher_RewardEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Teacher_RewardEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TRID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TRDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRDepName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRContent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRFile" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TRFlag" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRRmark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TeacherRewardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TeacherRewardResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Show">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="b" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ShowResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="c" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfTree" nillable="true" type="tns:ArrayOfTree" />
+      <s:element name="int" type="s:int" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveOASoapIn">
+    <wsdl:part name="parameters" element="tns:ReceiveOA" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveOASoapOut">
+    <wsdl:part name="parameters" element="tns:ReceiveOAResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendOASoapIn">
+    <wsdl:part name="parameters" element="tns:SendOA" />
+  </wsdl:message>
+  <wsdl:message name="SendOASoapOut">
+    <wsdl:part name="parameters" element="tns:SendOAResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOASoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateOA" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOASoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateOAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiverListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReceiverList" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiverListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReceiverListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadScreenSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadScreen" />
+  </wsdl:message>
+  <wsdl:message name="UploadScreenSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadScreenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ComputerUseRegSoapIn">
+    <wsdl:part name="parameters" element="tns:ComputerUseReg" />
+  </wsdl:message>
+  <wsdl:message name="ComputerUseRegSoapOut">
+    <wsdl:part name="parameters" element="tns:ComputerUseRegResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProManageSoapIn">
+    <wsdl:part name="parameters" element="tns:ProManage" />
+  </wsdl:message>
+  <wsdl:message name="ProManageSoapOut">
+    <wsdl:part name="parameters" element="tns:ProManageResponse" />
+  </wsdl:message>
+  <wsdl:message name="JZProjectStateSoapIn">
+    <wsdl:part name="parameters" element="tns:JZProjectState" />
+  </wsdl:message>
+  <wsdl:message name="JZProjectStateSoapOut">
+    <wsdl:part name="parameters" element="tns:JZProjectStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="JJProjectStateSoapIn">
+    <wsdl:part name="parameters" element="tns:JJProjectState" />
+  </wsdl:message>
+  <wsdl:message name="JJProjectStateSoapOut">
+    <wsdl:part name="parameters" element="tns:JJProjectStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="JJProManageSoapIn">
+    <wsdl:part name="parameters" element="tns:JJProManage" />
+  </wsdl:message>
+  <wsdl:message name="JJProManageSoapOut">
+    <wsdl:part name="parameters" element="tns:JJProManageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProFileSoapIn">
+    <wsdl:part name="parameters" element="tns:ProFile" />
+  </wsdl:message>
+  <wsdl:message name="ProFileSoapOut">
+    <wsdl:part name="parameters" element="tns:ProFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProTenderSoapIn">
+    <wsdl:part name="parameters" element="tns:ProTender" />
+  </wsdl:message>
+  <wsdl:message name="ProTenderSoapOut">
+    <wsdl:part name="parameters" element="tns:ProTenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="AssetManageSoapIn">
+    <wsdl:part name="parameters" element="tns:AssetManage" />
+  </wsdl:message>
+  <wsdl:message name="AssetManageSoapOut">
+    <wsdl:part name="parameters" element="tns:AssetManageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProAssetSoapIn">
+    <wsdl:part name="parameters" element="tns:ProAsset" />
+  </wsdl:message>
+  <wsdl:message name="ProAssetSoapOut">
+    <wsdl:part name="parameters" element="tns:ProAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:ProCheck" />
+  </wsdl:message>
+  <wsdl:message name="ProCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:ProCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProScrapSoapIn">
+    <wsdl:part name="parameters" element="tns:ProScrap" />
+  </wsdl:message>
+  <wsdl:message name="ProScrapSoapOut">
+    <wsdl:part name="parameters" element="tns:ProScrapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProScrapAuditSoapIn">
+    <wsdl:part name="parameters" element="tns:ProScrapAudit" />
+  </wsdl:message>
+  <wsdl:message name="ProScrapAuditSoapOut">
+    <wsdl:part name="parameters" element="tns:ProScrapAuditResponse" />
+  </wsdl:message>
+  <wsdl:message name="AssetTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:AssetType" />
+  </wsdl:message>
+  <wsdl:message name="AssetTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:AssetTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Teacher1SoapIn">
+    <wsdl:part name="parameters" element="tns:Teacher1" />
+  </wsdl:message>
+  <wsdl:message name="Teacher1SoapOut">
+    <wsdl:part name="parameters" element="tns:Teacher1Response" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseReportSoapIn">
+    <wsdl:part name="parameters" element="tns:PurchaseReport" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseReportSoapOut">
+    <wsdl:part name="parameters" element="tns:PurchaseReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseStateSoapIn">
+    <wsdl:part name="parameters" element="tns:PurchaseState" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseStateSoapOut">
+    <wsdl:part name="parameters" element="tns:PurchaseStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="TenderReportSoapIn">
+    <wsdl:part name="parameters" element="tns:TenderReport" />
+  </wsdl:message>
+  <wsdl:message name="TenderReportSoapOut">
+    <wsdl:part name="parameters" element="tns:TenderReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurContractReportSoapIn">
+    <wsdl:part name="parameters" element="tns:PurContractReport" />
+  </wsdl:message>
+  <wsdl:message name="PurContractReportSoapOut">
+    <wsdl:part name="parameters" element="tns:PurContractReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendTeachersInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTeachersInfo" />
+  </wsdl:message>
+  <wsdl:message name="SendTeachersInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTeachersInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendTeacherContractSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTeacherContract" />
+  </wsdl:message>
+  <wsdl:message name="SendTeacherContractSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTeacherContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveFile" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherSoapIn">
+    <wsdl:part name="parameters" element="tns:Teacher" />
+  </wsdl:message>
+  <wsdl:message name="TeacherSoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherExchangeSoapIn">
+    <wsdl:part name="parameters" element="tns:TeacherExchange" />
+  </wsdl:message>
+  <wsdl:message name="TeacherExchangeSoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherExchangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherContractSoapIn">
+    <wsdl:part name="parameters" element="tns:TeacherContract" />
+  </wsdl:message>
+  <wsdl:message name="TeacherContractSoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherHolidaySoapIn">
+    <wsdl:part name="parameters" element="tns:TeacherHoliday" />
+  </wsdl:message>
+  <wsdl:message name="TeacherHolidaySoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherHolidayResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherEducationSoapIn">
+    <wsdl:part name="parameters" element="tns:TeacherEducation" />
+  </wsdl:message>
+  <wsdl:message name="TeacherEducationSoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherEducationResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherTrainSoapIn">
+    <wsdl:part name="parameters" element="tns:TeacherTrain" />
+  </wsdl:message>
+  <wsdl:message name="TeacherTrainSoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherTrainResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherClassHourSoapIn">
+    <wsdl:part name="parameters" element="tns:TeacherClassHour" />
+  </wsdl:message>
+  <wsdl:message name="TeacherClassHourSoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherClassHourResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherAssessmentSoapIn">
+    <wsdl:part name="parameters" element="tns:TeacherAssessment" />
+  </wsdl:message>
+  <wsdl:message name="TeacherAssessmentSoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherAssessmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="TeacherRewardSoapIn">
+    <wsdl:part name="parameters" element="tns:TeacherReward" />
+  </wsdl:message>
+  <wsdl:message name="TeacherRewardSoapOut">
+    <wsdl:part name="parameters" element="tns:TeacherRewardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShowSoapIn">
+    <wsdl:part name="parameters" element="tns:Show" />
+  </wsdl:message>
+  <wsdl:message name="ShowSoapOut">
+    <wsdl:part name="parameters" element="tns:ShowResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiverListHttpGetIn" />
+  <wsdl:message name="GetReceiverListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTree" />
+  </wsdl:message>
+  <wsdl:message name="UploadScreenHttpGetIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="schoolname" type="s:string" />
+    <wsdl:part name="images" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadScreenHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="Teacher1HttpGetIn">
+    <wsdl:part name="SGuid" type="s:string" />
+    <wsdl:part name="zrs" type="s:string" />
+    <wsdl:part name="wwc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Teacher1HttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileHttpGetIn">
+    <wsdl:part name="buff" type="s2:StringArray" />
+    <wsdl:part name="savepath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiverListHttpPostIn" />
+  <wsdl:message name="GetReceiverListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTree" />
+  </wsdl:message>
+  <wsdl:message name="UploadScreenHttpPostIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="schoolname" type="s:string" />
+    <wsdl:part name="images" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadScreenHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="Teacher1HttpPostIn">
+    <wsdl:part name="SGuid" type="s:string" />
+    <wsdl:part name="zrs" type="s:string" />
+    <wsdl:part name="wwc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Teacher1HttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileHttpPostIn">
+    <wsdl:part name="buff" type="s2:StringArray" />
+    <wsdl:part name="savepath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveOA">
+      <wsdl:input message="tns:ReceiveOASoapIn" />
+      <wsdl:output message="tns:ReceiveOASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOA">
+      <wsdl:input message="tns:SendOASoapIn" />
+      <wsdl:output message="tns:SendOASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOA">
+      <wsdl:input message="tns:UpdateOASoapIn" />
+      <wsdl:output message="tns:UpdateOASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiverList">
+      <wsdl:input message="tns:GetReceiverListSoapIn" />
+      <wsdl:output message="tns:GetReceiverListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadScreen">
+      <wsdl:input message="tns:UploadScreenSoapIn" />
+      <wsdl:output message="tns:UploadScreenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ComputerUseReg">
+      <wsdl:input message="tns:ComputerUseRegSoapIn" />
+      <wsdl:output message="tns:ComputerUseRegSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProManage">
+      <wsdl:input message="tns:ProManageSoapIn" />
+      <wsdl:output message="tns:ProManageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JZProjectState">
+      <wsdl:input message="tns:JZProjectStateSoapIn" />
+      <wsdl:output message="tns:JZProjectStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JJProjectState">
+      <wsdl:input message="tns:JJProjectStateSoapIn" />
+      <wsdl:output message="tns:JJProjectStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JJProManage">
+      <wsdl:input message="tns:JJProManageSoapIn" />
+      <wsdl:output message="tns:JJProManageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProFile">
+      <wsdl:input message="tns:ProFileSoapIn" />
+      <wsdl:output message="tns:ProFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProTender">
+      <wsdl:input message="tns:ProTenderSoapIn" />
+      <wsdl:output message="tns:ProTenderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AssetManage">
+      <wsdl:input message="tns:AssetManageSoapIn" />
+      <wsdl:output message="tns:AssetManageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProAsset">
+      <wsdl:input message="tns:ProAssetSoapIn" />
+      <wsdl:output message="tns:ProAssetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProCheck">
+      <wsdl:input message="tns:ProCheckSoapIn" />
+      <wsdl:output message="tns:ProCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProScrap">
+      <wsdl:input message="tns:ProScrapSoapIn" />
+      <wsdl:output message="tns:ProScrapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProScrapAudit">
+      <wsdl:input message="tns:ProScrapAuditSoapIn" />
+      <wsdl:output message="tns:ProScrapAuditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AssetType">
+      <wsdl:input message="tns:AssetTypeSoapIn" />
+      <wsdl:output message="tns:AssetTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Teacher1">
+      <wsdl:input message="tns:Teacher1SoapIn" />
+      <wsdl:output message="tns:Teacher1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseReport">
+      <wsdl:input message="tns:PurchaseReportSoapIn" />
+      <wsdl:output message="tns:PurchaseReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseState">
+      <wsdl:input message="tns:PurchaseStateSoapIn" />
+      <wsdl:output message="tns:PurchaseStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TenderReport">
+      <wsdl:input message="tns:TenderReportSoapIn" />
+      <wsdl:output message="tns:TenderReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurContractReport">
+      <wsdl:input message="tns:PurContractReportSoapIn" />
+      <wsdl:output message="tns:PurContractReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendTeachersInfo">
+      <wsdl:input message="tns:SendTeachersInfoSoapIn" />
+      <wsdl:output message="tns:SendTeachersInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendTeacherContract">
+      <wsdl:input message="tns:SendTeacherContractSoapIn" />
+      <wsdl:output message="tns:SendTeacherContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFile">
+      <wsdl:input message="tns:SaveFileSoapIn" />
+      <wsdl:output message="tns:SaveFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Teacher">
+      <wsdl:input message="tns:TeacherSoapIn" />
+      <wsdl:output message="tns:TeacherSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TeacherExchange">
+      <wsdl:input message="tns:TeacherExchangeSoapIn" />
+      <wsdl:output message="tns:TeacherExchangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TeacherContract">
+      <wsdl:input message="tns:TeacherContractSoapIn" />
+      <wsdl:output message="tns:TeacherContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TeacherHoliday">
+      <wsdl:input message="tns:TeacherHolidaySoapIn" />
+      <wsdl:output message="tns:TeacherHolidaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TeacherEducation">
+      <wsdl:input message="tns:TeacherEducationSoapIn" />
+      <wsdl:output message="tns:TeacherEducationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TeacherTrain">
+      <wsdl:input message="tns:TeacherTrainSoapIn" />
+      <wsdl:output message="tns:TeacherTrainSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TeacherClassHour">
+      <wsdl:input message="tns:TeacherClassHourSoapIn" />
+      <wsdl:output message="tns:TeacherClassHourSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TeacherAssessment">
+      <wsdl:input message="tns:TeacherAssessmentSoapIn" />
+      <wsdl:output message="tns:TeacherAssessmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TeacherReward">
+      <wsdl:input message="tns:TeacherRewardSoapIn" />
+      <wsdl:output message="tns:TeacherRewardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Show">
+      <wsdl:input message="tns:ShowSoapIn" />
+      <wsdl:output message="tns:ShowSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService1HttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiverList">
+      <wsdl:input message="tns:GetReceiverListHttpGetIn" />
+      <wsdl:output message="tns:GetReceiverListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadScreen">
+      <wsdl:input message="tns:UploadScreenHttpGetIn" />
+      <wsdl:output message="tns:UploadScreenHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Teacher1">
+      <wsdl:input message="tns:Teacher1HttpGetIn" />
+      <wsdl:output message="tns:Teacher1HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFile">
+      <wsdl:input message="tns:SaveFileHttpGetIn" />
+      <wsdl:output message="tns:SaveFileHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService1HttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiverList">
+      <wsdl:input message="tns:GetReceiverListHttpPostIn" />
+      <wsdl:output message="tns:GetReceiverListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadScreen">
+      <wsdl:input message="tns:UploadScreenHttpPostIn" />
+      <wsdl:output message="tns:UploadScreenHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Teacher1">
+      <wsdl:input message="tns:Teacher1HttpPostIn" />
+      <wsdl:output message="tns:Teacher1HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFile">
+      <wsdl:input message="tns:SaveFileHttpPostIn" />
+      <wsdl:output message="tns:SaveFileHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveOA">
+      <soap:operation soapAction="http://tempuri.org/ReceiveOA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOA">
+      <soap:operation soapAction="http://tempuri.org/SendOA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOA">
+      <soap:operation soapAction="http://tempuri.org/UpdateOA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiverList">
+      <soap:operation soapAction="http://tempuri.org/GetReceiverList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadScreen">
+      <soap:operation soapAction="http://tempuri.org/UploadScreen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComputerUseReg">
+      <soap:operation soapAction="http://tempuri.org/ComputerUseReg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProManage">
+      <soap:operation soapAction="http://tempuri.org/ProManage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JZProjectState">
+      <soap:operation soapAction="http://tempuri.org/JZProjectState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJProjectState">
+      <soap:operation soapAction="http://tempuri.org/JJProjectState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJProManage">
+      <soap:operation soapAction="http://tempuri.org/JJProManage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProFile">
+      <soap:operation soapAction="http://tempuri.org/ProFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProTender">
+      <soap:operation soapAction="http://tempuri.org/ProTender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssetManage">
+      <soap:operation soapAction="http://tempuri.org/AssetManage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProAsset">
+      <soap:operation soapAction="http://tempuri.org/ProAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProCheck">
+      <soap:operation soapAction="http://tempuri.org/ProCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProScrap">
+      <soap:operation soapAction="http://tempuri.org/ProScrap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProScrapAudit">
+      <soap:operation soapAction="http://tempuri.org/ProScrapAudit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssetType">
+      <soap:operation soapAction="http://tempuri.org/AssetType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Teacher1">
+      <soap:operation soapAction="http://tempuri.org/Teacher1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseReport">
+      <soap:operation soapAction="http://tempuri.org/PurchaseReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseState">
+      <soap:operation soapAction="http://tempuri.org/PurchaseState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TenderReport">
+      <soap:operation soapAction="http://tempuri.org/TenderReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurContractReport">
+      <soap:operation soapAction="http://tempuri.org/PurContractReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTeachersInfo">
+      <soap:operation soapAction="http://tempuri.org/SendTeachersInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTeacherContract">
+      <soap:operation soapAction="http://tempuri.org/SendTeacherContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFile">
+      <soap:operation soapAction="http://tempuri.org/SaveFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Teacher">
+      <soap:operation soapAction="http://tempuri.org/Teacher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherExchange">
+      <soap:operation soapAction="http://tempuri.org/TeacherExchange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherContract">
+      <soap:operation soapAction="http://tempuri.org/TeacherContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherHoliday">
+      <soap:operation soapAction="http://tempuri.org/TeacherHoliday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherEducation">
+      <soap:operation soapAction="http://tempuri.org/TeacherEducation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherTrain">
+      <soap:operation soapAction="http://tempuri.org/TeacherTrain" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherClassHour">
+      <soap:operation soapAction="http://tempuri.org/TeacherClassHour" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherAssessment">
+      <soap:operation soapAction="http://tempuri.org/TeacherAssessment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherReward">
+      <soap:operation soapAction="http://tempuri.org/TeacherReward" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Show">
+      <soap:operation soapAction="http://tempuri.org/Show" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveOA">
+      <soap12:operation soapAction="http://tempuri.org/ReceiveOA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOA">
+      <soap12:operation soapAction="http://tempuri.org/SendOA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOA">
+      <soap12:operation soapAction="http://tempuri.org/UpdateOA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiverList">
+      <soap12:operation soapAction="http://tempuri.org/GetReceiverList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadScreen">
+      <soap12:operation soapAction="http://tempuri.org/UploadScreen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComputerUseReg">
+      <soap12:operation soapAction="http://tempuri.org/ComputerUseReg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProManage">
+      <soap12:operation soapAction="http://tempuri.org/ProManage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JZProjectState">
+      <soap12:operation soapAction="http://tempuri.org/JZProjectState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJProjectState">
+      <soap12:operation soapAction="http://tempuri.org/JJProjectState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJProManage">
+      <soap12:operation soapAction="http://tempuri.org/JJProManage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProFile">
+      <soap12:operation soapAction="http://tempuri.org/ProFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProTender">
+      <soap12:operation soapAction="http://tempuri.org/ProTender" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssetManage">
+      <soap12:operation soapAction="http://tempuri.org/AssetManage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProAsset">
+      <soap12:operation soapAction="http://tempuri.org/ProAsset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProCheck">
+      <soap12:operation soapAction="http://tempuri.org/ProCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProScrap">
+      <soap12:operation soapAction="http://tempuri.org/ProScrap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProScrapAudit">
+      <soap12:operation soapAction="http://tempuri.org/ProScrapAudit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssetType">
+      <soap12:operation soapAction="http://tempuri.org/AssetType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Teacher1">
+      <soap12:operation soapAction="http://tempuri.org/Teacher1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseReport">
+      <soap12:operation soapAction="http://tempuri.org/PurchaseReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseState">
+      <soap12:operation soapAction="http://tempuri.org/PurchaseState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TenderReport">
+      <soap12:operation soapAction="http://tempuri.org/TenderReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurContractReport">
+      <soap12:operation soapAction="http://tempuri.org/PurContractReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTeachersInfo">
+      <soap12:operation soapAction="http://tempuri.org/SendTeachersInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTeacherContract">
+      <soap12:operation soapAction="http://tempuri.org/SendTeacherContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFile">
+      <soap12:operation soapAction="http://tempuri.org/SaveFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Teacher">
+      <soap12:operation soapAction="http://tempuri.org/Teacher" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherExchange">
+      <soap12:operation soapAction="http://tempuri.org/TeacherExchange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherContract">
+      <soap12:operation soapAction="http://tempuri.org/TeacherContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherHoliday">
+      <soap12:operation soapAction="http://tempuri.org/TeacherHoliday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherEducation">
+      <soap12:operation soapAction="http://tempuri.org/TeacherEducation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherTrain">
+      <soap12:operation soapAction="http://tempuri.org/TeacherTrain" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherClassHour">
+      <soap12:operation soapAction="http://tempuri.org/TeacherClassHour" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherAssessment">
+      <soap12:operation soapAction="http://tempuri.org/TeacherAssessment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TeacherReward">
+      <soap12:operation soapAction="http://tempuri.org/TeacherReward" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Show">
+      <soap12:operation soapAction="http://tempuri.org/Show" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1HttpGet" type="tns:WebService1HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiverList">
+      <http:operation location="/GetReceiverList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadScreen">
+      <http:operation location="/UploadScreen" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Teacher1">
+      <http:operation location="/Teacher1" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFile">
+      <http:operation location="/SaveFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1HttpPost" type="tns:WebService1HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiverList">
+      <http:operation location="/GetReceiverList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadScreen">
+      <http:operation location="/UploadScreen" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Teacher1">
+      <http:operation location="/Teacher1" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFile">
+      <http:operation location="/SaveFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://localhost:5310/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://localhost:5310/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1HttpGet" binding="tns:WebService1HttpGet">
+      <http:address location="http://localhost:5310/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1HttpPost" binding="tns:WebService1HttpPost">
+      <http:address location="http://localhost:5310/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

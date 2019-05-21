@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/green_list.css" rel="stylesheet" />
+    <link href="../css/easyui.css" rel="stylesheet" />
+    <link href="../css/demo.css" rel="stylesheet" />
+    <link href="../css/green_asyncbox.css" rel="stylesheet" />
+    <script src="../js/jquery-1.8.2.min.js"></script>
+    <link href="../fullcalendar-3.5.1/fullcalendar.min.css" rel="stylesheet" />
+    <link href="../fullcalendar-3.5.1/fullcalendar.print.min.css" rel="stylesheet" media='print' />
+    <script src="../fullcalendar-3.5.1/lib/jquery.min.js"></script>
+    <script src="../fullcalendar-3.5.1/lib/moment.min.js"></script>
+    <script src="../fullcalendar-3.5.1/fullcalendar.min.js"></script>
+    <script src="../js/jquery.fancybox-1.3.1.pack.js"></script>
+    <script src="../js/jquery.easyui.min.js"></script>
+    <script src="../js/AsyncBox.v1.4.js"></script>
+    <script src="../js/AsyncBox.v1.4.5.js"></script>
+    <script>
+        $(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: '',
+                    center: 'title',
+                    right: ''
+                },
+                //buttonText: {
+                //    prevYear: '去年',
+                //    nextYear: '明年',
+                //    today: '转到今天',
+                //    month: '月',
+                //    week: '周',
+                //    day: '日'
+                //},
+                height: 700,
+
+                minTime: '6:00',
+                maxTime: '21:00',
+
+                firstDay: 1,
+                //titleFormat: {
+                //    week: '...',
+                //},
+                monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                dayNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+                dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+                defaultView: 'agendaWeek', axisFormat: 'H(:mm)tt',
+                editable: false,
+                allDaySlot: false,
+                slotDuration: "00:10:00",
+                events: {
+                    url: '../ashx/RestTime.ashx',
+                    cache: false,
+                    type: 'get',
+                    error: function () {
+                        alert("获取作息时间时发生错误");
+                    }
+                },
+                /*callback，在日程事件改变大小并成功后调用, 参数和eventDrop参数用法一致。用法：
+                  function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ) { }*/
+                eventResize: function (event, dayDelta, revertFunc, jsevent, ui, view) {
+                    //$.post("/Schedule/Edit", { calendar: true, id: event.id, dodate: event.start.format(), enddate: event.end != null ? event.end.format() : new Date().toLocaleDateString() }, function (d) {
+                    //    if (d.result != true) {
+                    //        $.messager.alert("错误", d.msg, "error");
+                    //        revertFunc();
+                    //        return;
+                    //    }
+                    //});
+                },
+                /* callback，当拖拽完成并且时间改变时触发，用法：
+                 function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) { }
+                         ayDelta 保存日程向前或者向后移动了多少天
+                         minuteDelta 这个值只有在agenda视图有效，移动的时间
+                         allDay 如果是月视图，或者是agenda视图的全天日程，此值为true,否则为false*/
+                eventDrop: function (event, dayDelta, revertFunc, jsevent, ui, view) {
+                    //$.post("/Schedule/Edit", {
+                    //    calendar: true,
+                    //    id: event.id, dodate: event.start.format(), enddate: event.end != null ? event.end.format() : new Date().toLocaleDateString()
+                    //}, function (d) {
+                    //    if (d.result != true) {
+                    //        $.messager.alert("错误", d.msg, "error");
+                    //        revertFunc(); //恢复原状
+                    //        return;
+                    //    }
+                    //});
+                },
+                /*当单击日历中的某一天时，触发callback，用法：
+                 $('#calendar').fullCalendar({
+                 dayClick: function(date, allDay, jsEvent, view) {
+                 do something...}});
+                 date是点击的day的时间(如果在agenda view, 还包含时间)，在月view下点击一天时，allDay是true，在agenda模式下，点击all-day的窄条时，allDay是true，点击其他的agenda view下的day则为false，jsEvent就是一个普通的javascript事件，
+                 包含的是click事件的基础信息。*/
+                dayClick: function (date, jsEvent, view) {
+                    //$.fancybox({
+
+                    //    //'type': 'ajax',
+                    //    'href': 'TimeTableEdit.aspx'
+                    //});
+                    asyncbox.open({
+                        id: 'A_id',
+                        url: 'TimeTableEdit.aspx?date=' + date.format("HH:mm"),
+                        title: '作息时间',
+                        modal: false,
+                        width: 900,
+                        height: 400
+                    });
+                    //$("<div id='info'></div>").dialog({
+                    //    title: "添加作息时间",
+                    //    href: 'TimeTableEdit.aspx',
+                    //    modal: true,
+                    //    top: "30%",
+                    //    cache: false,
+                    //    width: "50%",
+                    //    onClose: function () { $("#info").dialog("destroy"); }
+                    //});
+                },
+                /*当点击日历中的某一日程（事件）时，触发此操作，用法：
+                  $('#calendar').fullCalendar({dayClick: function(event, jsEvent, view) {do something...}});
+                  event是日程（事件）对象，jsEvent是个javascript事件，view是当前视图对象。*/
+                eventClick: function (calEvent, jsEvent, view) {
+                    currentId = calEvent.id;
+                    currentRing = calEvent.bmname;
+                    currentDate = calEvent.start.format();
+                    currentEvent = this;
+                    jsEvent.preventDefault();
+                    //alert(currentId + currentRing + currentDate);
+                    asyncbox.open({
+                        id: 'A_id',
+                        url: 'TimeTableEdit.aspx?id=' + currentId,
+                        title: '作息时间',
+                        modal: false,
+                        width: 900,
+                        height: 400
+                    });
+                    //$('#mm').menu('show', {
+                    //    left: jsEvent.pageX,
+                    //    top: jsEvent.pageY
+                    //});
+                },
+                //鼠标划过和离开的事件，用法和参数同上
+                eventMouseover: function (data, event, view) {
+                    if (!$(this).hasClass("tooltip")) {
+                        $(this).tooltip({
+                            position: "right",
+                            content: '<h2>' + data.title + '</h3><ul><li><b>时间：</b>'
+                                + data.start.format("HH:mm:ss") + "—" + data.end.format("HH:mm:ss")
+                                + "</li><li><b>开始铃声：</b>" + data.bmname
+                                + "</li><li><b>结束铃声：</b>" + data.ename
+                                + "</li><li><b>预备铃声：</b>" + data.rname + "</li><li><b>状态：</b>" + data.status + "</li></ul>"
+                        }).tooltip("show");
+                    } else {
+                        $(this).tooltip("show");
+                    }
+                },
+            });
+        });
+
+    </script>
+    <style>
+        body {
+            /*margin: 40px 10px;*/
+            padding: 0;
+            /*font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;*/
+            font-size: 14px;
+        }
+
+        #calendar {
+            /*max-width: 900px;*/
+            margin: 0 10px;
+        }
+
+        ul, li {
+            list-style: none;
+            padding: 0px;
+        }
+
+        #A_id_content {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="positionc">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="18" valign="left" height="30">
+                    <span class="zcbz"></span></td>
+                <td class="positiona" style="font-family: 微软雅黑体; font-size: 12px;"><a>首页</a><span>></span><span id="lbl_ParentMenu">智能广播</span><span>></span><span>作息时间</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="calendar"></div>
+</body>
+</html>

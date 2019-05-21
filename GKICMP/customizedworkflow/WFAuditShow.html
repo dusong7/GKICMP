@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>工作流审核</title>
+    <link href="../css/easyui.css" rel="stylesheet" />
+    <link href="../css/green_formcss.css" rel="stylesheet" />
+    <link href="../js/My97/skin/WdatePicker.css" rel="stylesheet" />
+    <style>
+        .listadd {
+            border: 1px solid #25a161;
+            border-radius: 2px;
+            background: #48bd81;
+            color: #FFFFFF;
+            width: 65px;
+            height: 26px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0px;
+            margin-right: 13px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .selpara {
+            border: 1px solid #25a161;
+            border-radius: 2px;
+            background: #48bd81;
+            color: #FFFFFF;
+            width: 65px;
+            height: 26px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0px;
+            margin-right: 13px;
+            font-size: 14px;
+            position: relative;
+            float: left;
+            cursor: pointer;
+        }
+
+        .flow {
+            position: relative;
+        }
+
+        .flowtext {
+            position: absolute;
+        }
+
+        ul, li {
+            display: inline;
+        }
+
+        .AuditFlow {
+            width: 100%;
+        }
+
+
+        .timeline {
+            position: relative;
+            height: 100%;
+        }
+
+            .timeline .line {
+                background: lightblue;
+                border-radius: 2px;
+                width: 3px;
+                margin-left: 9px;
+                position: absolute;
+                z-index: 0;
+                height: 100%;
+            }
+
+            .timeline .time {
+                position: relative;
+                margin-top: 5px;
+            }
+
+                .timeline .time h2 {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background: #48bd81;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin: 0px;
+                    margin-top: 5px;
+                    border: 2px solid #FFFFFF;
+                    box-sizing: border-box;
+                    position: absolute;
+                }
+
+                .timeline .time:nth-child(2) h2 {
+                    background: #2a89d9;
+                }
+
+                .timeline .time:nth-child(3) h2 {
+                    background: #76d1ee;
+                }
+
+                .timeline .time:nth-child(4) h2 {
+                    background: #ef6262;
+                }
+
+                .timeline .time:nth-child(5) h2 {
+                    background: #e5e817;
+                }
+
+                .timeline .time:nth-child(6) h2 {
+                    background: #6c3f9f;
+                }
+
+                .timeline .time:nth-child(7) h2 {
+                    background: #65457c;
+                }
+
+                .timeline .time:nth-child(8) h2 {
+                    background: #948a8a;
+                }
+
+                .timeline .time:nth-child(9) h2 {
+                    background: #78d7c2;
+                }
+
+                .timeline .time span {
+                    width: 0;
+                    height: 0;
+                    border-top: 10px solid transparent;
+                    border-right: 10px solid #e2e2e2;
+                    border-bottom: 10px solid transparent;
+                    position: absolute;
+                    left: 28px;
+                    margin-top: 5px;
+                    position: absolute;
+                }
+
+                .timeline .time div {
+                    display: inline-block;
+                    top: 0px;
+                    vertical-align: top;
+                    margin: 0px;
+                    border: 1px solid #e2e2e2;
+                    border-radius: 5px;
+                    margin-left: 38px;
+                    padding: 5px;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="listcent pad0" id="listcent">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listinfo">
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../js/jquery.easyui.min.js"></script>
+<script src="../js/My97/WdatePicker.js"></script>
+<script src="../js/WF.js"></script>
+<script>
+
+
+    $(function () {
+        var wffid = GetURL("WFFID");
+        var cid = GetURL("CID");
+        if (wffid != "" && wffid != null && cid != "" && cid != null) {
+            //获取相应的数据并显示在页面上
+            $.getJSON("../ashx/WF.ashx?method=GetFormFlowData&WFFID=" + wffid + "&CID=" + cid, function (data) {
+                var node = getClass("table", "listcent pad0", "listinfo")[0].children[0];
+                node.innerHTML = "<tr><th colspan=\"2\" align=\"left\">流程监控</th></tr>";
+
+                for (var i = 0; i < data.length; i++) {
+                    node.appendChild(BuildNode(parseInt(data[i].FDID), parseInt(data[i].FPID), AddPara(data[i]), data[i].FDValue, parseInt(data[i].IsRequired)));
+                }
+
+
+                //显示到目前为止的审批时间
+                var audittimetr = InitNode("tr", "");
+                var audittimetdleft = InitNode("td", "");
+                audittimetdleft.align = "right";
+                audittimetdleft.width = "150";
+                audittimetdleft.innerHTML = "审核时长";
+
+                var audittimetdright = InitNode("td", "");
+                audittimetdright.align = "left";               
+                audittimetdright.innerHTML = data[0].TimeDiff;
+
+                audittimetr.appendChild(audittimetdleft);
+                audittimetr.appendChild(audittimetdright);
+                node.appendChild(audittimetr);
+
+
+
+                //显示审批的流程
+                var audittr = InitNode("tr", "");
+                var audittdname = InitNode("td", "");
+                var audittd = InitNode("td", "AuditList");
+
+                audittdname.innerHTML = "审核流程";
+                audittdname.align = "right";
+                audittdname.width = "150";
+
+                audittr.appendChild(audittdname);
+                audittr.appendChild(audittd);
+                node.appendChild(audittr);
+
+                BuildFlowNode(cid, audittd);
+
+               
+                var submittr = InitNode("tr", "");
+                var submittd = InitNode("td", "");
+                submittd.align = "center";
+                submittd.setAttribute("colspan", 2);
+
+                var closebtn = InitNode("input", "editor");
+                closebtn.type = "button";
+                closebtn.value = "返回";
+                closebtn.addEventListener("click", Back);
+
+                submittd.appendChild(closebtn);
+                submittr.appendChild(submittd);
+                node.appendChild(submittr);
+
+
+            });
+
+        }
+    });
+
+    function Back() {
+        window.history.go(-1);
+    }
+
+
+    function BuildFlowNode(cid, auditnode) {
+
+        var divall = InitNode("div", "timeline");
+        divall.setAttribute("class", "timeline");
+        divall.setAttribute("id", "timeline");
+
+
+        //初始化流程的部分
+        $.ajaxSettings.async = false;
+        $.getJSON("../ashx/WF.ashx?method=GetFullFlow&CID=" + cid, function (data) {
+            console.log(data);
+
+            var divline = InitNode("div", "");
+            divall.appendChild(divline);
+            for (var i = 0; i < data.length; i++) {
+                if (parseInt(data[i].FlowType) == 1) {
+                    //会签
+                    var node = InitNode("div", "AuditFlow");
+
+                    for (var j = 0; j < data[i].CFData.length; j++) {
+                        var divline = InitNode("div", "");
+                        var h2 = InitNode("h2", "");
+                        //h2.setAttribute("stlye", "background:red");
+                        var span1 = InitNode("span", "");
+                        var divs = InitNode("div", "");
+                        var auditusernode = InitNode("div", "time");
+                        auditusernode.appendChild(h2);
+                        auditusernode.appendChild(span1);
+                        if (data[i].CFData[j].UserName != "" && data[i].CFData[j].UserName != null) {
+                            divs.innerHTML = data[i].CFData[j].UserName + "于" + data[i].CFData[j].AuditDate + "审核:" + data[i].CFData[j].Remark;
+                        }
+                        auditusernode.appendChild(divs);
+                        divall.appendChild(auditusernode);
+                    }
+                    // divall.appendChild(node);
+                } else {
+                    divline.setAttribute("class", "line");
+                    var node1 = InitNode("div", "time");
+                    var h2 = InitNode("h2", "");
+                    var span1 = InitNode("span", "");
+                    var divs = InitNode("div", "");
+                    if (data[i].UserName != "" && data[i].UserName != null) {
+                        divs.innerHTML = data[i].UserName + "于" + data[i].AuditDate + "审核:" + data[i].Remark;
+                    }
+
+                    node1.appendChild(h2);
+                    node1.appendChild(span1);
+                    node1.appendChild(divs);
+                    divall.appendChild(node1);
+
+                }
+            }
+            auditnode.appendChild(divall);
+        })
+        $.ajaxSettings.async = true;
+    }
+
+    function AddPara(data) {
+        var fpid = parseInt(data.FPID);
+        var html = "";
+        for (var i = 0; i < data.List.length; i++) {
+            html = html + data.List[i].FDValue + ",";
+        }
+        var node = InitNode("Span", "");
+        var str = html.substring(0, html.length - 1);
+        while (str.indexOf("$%$") > 0) {
+            str = str.replace("$%$", "\r\n")
+        }        
+        node.innerHTML = str;
+        node.fdid = data.FDID;
+        if (fpid == 7) {
+            node.style.cursor = "pointer";
+            node.addEventListener("click", Download);
+        }
+        return node;
+    }
+
+    function Download() {
+        window.location.href = "../webupload/WFFile/" + this.innerText;
+    }
+
+    function BuildNode(fdid, fpid, node, fdvvalue, isrequired) {
+        //条目过多可考虑显示顺序
+
+        var trnode = InitNode("tr", "");
+        var namenode = InitNode("td", "");
+        namenode.align = "right";
+        namenode.width = "150";
+        namenode.setAttribute("fpid", fpid);
+        namenode.setAttribute("fdid", fdid);
+        namenode.innerHTML = fdvvalue;
+        if (parseInt(isrequired) == 1) {
+            namenode.innerHTML += "(必填)";
+        }
+
+        var paranode = InitNode("td", "");
+        paranode.align = "left";
+        paranode.appendChild(node);
+
+        trnode.appendChild(namenode);
+        if (parseInt(fpid) != 8) {
+            trnode.appendChild(paranode);
+        } else {
+            namenode.colSpan = 2;
+            namenode.align = "center";
+        }
+
+        return trnode;
+    }
+
+
+
+
+    function GetNameByType(fpid) {
+        var fpname = "";
+        switch (fpid) {
+            case 1:
+                fpname = "单行文本框";
+                break;
+            case 2:
+                fpname = "多行文本框";
+                break;
+            case 3:
+                fpname = "数字输入框";
+                break;
+            case 4:
+                fpname = "单选框";
+                break;
+            case 5:
+                fpname = "多选框";
+                break;
+            case 6:
+                fpname = "日期";
+                break;
+            case 7:
+                fpname = "附件";
+                break;
+            case 8:
+                fpname = "说明文字";
+                break;
+            case 9:
+                fpname = "联系人";
+                break;
+            case 10:
+                fpname = "金额";
+                break;
+        }
+
+        return fpname;
+    }
+
+</script>

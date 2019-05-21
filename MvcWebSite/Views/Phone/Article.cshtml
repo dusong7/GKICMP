@@ -1,0 +1,18 @@
+﻿@using MvcWebSite.Models;
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_phone.cshtml";
+}
+<style>
+    .botline {
+     border-bottom:1px solid #e0e0e0;padding-bottom:5px; margin-bottom:5px}
+    .cus-content {margin:10px}
+    .cus-content p img {width: 100%;height: auto;}
+    h4 {line-height:1.5}
+</style>
+<div class="cus-content">
+    <h4>@Html.Raw((((New)ViewBag.New).NewsTitle))</h4>
+    <h6 class="botline">@(((New)ViewBag.New).CreateDate.ToString("yyyy-MM-dd hh:mm:ss"))</h6>
+    @Html.Raw((((New)ViewBag.New).NContent))
+    </div>
+<script>mui('#offCanvasContentScroll').scroll();</script>

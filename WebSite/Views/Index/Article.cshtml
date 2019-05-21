@@ -1,0 +1,54 @@
+﻿@using MvcWebSite.Models;
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+<div class="ui-corner-all ui-widget-content main_content" id="Article" style="margin-top: 0px; padding-top: 0px;">
+
+    <div class="article_title">@(((New)ViewBag.New).NewsTitle)</div>
+    <div class="article_info">
+        录入：<a href="/S/Index/13063361449" target="_blank">@(((New)ViewBag.New).NAuthorName)</a> 审核：<a href="/S/Index/13063361449" target="_blank">@(((New)ViewBag.New).AduitUserName)</a> 阅读：@(((New)ViewBag.New).ReadCount)次 时间：@(((New)ViewBag.New).CreateDate.ToString("yyyy-MM-dd")) 【<a href="javascript:window.print();">打印</a>】
+    </div>
+    <div class="contents" id="ArticleContent">
+        @Html.Raw((((New)ViewBag.New).NContent))
+    </div>
+</div>
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "24" }, "share": {}, "image": { "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16" }, "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"] } }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+
+<div class="ui-corner-all ui-widget-content main_content" style="margin-top: 5px; padding-top: 0px;">
+    <div id="commentslist">
+        <div>
+            <div class="article_title">评论列表</div>
+            @foreach (Comment comment in ViewBag.CommentList)
+            {
+                <ul style="margin-top:10px">
+                    <li class="commenttitle"><span>标题：</span>@comment.ComTitle</li>
+                    <li class="commentcontent"><span>内容：</span>@comment.ComContent</li>
+                </ul>
+                 <hr style="border:1px dotted #036;margin-top:5px" />
+            }
+
+        </div>
+        <div style="margin-top:20px">
+            <form action="/Index/CommentAdd" method="post" name="myform" id="myform">
+                <input data-val="true" data-val-number="字段 ArticleID 必须是一个数字。" data-val-required="ArticleID 字段是必需的。" id="nid" name="nid" type="hidden" value="@(((New)ViewBag.New).NID)" />
+                <input style="margin-top:5px" type="text" data-val="true" id="title" name="title" placeholder="输入评论标题" />
+                <textarea style="width: 100%; height: 100px; margin-top: 5px;" placeholder="输入评论" id="content" name="content"></textarea>
+                <div style="margin-top:5px">
+                    <input style="float:left" type="text" data-val="true" id="linkuser" name="linkuser" placeholder="输入联系人" />
+                    <input style="float:left;margin-left:10px" type="text" data-val="true" id="linktype" name="linktype" placeholder="输入联系方式" />
+                </div>
+                @*<a href="javascript:void(0);" class="ajaxsave textbutton">提交</a>*@
+                <input style="margin-top:5px" type="submit" value="提交" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $("#ArticleContent table *").removeAttr("style");
+</script>

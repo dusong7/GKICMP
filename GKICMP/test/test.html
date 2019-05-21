@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../css/easyui.css" rel="stylesheet" />
+    <link href="../css/demo.css" rel="stylesheet" />
+    <script src="../js/jquery-1.8.2.min.js"></script>
+    <link href="../fullcalendar-3.5.1/fullcalendar.min.css" rel="stylesheet" />
+    <link href="../fullcalendar-3.5.1/fullcalendar.print.min.css" rel="stylesheet" media='print' />
+    <script src="../fullcalendar-3.5.1/lib/jquery.min.js"></script>
+    <script src="../fullcalendar-3.5.1/lib/moment.min.js"></script>
+    <script src="../fullcalendar-3.5.1/fullcalendar.min.js"></script>
+    <script src="../js/jquery.easyui.min.js"></script>
+    <script src="../js/AsyncBox.v1.4.js"></script>
+    <script src="../js/AsyncBox.v1.4.5.js"></script>
+    <script>
+        $(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: '',
+                    center: 'title',
+                    right: ''
+                },
+                buttonText: {
+                    prevYear: '去年',
+                    nextYear: '明年',
+                    today: '转到今天',
+                    month: '月',
+                    week: '周',
+                    day: '日'
+                },
+                height: 700,
+                minTime: '6:00',
+                maxTime: '21:00',
+               // axisFormat: 'HH:mm',
+                firstDay: 1,
+                //titleFormat: {
+                    //week: "芜湖市第24中学作息时间表",
+                //},
+                monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                dayNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+                dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+                defaultView: 'agendaWeek',
+                editable: false,
+                allDaySlot: false,
+                slotDuration: "00:10:00",
+                events: {
+                    //url: '/Schedule/Feeds',
+                    //cache: false,
+                    //type: 'get',
+                    //error: function () {
+                    //    $.messager.alert("错误", '获取作息时间时发生错误');
+                    //}
+                },
+                /*callback，在日程事件改变大小并成功后调用, 参数和eventDrop参数用法一致。用法：
+                  function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ) { }*/
+                eventResize: function (event, dayDelta, revertFunc, jsevent, ui, view) {
+                    //$.post("/Schedule/Edit", { calendar: true, id: event.id, dodate: event.start.format(), enddate: event.end != null ? event.end.format() : new Date().toLocaleDateString() }, function (d) {
+                    //    if (d.result != true) {
+                    //        $.messager.alert("错误", d.msg, "error");
+                    //        revertFunc();
+                    //        return;
+                    //    }
+                    //});
+                },
+              /* callback，当拖拽完成并且时间改变时触发，用法：
+               function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) { }
+                       ayDelta 保存日程向前或者向后移动了多少天
+                       minuteDelta 这个值只有在agenda视图有效，移动的时间
+                       allDay 如果是月视图，或者是agenda视图的全天日程，此值为true,否则为false*/
+                eventDrop: function (event, dayDelta, revertFunc, jsevent, ui, view) {
+                    //$.post("/Schedule/Edit", {
+                    //    calendar: true,
+                    //    id: event.id, dodate: event.start.format(), enddate: event.end != null ? event.end.format() : new Date().toLocaleDateString()
+                    //}, function (d) {
+                    //    if (d.result != true) {
+                    //        $.messager.alert("错误", d.msg, "error");
+                    //        revertFunc(); //恢复原状
+                    //        return;
+                    //    }
+                    //});
+                },
+                /*当单击日历中的某一天时，触发callback，用法：
+                 $('#calendar').fullCalendar({
+                 dayClick: function(date, allDay, jsEvent, view) {
+                 do something...}});
+                 date是点击的day的时间(如果在agenda view, 还包含时间)，在月view下点击一天时，allDay是true，在agenda模式下，点击all-day的窄条时，allDay是true，点击其他的agenda view下的day则为false，jsEvent就是一个普通的javascript事件，
+                 包含的是click事件的基础信息。*/
+                dayClick: function (date, jsEvent, view) {
+                  
+                    $("<div id='info'></div>").dialog({
+                        title: "添加作息时间",
+                        href: "FormTest.aspx",
+                        modal: true,
+                        top: "30%",
+                        cache: false,
+                        width: "30%",
+                        onClose: function () { $("#info").dialog("destroy"); }
+                    });
+                },
+                /*当点击日历中的某一日程（事件）时，触发此操作，用法：
+                  $('#calendar').fullCalendar({dayClick: function(event, jsEvent, view) {do something...}});
+                  event是日程（事件）对象，jsEvent是个javascript事件，view是当前视图对象。*/
+                eventClick: function (calEvent, jsEvent, view) {
+                    //currentId = calEvent.id;
+                    //currentRing = calEvent.custom;
+                    //currentDate = calEvent.start.format();
+                    //currentEvent = this;
+                    //jsEvent.preventDefault();
+                    //$('#mm').menu('show', {
+                    //    left: jsEvent.pageX,
+                    //    top: jsEvent.pageY
+                    //});
+                },
+                //鼠标划过和离开的事件，用法和参数同上
+                eventMouseover: function (data, event, view) {
+                    //if (!$(this).hasClass("tooltip")) {
+                    //    $(this).tooltip({
+                    //        position: "right",
+                    //        content: '<h2>' + data.title + '</h3><ul><li><b>时间：</b>' + data.start.format("HH:mm:ss") + "—" + data.end.format("HH:mm:ss") + "</li><li><b>铃声：</b>" + data.custom + "</li><li><b>状态：</b>" + data.status + "</li></ul>"
+                    //    }).tooltip("show");
+                    //} else {
+                    //    $(this).tooltip("show");
+                    //}
+                },
+            });
+        });
+        //$(document).ready(function () {
+
+        //    $('#calendar').fullCalendar({
+        //        header: {
+        //            //left: 'prev,next today',
+        //            left: '',
+        //            center: 'title',
+        //           // right: 'month,agendaWeek,agendaDay,listWeek'
+        //            right: ''
+        //        },
+        //        //defaultDate: '2017-09-12',
+                
+        //        //slotMinutes: '10',
+        //        minTime: '06:30',
+        //        maxTime: '21:00',
+        //        slotEventOverlap: false,
+        //        defaultView: 'agendaWeek',
+        //        slotDuration: "00:10:00",
+        //        firstDay: 1,
+        //        axisFormat: 'HH:mm',
+        //        //titleFormat: {
+        //        //    //week: "作息时间表",
+        //        //},
+        //        navLinks: true, // can click day/week names to navigate views
+        //        selectable: true,
+        //        selectHelper: true,
+               
+        //        select: function (start, end) {
+        //            var title = prompt('Event Title:');
+        //            var eventData;
+        //            if (title) {
+        //                eventData = {
+        //                    title: title,
+        //                    start: start,
+        //                    end: end
+        //                };
+        //                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+        //            }
+        //            $('#calendar').fullCalendar('unselect');
+        //        },
+        //        //weekNumbers: true,
+        //        //weekNumbersWithinDays: true,
+        //        //weekNumberCalculation: 'ISO',
+
+        //        editable: true,
+        //        eventLimit: true, // allow "more" link when too many events
+        //        events: [
+        //            {
+        //                title: 'All Day Event',
+        //                start: '2017-09-01'
+        //            },
+        //            {
+        //                title: 'Long Event',
+        //                start: '2017-09-07',
+        //                end: '2017-09-10'
+        //            },
+        //            {
+        //                id: 999,
+        //                title: 'Repeating Event',
+        //                start: '2017-09-09T16:00:00'
+        //            },
+        //            {
+        //                id: 999,
+        //                title: 'Repeating Event',
+        //                start: '2017-09-16T16:00:00'
+        //            },
+        //            {
+        //                title: 'Conference',
+        //                start: '2017-09-11',
+        //                end: '2017-09-13'
+        //            },
+        //            {
+        //                title: 'Meeting',
+        //                start: '2017-09-12T10:30:00',
+        //                end: '2017-09-12T12:30:00'
+        //            },
+        //            {
+        //                title: 'Lunch',
+        //                start: '2017-09-12T12:00:00'
+        //            },
+        //            {
+        //                title: 'Meeting',
+        //                start: '2017-09-12T14:30:00'
+        //            },
+        //            {
+        //                title: 'Happy Hour',
+        //                start: '2017-09-12T17:30:00'
+        //            },
+        //            {
+        //                title: 'Dinner',
+        //                start: '2017-09-12T20:00:00'
+        //            },
+        //            {
+        //                title: 'Birthday Party',
+        //                start: '2017-09-13T07:00:00'
+        //            },
+        //            {
+        //                title: 'Click for Google',
+        //                url: 'http://google.com/',
+        //                start: '2017-09-28'
+        //            }
+        //        ]
+        //    });
+
+        //});
+    </script>
+    <style>
+        body {
+            margin: 40px 10px;
+            padding: 0;
+            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+            font-size: 14px;
+        }
+
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="calendar"></div>
+    <!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=993473161&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:993473161:51" alt="点击这里给我发消息" title="点击这里给我发消息" /></a>-->
+</body>
+</html>

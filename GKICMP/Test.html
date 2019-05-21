@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>html 表格导出道</title>
+    <script src="js/echarts.min.js"></script>
+    <script type='text/javascript'>var myChart1 = echarts.init(document.getElementById('main1'));option1 = {    title: {        text: '类型分布情况',        subtext: '',        left: 'center'    },    tooltip: {        trigger: 'item',        formatter: '{a} <br/>{b} : {c} ({d}%)'    },    legend: {        bottom: 10,        left: 'center',        data: ['已到','未到']    }, color:['#CCCCCC','#666699'],    series: [        {name:'考勤情况统计'            type: 'pie',            radius: '65%',            center: ['50%', '50%'],            selectedMode: 'single',            data: [{ value: 0, name: '已到' },{ value: 16, name: '未到' }            ],            itemStyle: {                emphasis: {                    shadowBlur: 10,                    shadowOffsetX: 0,                    shadowColor: 'rgba(0, 0, 0, 0.5)'                }            }        }    ]};if (option1 && typeof option1 === 'object') {    myChart1.setOption(option1, true);}</script>
+
+    <!--<script type='text/javascript'>
+        var myChart1 = echarts.init(document.getElementById('main1'));
+        option1 = {
+            title: { text: '学生考勤情况', subtext: '', x: 'center' },
+            tooltip: { trigger: 'item', formatter: '{a} <br/>{b} : {c} ({d}%)' },
+            legend: { orient: 'vertical', left: 'center', data: ['已打', '未打'] },
+            color: ['#CCCCCC', '#666699'],
+            series: [
+                {
+                    name: '打卡情况',
+                    type: 'pie',
+                    radius: '65%',
+                    center: ['50%', '50%'],
+                    selectedMode: 'single',
+                    data: [
+                        { value: 99, name: '已打' },
+                        { value: 19, name: '未打' }
+                    ],
+                    itemStyle: {
+                        emphasis:
+                            {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                    }
+                }]
+        };
+        if (option1 && typeof option1 === 'object')
+        { myChart1.setOption(option1, true); }
+
+    </script>-->
+
+</head>
+<body>
+    <input type="file" />
+    <div id="main1" style="width: 480px; height: 400px;">wew </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Autocomplete - Default functionality</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script>
+
+        $(function () {
+            var availableTags = ["ActionScript", "测试",
+      "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure",
+       "COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy",
+       "Haskell", "Java", "JavaScript", "Lisp", "Perl", "PHP",
+        "Python", "Ruby", "Scala", "Scheme"]; $("#tags").autocomplete({ source: availableTags });     });
+    </script>
+</head>
+<body>
+    <div class="ui-widget">
+        <label for="tags">Tags: </label>
+        <input id="tags" />
+    </div>
+</body>
+</html>-->
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <br />
+    <br />
+    <input id="File1" type="file" />
+    
+   <div style="margin:0,auto;text-align:center; font-size:100px"><img src="wximage/1.jpg" /><br />
+<img src="wximage/2.jpg" /><br />
+<img src="wximage/3.jpg" /><br />图<br />文<br />消<br />息<br />内<br />容</div> 
+</body>
+</html>-->

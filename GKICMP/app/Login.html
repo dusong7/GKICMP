@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <title>智慧校园--登录</title>
+    <style>
+     input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: rgb(255, 255, 255) !important;
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+
+        body {
+            background: url(../images/lgbg.png);
+            background-size: cover;
+        }
+
+        　 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #fff;
+            opacity: 1;
+        }
+
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #fff;
+            opacity: 1;
+        }
+
+        input:-ms-input-placeholder {
+            color: #fff;
+            opacity: 1;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #fff;
+            opacity: 1;
+        }
+
+        .inputin {
+            font-size: 18px;
+            text-align: center;
+            background: none;
+            border: none;
+            width: 100%;
+            color: #fff;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #b4b3b4;
+            line-height: 55px;
+            outline: none;
+        }
+
+        .inputdiv {
+            width: 60%;
+            margin-left: 20%;
+            position: fixed;
+            bottom: 100px;
+        }
+
+        input[type=button] {
+            width: 100%;
+            border: none;
+            background: #ddc27b;
+            height: 50px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        function Login() {
+            var username = $("#username").val();
+            var password = $("#psw").val();
+            $.getJSON("../ashx/Login.ashx", { method: "APP", name: username, psw: password }, function (data) {
+                if (data.result = "sucess") {
+                    //alert("登录成功");
+                    window.location = data.url;
+                }
+                else {
+                    alert(data.result);
+                    $("#username").focus();
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <img src="../images/lglogo.png" width="50%" style="margin: auto; margin-top: 150px; display: block;"/>
+    <div class="inputdiv">
+        <input type="text" name="name" id="username" value="" placeholder="请输入用户名" class="inputin" autocomplete="off"
+ />
+        <input type="password" name="password" id="psw" value="" placeholder="请输入密码" class="inputin" autocomplete="off" />
+        <input type="button" name="loginbtn" id="btn_Login" value="登　录" onclick="Login()"  />
+    </div>
+    <!--<input id="username" type="text" /><input id="psw" type="password" /><input id="btn_Login" type="button" value="登录" onclick="Login()" />-->
+</body>
+
+</html>

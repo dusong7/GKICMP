@@ -1,0 +1,301 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.row {
+    color: #1f9056;
+    background: #fff;
+    width: 98%;
+    margin: auto;
+    margin-top: 5px;
+    padding: 8px 0px;
+    border-bottom: 1px solid #e7eaec;
+}
+
+.col-lg-10 {
+    background: #fff;
+    width: 98%;
+    margin: auto;
+}
+
+    .col-lg-10 h2 {
+        color: #1f9056;
+        background: #fff;
+        list-style: none;
+        float: left;
+        display: block;
+        width: 100%;
+        font-size: 24px;
+        line-height: 26px;
+        margin: 10px 0px;
+    }
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    font-family: "宋体", Arial;
+    color: #000;
+    text-align: center;
+    /*ackground: #fff;*/
+}
+
+div {
+    border-width: 0px;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+    width: 100%;
+}
+
+form {
+    border-width: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+img {
+    border-width: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+input, btn, span {
+    margin: 0;
+    padding: 0;
+    border: 0px;
+}
+
+ul, ol, li, dl, dt, dd, table, td, tr, th {
+    border-width: 0px;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+    a:link {
+        color: #000;
+    }
+
+    a:visited {
+        color: #000;
+    }
+
+    a:hover {
+        color: #000;
+    }
+
+    a:active {
+        color: #000;
+    }
+
+/*页面LIST CSS*/
+.rightlistbox {
+    border: 1px solid #68C093;
+    margin: 10px 5px;
+    width: 98%;
+}
+    .rightlistbox th {
+    border-bottom: 1px solid #68C093;}
+
+.rightlisttab {
+}
+select {
+    height: 30px;
+    border: 1px solid #94e7a3;
+    border-radius: 2px;
+}
+.btn1 {
+    background: #FF6558;
+     border: none;
+         color:#fff;
+    border-radius: 2px; padding:3px 8px; text-indent:0px;}
+
+.btn {
+    background:#48BD81;
+    border: none;
+    color:#fff;
+    border-radius: 2px; padding:3px 8px; text-indent:0px;
+}
+    .rightlisttab INPUT {
+   border: 1px solid #94e7a3;
+    height: 26px;
+    border-radius: 2px;
+    text-indent: 5px;}
+       /*.rightlisttab INPUT[type=submit] {
+   border: none;background-color:#f23d1c;
+    border-radius: 2px; padding:3px 8px; text-indent:0px}*/
+
+.rightlistbot {
+    line-height: 30px;
+}
+
+.rightlistrecord {
+    float: left;
+    width: 300px;
+    margin-left: 25px;
+    background: url(../images/icon6.png) 5px 10px scroll no-repeat;
+    padding-left: 20px;
+}
+
+    .rightlistrecord strong {
+        padding: 0 5px;
+        color: #e96200;
+    }
+
+.rightlistpage {
+    float: right;
+    width: 200px;
+}
+
+    .rightlistpage a {
+        float: left;
+        color: #ada999;
+        padding: 0 5px;
+    }
+
+        .rightlistpage a.curre {
+            color: #f00;
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+.textarea, .input-text {
+    border: 1px solid #c5cdd8;
+    background: #f7fcfe;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px #e7f1f7 inset;
+    outline: none;
+    padding: 0 3px;
+    line-height: 25px;
+    height: 25px;
+}
+/*table*/
+.list_tab {
+
+    width: 100%;
+    border-top: 0px solid #d3dbde;
+    border-right: 0px solid #d3dbde;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+    .list_tab th {
+        height: 37px;
+      background-color:#F6FFFC;
+        line-height: 37px;
+        color:#00744F;
+
+    }
+
+    .list_tab td {
+        border-bottom: 1px solid #d3dbde;
+        border-right: 1px solid #d3dbde;
+        padding: 6px;
+        line-height: 28px;
+    }
+
+.txt_center {
+    text-align: center;
+}
+
+.txt_left {
+    text-align: left;
+}
+
+.filetitlecss {
+    text-align: left;
+}
+
+    .filetitlecss a {
+        text-decoration: none;
+        color: #000000;
+    }
+
+        .filetitlecss a:link {
+            text-decoration: none;
+        }
+
+        .filetitlecss a:visited {
+            text-decoration: none;
+            color: #191970;
+        }
+
+        .filetitlecss a:hover {
+            text-decoration: none;
+            color: #eb6100;
+        }
+
+        .filetitlecss a:active {
+            text-decoration: none;
+            color: #191970;
+        }
+
+.txt_right {
+    text-align: right;
+    padding-right: 15px;
+}
+
+.txt_right1 {
+    text-align: right;
+}
+
+.tab1 {
+    border: 0;
+}
+
+    .tab1 td {
+        border: 0;
+    }
+
+.tab2 {
+    border: 0;
+    text-align: right;
+}
+
+    .tab2 td {
+        border: 0;
+    }
+
+.tab_detail {
+    border: 0;
+    margin: 10px 0;
+}
+
+    .tab_detail td {
+        border: 0;
+        height: 20px;
+        line-height: 20px;
+        padding:5px 0px;
+        font-size: 12px;
+        color: #323232;
+    }
+
+        .tab_detail td span {
+            color: #999;
+            /*padding-left: 5px;*/
+        }
+
+        .tab_detail td b {
+            color: #999;
+            font-family: "宋体";
+            font-style: normal;
+            font-weight: normal;
+            padding-left: 5px;
+        }
+
+        .tab_detail td a {
+            color: #0062c9;
+            text-decoration: underline;
+            padding-right: 5px;
+        }
+.fy, .fy a {
+    font-size: 12px;
+    text-decoration: none;
+    line-height: 3;
+}
+.fy { margin:5px; background:#2eab6c;
+}
+

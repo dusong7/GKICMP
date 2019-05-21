@@ -1,0 +1,46 @@
+/* CSS Document */
+body, ul, li {
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+li {
+    border-bottom: 1px dashed #B8B8B8;
+    padding: 20px 10px;
+}
+
+    li ul li {
+        border-bottom: none;
+        padding: 0px 10px;
+        line-height: 2;
+        margin: 5px 10px;
+    }
+
+        li ul li:nth-child(2) {
+            border-bottom: none;
+            background: #f5f5f5;
+        }
+
+    li:last-child {
+        border: none;
+        text-align: center;
+    }
+
+    li ul li:last-child {
+        text-align: left;
+    }
+
+.btn_add {
+    width: 98px;
+    height: 39px;
+    background: url(../images/green_sb_09.png);
+    border: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+}

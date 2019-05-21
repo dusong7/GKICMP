@@ -1,0 +1,25 @@
+﻿@using MvcWebSite.Models;
+<div class="header">@(((Site)ViewBag.Site).CompanyName)</div>
+<div class="menu">
+  <ul class="nav">
+    <li><a href="/">网站首页</a></li>
+    @foreach (Menu nav in ViewBag.Nav)
+            {
+                <li>
+                    <a href="@(string.IsNullOrEmpty(nav.LinkUrl)?"/List/List/"+nav.MID:nav.LinkUrl)" target="_self">@nav.MName</a>
+                    <ul>
+                        @foreach (Menu child in nav.ChildMenu)
+                        {
+                            <li>
+                                <a href="@(string.IsNullOrEmpty(child.LinkUrl) ? "/List/List/" + child.MID : child.LinkUrl)" target="_self">@child.MName</a>
+                            </li>
+                        }
+                    </ul>
+
+                </li>
+            }
+            <li>
+                <a href="/yghd" target="_self">智慧校园</a>
+            </li>
+  </ul>
+</div>

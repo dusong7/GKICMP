@@ -1,0 +1,121 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GKICMP", "GKICMP\GKICMP.csproj", "{C26235DC-794A-46FE-BCA7-D8CD6F848F6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{A82EF766-9445-4737-B949-7FD70F816F79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{4353289D-2CC9-4C6D-B1D6-2EC5E136B247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{157EC683-A21A-4754-9CE1-EB57F58A6675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWin", "SWin\SWin\SWin.csproj", "{89A9D5B8-EA7B-4710-A500-925ABA83B31D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSite", "MvcWebSite\WebSite.csproj", "{2E66E51E-8969-4BAF-A37B-C522E8117EB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GKService", "GKService\GKService.csproj", "{75750C70-0250-449E-A215-74722F680007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceService", "FaceService\FaceService.csproj", "{0BE5EE8B-FDE0-453C-8644-F56B709AE106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineRoom", "MachineRoom\MachineRoom.csproj", "{F8DF660E-D1DD-4758-83AE-0E9CA87D0AC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBT", "BBT\BBT\BBT.csproj", "{D077542E-1E53-46E0-9045-45808142685B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDService", "DDService\DDService.csproj", "{2B25D429-3745-4C96-9519-C504EA02CC27}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.10.20:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = GKICMP\\GKICMP.csproj
+		SccProjectName1 = GKICMP
+		SccLocalPath1 = GKICMP
+		SccProjectUniqueName2 = DAL\\DAL.csproj
+		SccProjectName2 = DAL
+		SccLocalPath2 = DAL
+		SccProjectUniqueName3 = Entities\\Entities.csproj
+		SccProjectName3 = Entities
+		SccLocalPath3 = Entities
+		SccProjectUniqueName4 = Common\\Common.csproj
+		SccProjectName4 = Common
+		SccLocalPath4 = Common
+		SccProjectUniqueName5 = SWin\\SWin\\SWin.csproj
+		SccProjectName5 = SWin/SWin
+		SccLocalPath5 = SWin\\SWin
+		SccProjectUniqueName6 = MvcWebSite\\WebSite.csproj
+		SccProjectName6 = MvcWebSite
+		SccLocalPath6 = MvcWebSite
+		SccProjectUniqueName7 = GKService\\GKService.csproj
+		SccProjectName7 = GKService
+		SccLocalPath7 = GKService
+		SccProjectUniqueName8 = FaceService\\FaceService.csproj
+		SccProjectName8 = FaceService
+		SccLocalPath8 = FaceService
+		SccProjectUniqueName9 = MachineRoom\\MachineRoom.csproj
+		SccProjectName9 = MachineRoom
+		SccLocalPath9 = MachineRoom
+		SccProjectUniqueName10 = BBT\\BBT\\BBT.csproj
+		SccProjectName10 = BBT/BBT
+		SccLocalPath10 = BBT\\BBT
+		SccProjectUniqueName11 = DDService\\DDService.csproj
+		SccProjectName11 = DDService
+		SccLocalPath11 = DDService
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C26235DC-794A-46FE-BCA7-D8CD6F848F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C26235DC-794A-46FE-BCA7-D8CD6F848F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C26235DC-794A-46FE-BCA7-D8CD6F848F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C26235DC-794A-46FE-BCA7-D8CD6F848F6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A82EF766-9445-4737-B949-7FD70F816F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A82EF766-9445-4737-B949-7FD70F816F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A82EF766-9445-4737-B949-7FD70F816F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A82EF766-9445-4737-B949-7FD70F816F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4353289D-2CC9-4C6D-B1D6-2EC5E136B247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4353289D-2CC9-4C6D-B1D6-2EC5E136B247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4353289D-2CC9-4C6D-B1D6-2EC5E136B247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4353289D-2CC9-4C6D-B1D6-2EC5E136B247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157EC683-A21A-4754-9CE1-EB57F58A6675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157EC683-A21A-4754-9CE1-EB57F58A6675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157EC683-A21A-4754-9CE1-EB57F58A6675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157EC683-A21A-4754-9CE1-EB57F58A6675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89A9D5B8-EA7B-4710-A500-925ABA83B31D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A9D5B8-EA7B-4710-A500-925ABA83B31D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A9D5B8-EA7B-4710-A500-925ABA83B31D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A9D5B8-EA7B-4710-A500-925ABA83B31D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E66E51E-8969-4BAF-A37B-C522E8117EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E66E51E-8969-4BAF-A37B-C522E8117EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E66E51E-8969-4BAF-A37B-C522E8117EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E66E51E-8969-4BAF-A37B-C522E8117EB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75750C70-0250-449E-A215-74722F680007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75750C70-0250-449E-A215-74722F680007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75750C70-0250-449E-A215-74722F680007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75750C70-0250-449E-A215-74722F680007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE5EE8B-FDE0-453C-8644-F56B709AE106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE5EE8B-FDE0-453C-8644-F56B709AE106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE5EE8B-FDE0-453C-8644-F56B709AE106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE5EE8B-FDE0-453C-8644-F56B709AE106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8DF660E-D1DD-4758-83AE-0E9CA87D0AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DF660E-D1DD-4758-83AE-0E9CA87D0AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DF660E-D1DD-4758-83AE-0E9CA87D0AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DF660E-D1DD-4758-83AE-0E9CA87D0AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D077542E-1E53-46E0-9045-45808142685B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D077542E-1E53-46E0-9045-45808142685B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D077542E-1E53-46E0-9045-45808142685B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D077542E-1E53-46E0-9045-45808142685B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B25D429-3745-4C96-9519-C504EA02CC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B25D429-3745-4C96-9519-C504EA02CC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B25D429-3745-4C96-9519-C504EA02CC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B25D429-3745-4C96-9519-C504EA02CC27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,215 @@
+﻿@using MvcWebSite.Models;
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_phone.cshtml";
+}
+                    <div id="slider" class="mui-slider">
+                            @Html.Action("Marquee", new{stype = 3})
+                    </div> 
+
+            <ul class="mui-table-view mui-grid-view mui-grid-9">
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+                            <a href="/phone/TopNew?istop=true&pageindex=1&pagesize=10">
+                                <span class="mui-icon mui-icon mui-icon-star"></span>
+                                <div class="mui-media-body">置顶文章</div>
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+                            <a href="/phone/Mailbox">
+                                <span class="mui-icon mui-icon-email"></span>
+                                <div class="mui-media-body">校长信箱</div>
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-chatbubble"></span>
+                                <div class="mui-media-body">联系信息</div>
+                            </a>
+                        </li>
+
+
+                  @*
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+           <a href="">
+                <span class="icon_wgw ic3">
+                  <svg class="icon" aria-hidden="true">
+                     <use xlink:href="#icon-paihangbang"></use>
+                  </svg>
+                </span>
+               <div class="mui-media-body">学校简介</div>
+             </a>
+       </li>
+
+         <li class="mui-table-view-cell mui-media mui-col-xs-4">
+           <a href="">
+                <span class="icon_wgw ic3">
+                  <svg class="icon" aria-hidden="true">
+                     <use xlink:href="#icon-laoshi"></use>
+                  </svg>
+                </span>
+               <div class="mui-media-body">校长寄语</div>
+             </a>
+       </li>
+
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+           <a href="">
+                <span class="icon_wgw ic3">
+                  <svg class="icon" aria-hidden="true">
+                     <use xlink:href="#icon-baoguo"></use>
+                  </svg>
+                </span>
+               <div class="mui-media-body">校园风貌</div>
+             </a>
+       </li>
+
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+          <a href="">
+               <span class="icon_wgw ic3">
+                 <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon--wode"></use>
+                 </svg>
+               </span>
+              <div class="mui-media-body">教师风采</div>
+            </a>
+       </li>
+
+       <li class="mui-table-view-cell mui-media mui-col-xs-4">
+          <a href="">
+               <span class="icon_wgw ic3">
+                 <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-keshi"></use>
+                 </svg>
+               </span>
+              <div class="mui-media-body">综治安全</div>
+            </a>
+       </li>
+
+
+    <li class="mui-table-view-cell mui-media mui-col-xs-4">
+           <a href="/phone/TopNew?istop=true&pageindex=1&pagesize=10">
+                <span class="icon_wgw ic3">
+                  <svg class="icon" aria-hidden="true">
+                     <use xlink:href="#icon-xiaoxi"></use>
+                  </svg>
+                </span>
+               <div class="mui-media-body">新闻速递</div>
+             </a>
+    </li>
+
+*@
+
+                       <!--<li class="mui-table-view-cell mui-media mui-col-xs-4">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-chatboxes"></span>
+                                <div class="mui-media-body">家校互动</div>
+                            </a>
+                        </li>--> 
+                 </ul>
+
+    <div id="pullrefresh">
+            
+        </div>
+
+<script>
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+			mui.init({
+				pullRefresh: {
+				    container: '#offCanvasContentScroll',
+				    down: {
+				        contentrefresh: '正在加载...',
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			var menuid = getUrlParam("id");
+			var istop = getUrlParam("istop");
+
+
+			$.ajax({
+			    type: "GET",
+			    url: "/phone/GetNews",
+			    data: "menuid=" + menuid + "&istop=" + istop + "&pageindex=1&pagesize=10",
+			    dataType: "json", async: false,
+			    success: function (data) {
+			        for (var j = 0;j<data.length;j++) {
+			            var intem;
+			            var datatime = new Date(parseInt(data[j].CreateDate.replace("/Date(", "").replace(")/", "")));
+			            if (data[j].ImageUrl == null || data[j].ImageUrl == "") {
+			                intem = "<div class='mui-card'><div class='mui-card-header mui-card-media' style='height:40vw;background-image:url(" + data[j].ImageUrl + ")'></div><div class='mui-card-content'><div class='mui-card-content-inner'><p>" + datatime.getFullYear() + "-" + (datatime.getMonth() + 1) + "-" + datatime.getDate() + "</p>" + data[j].NContent + "</div></div><div class='mui-card-footer'><a class='mui-card-link'>栏目:" + data[j].MName + "</a><a class='mui-card-link' href='Article?" + " + data[j].NID + " + "'>详情</a></div></div>";
+			            }
+			            else {
+			                intem = "<div class='mui-card'><div class='mui-card-header'>" + data[j].NewsTitle + "</div><div class='mui-card-content'><div class='mui-card-content-inner'><p>" + datatime.getFullYear() + "-" + (datatime.getMonth() + 1) + "-" + datatime.getDate() + "</p>" + data[j].NContent + "</div></div><div class='mui-card-footer'><a class='mui-card-link'>栏目:" + data[j].MName + "</a><a class='mui-card-link' href='/phone/Article?id=" + data[j].NID + "'>详情</a></div></div>";
+			            }
+			            $("#pullrefresh").append(intem);
+			        }
+			    }
+			});
+			var i = 2;
+			function pulldownRefresh() {
+			    setTimeout(function () {
+			        window.location.reload();
+			    }, 1500);
+			};
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+			    setTimeout(function () {
+			        var jsondata = "";
+			        $.ajax({
+			            type: "GET",
+			            url: "/phone/GetNews",
+			            data: "menuid=" + menuid + "&istop=" + istop + "&pageindex=" + i + "&pagesize=10",
+			            dataType: "json", async: false,
+			            success: function (data) {
+			                //alert(i);
+			                for (var j = 0;j< data.length;j++) {
+			                        var intem;
+			                        var datatime = new Date(parseInt(data[j].CreateDate.replace("/Date(", "").replace(")/", "")));
+			                        if (data[j].ImageUrl == null || data[j].ImageUrl == "") {
+			                            intem = "<div class='mui-card'><div class='mui-card-header mui-card-media' style='height:40vw;background-image:url(" + data[j].ImageUrl + ")'></div><div class='mui-card-content'><div class='mui-card-content-inner'><p>" + datatime.getFullYear() + "-" + (datatime.getMonth() + 1) + "-" + datatime.getDate() + "</p>" + data[j].NContent + "</div></div><div class='mui-card-footer'><a class='mui-card-link'>栏目:" + data[j].MName + "</a><a class='mui-card-link' href='Article?" + " + data[j].NID + " + "'>详情</a></div></div>";
+			                        }
+			                        else {
+			                            intem = "<div class='mui-card'><div class='mui-card-header'>" + data[j].NewsTitle + "</div><div class='mui-card-content'><div class='mui-card-content-inner'><p>" + datatime.getFullYear() + "-" + (datatime.getMonth() + 1) + "-" + datatime.getDate() + "</p>" + data[j].NContent + "</div></div><div class='mui-card-footer'><a class='mui-card-link'>栏目:" + data[j].MName + "</a><a class='mui-card-link' href='/phone/Article?" + data[j].NID + "'>详情</a></div></div>";
+			                        }
+			                        $("#pullrefresh").append(intem);
+			                    }
+			                    i =i+1;
+			                    jsondata = data;
+			            }
+			        });
+			        if (jsondata.length == 0)
+			        {
+			            mui('#offCanvasContentScroll').pullRefresh().endPullupToRefresh(true);
+			        }
+			        else
+			        {
+			            mui('#offCanvasContentScroll').pullRefresh().endPullupToRefresh(false);
+			        }
+					//mui('#offCanvasContentScroll').pullRefresh().endPullupToRefresh((++count > 100)); //参数为true代表没有更多数据了。
+				}, 1500);
+			}
+//			if (mui.os.plus) {
+//				mui.plusReady(function() {
+//					setTimeout(function() {
+//						mui('#pullrefresh').pullRefresh().pullupLoading();
+//					}, 10);
+//
+//				});
+//			} else {
+//				mui.ready(function() {
+//					mui('#pullrefresh').pullRefresh().pullupLoading();
+//				});
+        //			}
+</script>

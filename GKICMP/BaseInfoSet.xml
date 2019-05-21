@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <!--开学第一天-->
+  <TFristDate>2019/2/11 0:00:00</TFristDate>
+  <!--区平台配置-->
+  <!--<ServerUrl>http://yjq.whsedu.cn</ServerUrl>-->
+  <!--<ServerUrl>http://yjq.whsedu.cn</ServerUrl>-->
+  <!--<ServerUrl>http://yjq.whsedu.cn</ServerUrl>-->
+  <ServerUrl>http://localhost:5310</ServerUrl>
+  <AssetServerUrl>http://asset.whsedu.cn</AssetServerUrl>
+  <XD>2,3</XD>
+  <Login>1</Login>
+  <DX IsOpen="0">
+    <IsOpen>0</IsOpen>
+  </DX>
+</Config>

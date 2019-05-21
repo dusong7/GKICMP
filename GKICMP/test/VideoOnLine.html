@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>视频播放</title>
+    <link href="../css/demo.css" rel="stylesheet" />
+    <link href="../css/easyui.css" rel="stylesheet" />
+    <script src="../js/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.easyui.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    <table>
+      <tr>
+        <td>
+            <div id="video_content" runat="server" style="">
+                 <input id="drpAge" name="drpAge" style="width: 90%; height: 48px" url="../ashx/data.json" class="easyui-combotree" />
+                <input id="cc" class="easyui-combotree" data-options="url:'../ashx/data.json',method:'get',label:'Select Node:',labelPosition:'top'" style="width:100%" />
+            </div>  
+        </td>
+      </tr>
+    </table>
+    </div>
+    </form>
+</body>
+</html>

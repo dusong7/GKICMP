@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>教师统计</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="SuggeElson" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="application-name" content="sprFlat admin template" />
+   <!-- <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Droid+Sans:400,700' />-->
+  
+    <!-- Custom CSS -->
+    <link href="../assets/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="../assets/css/icons.css" rel="stylesheet" />
+    <!-- jQueryUI -->
+    <link href="../assets/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
+    <!-- Bootstrap stylesheets (included template modifications) -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="../assets/css/plugins.css" rel="stylesheet" />
+    <!-- Main stylesheets (template main css file) -->
+    <link href="../assets/css/main.css" rel="stylesheet" />
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <!--<link href="../assets/css/custom.css" rel="stylesheet" />-->
+    <meta name="msapplication-TileColor" content="#3399cc" />
+
+    <style>
+        .cus-height li {
+            border-bottom: 1px solid #ccc;
+            line-height: 40px;
+        }
+
+            .cus-height li:last-child {
+                border-bottom: none;
+            }
+
+        .cus-height .progress {
+            margin-top: 18px;
+            margin-right: 40px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="content-wrapper">
+            <div class="outlet">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="panel panel-default toggle">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="im-bars"></i> 学历结构</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="ordered-bars-chart" style="width: 100%; min-height: 250px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="panel panel-default toggle">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="im-bars"></i> 在编比例</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="ordered-bars-chart" style="width: 100%; min-height:250px;">
+                                    <ul class="list-unstyled cus-height" id="tstate">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="panel panel-default toggle">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="im-pie"></i> 教师年龄结构</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="donut-chart" style="width: 100%; height:250px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="container" style="min-width:400px;height:400px"></div>
+    </div>
+    
+    <script src="../assets/js/jquery-1.8.3.min.js"></script>
+    
+    <!--<script>
+        window.jQuery || document.write('<script src="../assets/js/libs/jquery-2.1.1.min.js">\x3C/script>')
+    </script>-->
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!--<script>
+        window.jQuery || document.write('<script src="../assets/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
+    </script>-->
+
+    <script src="../assets/js/bootstrap/bootstrap.js"></script>
+    <script src="../assets/js/jRespond.min.js"></script>
+    <script src="../assets/js/core/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../assets/js/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+    <script src="../assets/js/forms/autosize/jquery.autosize.js"></script>
+    <script src="../assets/js/core/quicksearch/jquery.quicksearch.js"></script>
+    <script src="../assets/js/bootbox.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.pie.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.resize.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.time.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.growraf.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.categories.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.stack.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.orderBars.js"></script>
+    <script src="../assets/js/charts/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="../assets/js/charts/flot/date.js"></script>
+    <script src="../assets/js/charts/sparklines/jquery.sparkline.js"></script>
+    <script src="../assets/js/charts/pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="../assets/js/forms/icheck/jquery.icheck.js"></script>
+    <script src="../assets/js/forms/tags/jquery.tagsinput.min.js"></script>
+    <script src="../assets/js/forms/tinymce/tinymce.min.js"></script>
+    <script src="../assets/js/highlight.pack.js"></script>
+    <script src="../assets/js/jquery.countTo.js"></script>
+
+    <script src="../assets/js/jquery.sprFlat.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/pages/charts.js"></script>
+    <script>
+        //$.ajaxSettings.async = false;
+        $.getJSON("../ashx/StatisticsHandler.ashx?method=TState", function (dd) {
+            //alert(dd);
+
+            $.each(dd.comments, function (i, item) {
+                //TState.push(item.DName);
+                //zb.push(item.ZB);
+                //qp.push(item.QP);Math.round(num / total * 10000) / 100.00 + "%")
+                var s;
+                if (item.ZB == 0) {
+                    s = "0.000";
+                }
+                else if (item.ZB == (item.ZB + item.QP)) {
+                    s = "100.0"
+                }
+                else {
+                    var a = Math.round(item.ZB / (item.ZB + item.QP) * 10000) / 100.00;
+                    s = toDecimal2(a);
+                }
+                //alert(s);
+                $("#tstate").append(" <li>" + item.DName + " <span class='pull-right'>" + s + "%" +
+                "</span><div class='progress progress-striped active progress-right'><div class='bar green' style='width:" + (Math.round(item.ZB / (item.ZB + item.QP) * 10000) / 100.00 + "%") + ";'></div></div> </li>");//内层循环追加li
+
+            });
+            function toDecimal2(s) {
+                var rs = s.toString().indexOf('.');
+                if (rs < 0) {
+                    rs = s.toString().length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            }
+            //u.append("</ul>");
+            //$("#tstate").after(u);
+            // $("#ordered-bars-chart").after(u);
+        });
+    </script>
+</body>
+</html>

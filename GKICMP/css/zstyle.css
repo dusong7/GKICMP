@@ -1,0 +1,191 @@
+/* CSS Document */
+body,div,ul,li{ margin:0px; padding:0px}
+ul,li{ list-style:none}
+a{ text-decoration:none}
+.menucs{ width:100%; height:40px; line-height:40px; background:url(../images/yxj_cpzx.jpg); /*margin-top:5px;*/}
+.menucs ul{ width:1000px; margin:auto}
+.menucs li{ float:left; padding:0px 30px; line-height:40px; height:40px}
+.menucs .selected{ background:#25B782}
+.menucs li a{ color:#fff; font-size:14px; text-decoration:none}
+.bancs{ background:url(../images/kj_01.png) center center no-repeat; height:184px;}
+.bancent{ width:1000px; margin:auto}
+.bantit{ text-align:left; font-size:40px; padding-top:65px;color:#016543; padding-left:130px; box-sizing:border-box; font-family:'Microsoft YaHei'}
+.baninfo{ width:600px; line-height:1.5; font-size:12px}
+.baninfo1{ width:600px; line-height:1.5; font-size:18px}
+.listbtn{ width:90px; height:22px; background:#0c89d4; display:block; text-align:center; color:#FFFFFF; line-height:22PX; font-size:14PX; margin-left:50PX}
+.whlist{ width:1000px; margin:10px auto}
+.whlist li{ width:25%; text-align:center; float:left; margin:10px 0px;}
+.whlist li img{ width:145px; height:100px; border:1px solid #e0e0e0; padding:2px}
+.whlist li span{ display:block; text-align:center; line-height:1.5}
+.whlist li a{ color:#000000; text-decoration:none}
+.whlist li span:nth-child(3){ color:#747474}
+.pagcs{ width:1000px; margin:10px auto; background:#E3E3E3; height:35px; line-height:35px}
+.classcs{ width:1000px; margin:10px auto;}
+.classtopleft{ width:230px;  float:left;line-height:2; padding:20px}
+.clocs{ color:#25b782; font-weight:bold}
+.classtopright{ width:710px; float:right;border:1px solid #e0e0e0; height:175px}
+.classtopright .righttit{ height:30px; line-height:30px; color:#25b782; font-weight:bold;text-indent:15px; border-bottom:1px solid #e0e0e0}
+.classtopright li{ height:47px; border-bottom:1px dashed #e0e0e0}
+.classtopright li:nth-child(3){ border-bottom:none}
+.classtopright li span:first-child{ float:left; width:630px; margin-left:10px; line-height:23px}
+.classtopright li span:nth-child(2){ float:right; width:50px; margin-right:10px; height:25px; line-height:25px; margin-top:10px; background:#0c76d4; text-align:center; color:#fff}
+.classtopright li a{ color:#000000}
+.classinfo{ width:1000px; margin:10px auto}
+.classinfo li{ border:1px solid #e0e0e0; margin:10px 0px}
+.classinfo li div{ margin:20px; padding:0px 5px;font-size:12px;}
+.classinfo li div:first-child span,.classinfo li div:first-child img{ float:left; display:block; margin-right:10px; color:#25B782;font-size:14px}
+.classinfo li div:first-child{ border-bottom:1px solid #e0e0e0; padding-bottom:10px; margin-bottom:0px}
+.classinfo li a{ color:#000000; text-decoration:none}
+
+.gr{ background:url(../images/kj_02.png) center center no-repeat}
+.listmre{  border:1px solid #e0e0e0; border-top:2px solid #e0e0e0; margin-bottom:10px; margin-top:10px; position:relative; width:96%; margin-left:2%}
+.zybs{ position:absolute; top:12px; left:10px}
+.listmre .titname{ padding-left:35px; background:#f7f7f7; height:45px; line-height:45px}
+.infocss{ position:relative}
+.infocss span{ float:left; display:block; }
+.infocss span:nth-child(2),.infocss span:nth-child(4){ margin-right:55px}
+.infocss span:nth-child(1),.infocss span:nth-child(3){ color:#989898}
+.infocss span:nth-child(1){ margin-left:60px}
+.infocss div span:nth-child(1),.infocss div span:nth-child(2),.infocss div span:nth-child(3),.infocss div span:nth-child(4){ margin-right:55px; text-indent:20px}
+.infocss div span:nth-child(1),.infocss div span:nth-child(3){ color:#000}
+.infocss div span:nth-child(1){ margin-left:90px; background:url(../images/zy_8.png) left center no-repeat}
+.infocss div span:nth-child(2){ background:url(../images/zy_9.png) left center no-repeat; text-indent:20px}
+.infocss div span:nth-child(3){background:url(../images/zy_10.png) left center no-repeat; text-indent:20px}
+.infocss div span:nth-child(4){  background:url(../images/zy_11.png) left center no-repeat; text-indent:20px}
+.infocss{ line-height:30px}
+.dowcss{ position:absolute; right:10px; width:100px; height:30px; background:#34a150; text-align:center; top:15px}
+.dowcss a{color:#FFFFFF; display:block; width:100%; height:30px; text-indent:20px}
+.dowcss img{ position:absolute; top:0px; left:0px}
+.infocss{ background:#f6fafd; border-top:1px solid #e0e0e0;padding-bottom:15px}
+.zybs{ position:absolute; top:12px; left:10px}
+.w125{ width:125px; border:none; padding:0px; color:#14be84;  font-size:16px; font-weight:bold}
+.w850{ width:850px; height:auto}
+.w850 .righttit{ border-bottom:none; color:#000000; margin-top:10px}
+.w850 ul li{ height:auto; border-top:1px dashed #e0e0e0; width:96%; margin-left:2%; border-bottom:none; padding-top:10px; margin-top:10px}
+.w850 ul a{ display:block; text-decoration:none}
+.w850 ul a span{ margin-left:0px !important; line-height:30px !important; float:none !important; width:100%}
+.w850 ul li a:first-child{ position:relative; height:35px;}
+.w850 ul li a:first-child img{ position:absolute; width:30px;}
+.w850 ul li a:first-child aa{ position:absolute; left:35px; line-height:35px; color:#0c76d4}
+.w850 ul a:nth-child(3){ color:#666666}
+
+.listupload {
+    border: 1px solid #3b9861;
+    border-radius: 2px;
+     background: #25b782;
+
+    color: #FFFFFF;
+    width: 90px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    padding: 0px;
+    margin-right: 13px;
+    font-size: 14px;
+    display:block;
+}
+
+.listmre{  border:1px solid #e0e0e0; border-top:2px solid #e0e0e0; margin-bottom:10px; margin-top:10px}
+
+.fy {
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+    background: #f7f7f7;
+    border-radius: 2px;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    color: #000000;    
+}
+
+    .fy a, .fy a:hover, .fy a:visited, .fy a:active {
+        
+        color: #000000;
+        text-decoration: none;
+    }
+
+.tzbg {
+    border: 1px solid #e0e0e0;
+    height: 22px;
+    border-radius: 2px;
+}
+
+.tzbt {
+    border: none;
+    padding: 0px 5px;
+    line-height: 22px;
+    height: 22px;
+    margin-right: 13px;
+    border-radius: 2px;
+}
+
+
+/***************************************************************************/
+/*文化墙*/
+/*body{  background:url(../../images/zy_1.png) center top no-repeat}
+.menucs{ width:100%; height:45px; line-height:45px; background:#0c76d4; margin-top:5px;}
+.menucs ul{ width:1000px; margin:auto}
+.menucs li{ float:left; padding:0px 30px; line-height:45px; height:45px}
+.menucs li a{ color:#fff; font-size:14px; text-decoration:none}
+.bancs{ background:url(../images/kj_02.png) center center no-repeat; height:184px;}
+.bancent{ width:1000px; margin:auto}
+.bantit{ text-align:left; font-size:45px; padding-top:15px}
+.baninfo{ width:600px; line-height:1.5; font-size:12px}*/
+.centcss{ width:1000px; margin:auto; margin-top:10px}
+.leftcss{ float:left; width:270px; height:100%}
+.rightcss{ float:right; width:710px;}
+.listcss{ border:1px solid #e0e0e0; border-top:2px solid #0c76d4; margin-bottom:10px;height:100%}
+.titlecss{ text-align:center; height:28px; line-height:28px; background:#f6fafd; border-bottom:1px solid #ddf0fa}
+.listcss ul{ padding:10px 0px}
+.listcss li{ height:30px; margin-left:10px}
+.listcss li a{    float: left;   width: 95%;    height: 30px;    white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis; color:#0f7db9}
+.listmre .titname{ padding-left:35px; height:45px; line-height:45px}
+/*.infocss{ position:relative}*/
+.centcss{ border-bottom:1px solid #e0e0e0; padding-bottom:10px}
+.listm{ border-bottom:1px dashed #DBDBDB; padding:5px 5px}
+.listt span:nth-child(1){ color:#666666; font-weight:bold}
+.listt span:nth-child(2){ color:#ff8400; font-weight:bold; font-size:12px}
+.listd{ color:#747474; line-height:2;font-size:12px;}
+.listi{ color:#000000}
+.listb{ height:25px; line-height:25px}
+.listb span a {   color:#25b782}
+.listb span:nth-child(1){ float:left; color:#ff8400}
+.listb span:nth-child(2){ float:right; color:#ff8400}
+.pagemore{height:45px; line-height:45px; width:1000px; padding-bottom:20px; margin:auto}
+.infocss{ border:1px solid #e0e0e0; padding:20px;}
+.infocss h3{ text-align:center;color:#25b782}
+.infodiv{ line-height:1.5}
+.infoo{ float:right; text-align:left; width:auto; margin-top:20px; color:#666666}
+
+/*****************************教学工作室**************************************/
+.classtopright1{float:right;border:1px solid #e0e0e0; height:175px;padding:5px;}
+.classtopright1 .righttit{ height:30px; line-height:30px; color:#25b782; font-weight:bold;text-indent:15px; border-bottom:1px solid #e0e0e0}
+.classtopright1 li{ height:47px; border-bottom:1px dashed #e0e0e0}
+.classtopright1 li:nth-child(3){ border-bottom:none}
+.classtopright1 li span:first-child{ float:left; width:630px; margin-left:10px; line-height:23px}
+.classtopright1 li span:nth-child(2){ float:right; width:50px; margin-right:10px; height:25px; line-height:25px; margin-top:10px; background:#0c76d4; text-align:center; color:#fff}
+.classtopright1 li a{ color:#000000}
+
+.w950{ width:970px; height:auto}
+.w950 .righttit{ border-bottom:none; color:#000000; margin-top:10px}
+.w950 ul li{ height:auto; border-top:1px dashed #e0e0e0; width:96%; margin-left:2%; border-bottom:none; padding-top:10px; margin-top:10px}
+.w950 ul a{ display:block; text-decoration:none}
+.w950 ul a span{ margin-left:0px !important; line-height:30px !important; float:none !important; width:100%}
+.w950 ul li a:first-child{ position:relative; height:35px;}
+.w950 ul li a:first-child img{ position:absolute; width:30px;}
+.w950 ul li a:first-child aa{ position:absolute; left:35px; line-height:35px; color:#0c76d4}
+.w950 ul a:nth-child(3){ color:#666666}
+.w190 {width:200px; padding:0px}
+.w785 {width:785px; height: auto;}
+
+.userheadlist{ margin-top:20px}
+.userheadlist span{ display:inline-block; line-height:30px; padding:5px; border-bottom:     2px solid #25b782; position:absolute; z-index:100; font-weight:bold}
+.userheadlist div{ position:relative; height:40px; border-bottom:1px solid #BDBDBD; margin-bottom:10px}
+.userheadlist li:hover{ background:#f3f3f3;}
+.userheadlist li{ display:inline-block; width:50px; text-align:center;margin-bottom:10px; padding:5px; border-radius:5px}
+.userheadlist li img{ width:40px; height:40px; border-radius:20px;}
+.userheadlist li a{ text-decoration:none; color:#474747; font-size:12px}
+.userinfocss{border:1px solid #e0e0e0;}
+.userinfocss img{ border-radius:60px; margin:10px auto; display:block}
+.userinfocss div{ margin:10px; font-size:14px}

@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+    int i = 1;
+    int j = 1;
+    int k = 1;
+}
+
+@using MvcWebSite.Models;
+<div class="mui-slider-group mui-slider-loop">
+    @foreach (Slide slide in ViewBag.SlideList)
+    {
+        if (i == ViewBag.SlideList.Count)
+        {
+            <div class="mui-slider-item  mui-slider-item-duplicate">
+                <a href="@slide.SlideUrl">
+                    <img src="@slide.SImage">
+                </a>
+            </div>}
+        i++;
+    }
+    @foreach (Slide slide in ViewBag.SlideList)
+    {
+        <div class="mui-slider-item">
+            <a href="@slide.SlideUrl">
+                <img src="@slide.SImage">
+            </a>
+        </div>
+    }
+    @foreach (Slide slide in ViewBag.SlideList)
+    {
+        if (j == ViewBag.SlideList.Count)
+        {
+            <div class="mui-slider-item mui-slider-item-duplicate">
+                <a href="@slide.SlideUrl">
+                    <img src="@slide.SImage">
+                </a>
+            </div>}
+        j++;
+    }
+</div>
+<div class="mui-slider-indicator">
+    @foreach (Slide slide in ViewBag.SlideList)
+    {
+        if (k == 1)
+        {
+            <div class="mui-indicator mui-active"></div>
+        }
+        else
+        {
+            <div class="mui-indicator"></div>
+        }
+        k++;
+    }
+    
+</div>

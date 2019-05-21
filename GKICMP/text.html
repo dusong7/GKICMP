@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="/Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="/signalr/hubs"></script>
+    <style type="text/css">
+        .show {
+            width:150px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="show">Your Name:</div><label id="userName"></label>
+        <br />
+        <div class="show">Room Number:</div><input type="text" id="roomid" value="1" /><input type="button" id="join" value="Join" /><br />
+        <div class="show">You Say:</div><input type="text" id="message" />
+        <input type="button" id="sendmessage" value="Send" style="display:none" />
+        <ul id="discussion">
+        </ul>
+    </div>
+    <div>
+        <div style="background-color:blue">1</div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            var chat = $.connection.roomHub;
+
+            chat.client.sendMessage = function (message) {
+                var encodedName = $("<div/>").text(message.Name).html();
+                var encodedMsg = $("<div/>").text(message.Message).html();
+                $("#discussion").append('<li><strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg + '. &nbsp;&nbsp;--from Room[' + message.RoomId + ']</li>');
+            };
+
+            $("#userName").text(prompt("Enter your Name:", ''));
+            $("#message").val('').focus();
+
+            $.connection.hub.start().done(function () {
+                $("#join").click(function () {
+                    chat.server.addToRoom($("#roomid").val());
+                    $("#sendmessage").show();
+                    $("#join").hide();
+                });
+                $("#sendmessage").click(function () {
+                    chat.server.send({
+                        RoomId: $("#roomid").val(),
+                        Name: $("#userName").text(),
+                        Message: $("#message").val()
+                    });
+                    $.ajax({
+                        url: "../ashx/Insert.ashx",
+                        cache: false,
+                        type: "POST",
+                        // async: false,
+                        data: { name: $("#userName").text(), text: $("#message").val() },
+                        dataType: "json",
+                        success: function (data) { }
+                    })
+                    $("#message").val('').focus();
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>

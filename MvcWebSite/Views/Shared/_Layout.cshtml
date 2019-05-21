@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+@using MvcWebSite.Models;
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+   <link href="~/Css/Index.css" rel="stylesheet" />
+    <link href="~/Css/Custom.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Css/slider.css">
+<link rel="stylesheet" type="text/css" href="~/Css/style.css">
+<link href="~/Css/sc.css" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/Index.js"></script>    
+    <script src="~/Scripts/jquery-1.8.2.js"></script>   
+    <script src="~/Scripts/jQuery-jcMarquee.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+<SCRIPT language=javascript src="~/js/Designer.js"></SCRIPT>
+</head>
+<body>
+
+    @Html.Partial("_LayoutTitleNav")
+
+    @*以下为页面的部分*@
+@RenderBody()
+    <div>
+        
+    </div>
+
+    @Html.Partial("_LayoutFoot")
+</body>
+</html>

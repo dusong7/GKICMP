@@ -1,0 +1,34 @@
+﻿@{
+    Layout =null;
+}
+
+@using MvcWebSite.Models;
+
+
+<div style="width: 33%;margin-left:@ViewBag.Left;float:left">
+    <div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+            <li class="ui-tabs-selected ui-state-default ui-corner-top ui-tabs-active ui-state-active">
+                <a href="#" class="ui-tabs-anchor">@(((Menu)ViewBag.Menu).MName)</a>
+            </li>
+            <li class="more" style="float: right; margin-top: 5px;"><a href="/Index/List/@(((Menu)ViewBag.Menu).MID)">+MORE</a></li>
+        </ul>
+        <div class="article_list_1 ui-tabs-panel ui-widget-content ui-corner-bottom">
+            <ul class="articlelist">
+                @foreach (New news in ViewBag.NewList)
+                {
+                    <li>
+                        <span class="right">@news.CreateDate.ToString("MM=dd")</span>
+                        <span class="articlelist_title" style="">
+                            <a href="/Index/Article/@news.NID" target="_blank" title="@news.NewsTitle">
+                                @news.NewsTitle
+                            </a>
+
+                        </span>
+                    </li>
+                }
+            </ul>
+
+        </div>
+    </div>
+</div>

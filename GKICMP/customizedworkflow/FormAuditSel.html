@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>工作流审核流程</title>
+
+    <link href="../css/green_formcss.css" rel="stylesheet" />
+    <style>
+        .listadd {
+            border: 1px solid #25a161;
+            border-radius: 2px;
+            background: #48bd81;
+            color: #FFFFFF;
+            width: 65px;
+            height: 26px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0px;
+            margin-right: 13px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .selpara {
+            border: 1px solid #25a161;
+            border-radius: 2px;
+            background: #48bd81;
+            color: #FFFFFF;
+            width: 65px;
+            height: 26px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0px;
+            margin-right: 13px;
+            font-size: 14px;
+            position: relative;
+            float: left;
+            cursor: pointer;
+        }
+
+        .flow {
+            position: relative;
+        }
+
+        .flowtext {
+            position: absolute;
+        }
+
+        ul, li {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div class="listcent pad0">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listinfo">
+            <tbody>
+                <tr>
+                    <th colspan="2" align="left">
+                        <p style="float: left">选择人员</p>
+                    </th>
+                </tr>
+                <tr>
+                    <td align="right" width="150">所属角色：</td>
+                    <td class="leftrole" align="left">
+                        <select class="rolesel"></select>
+                        <button class="listadd">添加</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="150">姓 名：</td>
+                    <td class="leftuser" align="left">
+                        <select class="usersel"></select>
+                        <button class="listadd">添加</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="150">审批方式：</td>
+                    <td class="flowtype" align="left">
+                        <div class="flow"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="150">
+                        已 选：
+                    </td>
+                    <td class="lefsel" align="left">
+                        <div class="sellist"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button class="submit">确认</button>
+                        <input type="button" value="取消" class="editor" onclick='$.close("A_id");' />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../js/WF.js"></script>
+<script>
+    $(function () {
+        //console.log(window.parent.auditlist);
+
+        var type = GetURL("type");
+        if (type == 1) {
+            getClass("button", "leftrole", "listadd")[0].style.display = "none";
+        } else {
+            getClass("button", "leftuser", "listadd")[0].parentElement.parentElement.style.display = "none";
+        }
+
+        var count = GetURL("count");
+        if (count >= 0) {
+            //需要初始化
+            var node = window.parent.auditlist[count].Data;
+            for (var i = 0; i < node.length; i++) {
+                AddNode(node[i].type, node[i].id, node[i].name);
+
+            }
+        }
+
+        var audittype = GetURL("audittype");
+        if (audittype == 1) {
+            var typelist = getClass("div", "flowtype", "flow")[0];
+            typelist.appendChild(GetAuditType("发起人从角色成员中自选", 1));
+            typelist.appendChild(GetAuditType("会签（须所有审批人同意）", 2));
+            typelist.appendChild(GetAuditType("或签（一名审批人同意或拒绝即可）", 3));
+            if (count >= 0) {
+                typelist.children[window.parent.auditlist[count].flowtype].children[0].checked = 1;
+            } else {
+                typelist.children[0].children[0].checked = 1;
+            }
+
+
+
+        } else {
+            $(".flowtype").parent().hide();
+        }
+
+
+        $.getJSON("../ashx/WF.ashx?method=GetRole", function (data) {
+            var html = "<option value=\"0\">全部</option>";
+            $.each(data, function (i, item) {
+                html = html + "<option value=\"" + item.DID + "\">" + item.DepName + "</option>";
+            });
+
+            getClass("select", "leftrole", "rolesel")[0].innerHTML = html;
+            //$(".rolesel").html(html);
+            InitUser();
+        })
+
+
+
+    });
+
+    $(".listadd").click(function () {
+
+        if ($(this).prev().attr("class") == "rolesel") {
+            var node = getClass("select", "leftrole", "rolesel")[0];
+            var id = node.value;
+            var name = node.options[node.selectedIndex].innerHTML;
+            AddNode("role", id, name);
+        } else {
+            var node = getClass("select", "leftuser", "usersel")[0];
+            var id = node.value;
+            var name = node.options[node.selectedIndex].innerHTML;
+            AddNode("user", id, name);
+        }
+    });
+
+    function AddNode(type, id, name) {
+        if (type == "role") {
+
+            var datanode = InitNode("div", "selpara");
+            datanode.setAttribute("type", "role");
+            datanode.setAttribute("uid", id);
+            datanode.innerHTML = name;
+            datanode.addEventListener("click", DeletePara);
+            getClass("div", "lefsel", "sellist")[0].appendChild(datanode);
+        } else {
+
+            var datanode = InitNode("div", "selpara");
+            datanode.setAttribute("type", "user");
+            datanode.setAttribute("uid", id);
+            datanode.innerHTML = name;
+            datanode.addEventListener("click", DeletePara);
+            getClass("div", "lefsel", "sellist")[0].appendChild(datanode);
+        }
+    }
+
+    function DeletePara() {
+        this.parentElement.removeChild(this);
+    }
+
+    $(".rolesel").change(function () {
+        InitUser();
+    });
+
+
+    function childtest() {
+        console.log("asdsad");
+    }
+
+    function InitUser() {
+        $.getJSON("../ashx/WF.ashx?method=GetRoleUser&role=" + getClass("select", "leftrole", "rolesel")[0].value, function (data) {
+            var html = "";
+            $.each(data, function (i, item) {
+                html = html + "<option value=\"" + item.UID + "\">" + item.RealName + "</option>";
+            });
+
+            getClass("select", "leftuser", "usersel")[0].innerHTML = html;
+
+            //$(".usersel").html(html);
+        })
+    }
+
+
+
+    function GetAuditType(text, value) {
+        var node = InitNode("label", "approval-radio ant-radio-wrapper");
+
+        var checkbox = InitNode("input", "ant-radio-input");
+        checkbox.name = "typeradio";
+        checkbox.type = "radio";
+        checkbox.value = value;
+
+        var span = InitNode("span", "flowtext");
+        span.innerHTML = text;
+
+        node.appendChild(checkbox);
+        node.appendChild(span);
+        node.style = "display: block; height: 30px; line-height: 30px;margin-right:200px";
+        //node.addEventListener("click", ChangeTypeSel);
+        return node;
+    }
+
+    $(".submit").click(function () {
+        var sel = {};
+        var seldata = [];
+        var paralist = getClass("div", "sellist", "selpara");
+        if (paralist.length > 0) {
+            for (var i = 0; i < paralist.length; i++) {
+                var selnode = {};
+                selnode.type = paralist[i].getAttribute("type");
+                selnode.name = paralist[i].innerHTML;
+                selnode.id = paralist[i].getAttribute("uid");
+                seldata.push(selnode);
+            }
+            sel.seldata = seldata;
+            var flowlist = getClass("label", "flow", "approval-radio ant-radio-wrapper");
+            if (flowlist != null) {
+                for (var i = 0; i < flowlist.length; i++) {
+                    if (flowlist[i].children[0].checked) {
+                        sel.flowtype = i;
+
+                    }
+                }
+            }
+
+            window.parent.GetUserResult(sel, GetURL("type"), GetURL("audittype"), GetURL("count"));
+        } else {
+            alert("请至少选择一个审批对象");
+        }
+
+        //$.close("A_id");
+    })
+
+    function RemoveChild(node) {
+        while (node.hasChildNodes()) {
+            node.removeChild(node.firstChild);
+        }
+    }
+
+
+    function GetNodeCount(parentnode, targetnode) {
+        var count = -1;
+        for (var i = 0; i < parentnode.children.length; i++) {
+            //if (parentnode.children[i].className == null || parentnode.children[i].className.indexOf("ant-radio-group") < 0) {
+            //    continue;
+            //}
+            if (parentnode.children[i] == targetnode) {
+                count = i;
+                break;
+            }
+        }
+        return count;
+    }
+
+
+</script>

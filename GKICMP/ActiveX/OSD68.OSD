@@ -1,0 +1,14 @@
+<?XML version="1.0" ENCODING='UTF-8'?>
+<!DOCTYPE SOFTPKG SYSTEM "http://www.microsoft.com/standards/osd/osd.dtd">
+<?XML::namespace href="http://www.microsoft.com/standards/osd/msicd.dtd" as="MSICD"?>
+<SOFTPKG NAME="WebFileHelper2CAB" VERSION="2,1,0,0">
+        <TITLE> WebFileHelper2CAB </TITLE>
+            <MSICD::NATIVECODE>
+                <CODE NAME="WebFileHelper2">
+                    <IMPLEMENTATION>
+                        <CODEBASE FILENAME="WebFileHelper2.dll">
+                        </CODEBASE>
+                    </IMPLEMENTATION>
+                </CODE>
+            </MSICD::NATIVECODE>
+</SOFTPKG>

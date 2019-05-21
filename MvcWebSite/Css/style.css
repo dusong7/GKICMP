@@ -1,0 +1,95 @@
+﻿/* CSS Document*/
+html{background:#fff;overflow:auto;}
+div{ box-sizing:border-box}
+body{min-width:1200px;font:12px/18px "Microsoft Yahei";font-weight:lighter;color:#333; -webkit-font-smoothing: antialiased; background:url(../images/bg.png) top center no-repeat}
+a{color:#333; text-decoration:none; cursor:pointer; outline: 0 none; font-size:14px}
+a:hover{ text-decoration:none;color:#000;}
+a:focus{-moz-outline-style:none; border:0px;blr:expression(this.onFocus=this.blur());}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,p,blockquote,th,td{margin:0; padding:0;}
+header,footer,article,aside,section,nav,menu,hgroup,details,dialog,figure,figcaption{display:block}
+ol,li,ul,dl,dt,dd{list-style:none;}
+fieldset,img {border:0}
+button,submit,input,select { vertical-align:middle;}
+button,submit { cursor:pointer;}
+h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight:lighter;}
+table{border-collapse:collapse; border-spacing:0;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+select,button{font-family:inherit; font-size:inherit; font-weight:inherit; outline-style:none; outline-width:0pt; padding: 0; margin: 0;}
+b,em,i{display:inline-block; font-weight:normal; font-style:normal;}
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;} .clearfix{ zoom:1;}
+.container { width:1200px; position:relative; margin:0 auto;}
+.fl{float:left;}
+.fr{float:right;}
+.header{ height:218px;width: 1100PX;line-height: 218PX;margin: auto;    text-shadow: 2px 2px 2px #fff; font-family:"微软雅黑"; font-size:50px}
+.menu{ height:44px; line-height:44px; background:url(../images/gk_03.png); min-height:44px;border-top:none}
+.menu .nav{ width:1100px; margin:auto}
+.menu .nav li{ float:left; background:url(../images/gk_06.png) left center no-repeat; height:44px; line-height:44px;}
+.menu .nav li:first-child{ background:none}
+.menu .nav li:hover{ background:#fff}
+.menu .nav li a{ color:#FFFFFF; font-size:16px; padding:0px 12px}
+.menu .nav li:hover a{ color:#333}
+.menu .nav li ul{ display:none; background:#0979e4; z-index:1; position:relative}
+.menu .nav li ul li{ float:none; text-align:center; line-height:35px; height:35px; background:none}
+.menu .nav li:hover ul{ display:block}
+.menu .nav li:hover ul li a{ color:#fff; padding:0px; display:block; width:100%; height:100%}
+.menu .nav li:hover ul li:hover a{ color:#333; padding:0px;}
+.menu .nav li ul li:hover{ background:#D8D8D8;cursor:pointer}
+.nav li ul a:hover{ background:none}
+.nav a{ width:auto}
+.nav{ float:none}
+.nav li a:hover{ background:none}
+.nav li ul a{ text-align:center}
+.centbody{ width:1120px; margin:auto; padding:10px; background:#fff;}
+.mtop{ margin-top:10px;}
+.slider{ width:473px; height:326px; float:left; padding:2px}	
+.listborder{ border:1px solid #d7d7d7}
+.xydt{ width:615px; float:right; height:326px;}
+.xydt .title{ height:34px; position:relative; margin-top:6px}
+.xydt .title .name{ position:absolute; width:93px; height:38px; left:-5px; background:url(../images/gk_11.png); line-height:34px; text-indent:10px; color:#fff; font-size:16px;    }
+.more{ float:right; line-height:34px; margin-right:10px; padding-top:0px; margin-top:0px}
+.news{ margin:0px 10px;}
+.news li{ height:35px; line-height:35px; background:url(../images/gk_22.png) left center no-repeat; padding-left:7px}
+.news li .newsname{white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:450px; float:left; display:block;}
+.news li .newsdata{ float:right}
+.news h3{ line-height:2; text-align:center; font-size:16px; font-weight:bold}
+.news div{ line-height:2; text-indent:2em; margin-bottom:15px; padding-bottom:15px; border-bottom:#D8D8D8 1px dashed}
+.clear{ clear:both}
+.left{ float:left; width:835px}
+.indexnews{ width:410px; height:363px;}
+.indexnews:nth-child(2n){ margin-left:10px;}
+.indexnews .title{ background:url(../images/gk_15.png); height:33px; line-height:33px; line-height:33px}
+.indexnews .title .name{ padding-left:22px; font-size:16px; line-height:28px; color:#248be7}
+.indexnews .title .more{ float:right; margin-right:10px}
+.indexnews .info{ border:1px solid #92cffe; border-top:none}
+.indexnews li{ height:36px; line-height:36px;}
+.indexnews li .newsname{white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:290px; float:left; display:block;}
+.indexnews ul{ padding:15px 0px}
+.indexright{ border:1px solid #c4e6fe; float:right; width:260px; margin-top:10px}
+.indexpic{ padding:7px}
+.indexpic img{ width:246px; height:83px;}
+.indexpic li:nth-child(4) img{ height:auto}
+.indexpic li{ text-align:center; margin:7px 0px}
+.indexpic li:nth-child(4){ margin:17px 0px}
+.indexpic li a{ display:block}
+.djxx{ width:255px; height:240px; background:url(../images/gk_31.png); margin:auto; margin-bottom:2px}
+.djxx ul{ padding-top:0px}
+.djxx .more{ height:34px;width:60px}
+.djxx li .newsname{white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:100%; float:left; display:block;}
+.djxx .title .name{ padding-left:22px; font-size:16px; line-height:28px; color:#248be7; line-height:30px; width:110px; text-align:center}
+.indexsc{ border:1px solid #c4e6fe}
+.indexsc .title{ background:url(../images/gk_37.png); height:33px;border-bottom:1px solid #c4e6fe}
+.indexsc .name{ background:url(../images/gk_35.png); height:31px; display:block; margin:1px; float:left; width:110px; line-height:31px; text-align:center; color:#fff; font-size:14px}
+.dowebok { width: 790px; margin: 100px auto; font-size: 0;}
+.dowebok img { margin-left: 10px; vertical-align: top;}
+.flink .title{ border-bottom:1px solid #044897; color:#1b71c2; line-height:1.5; font-size:16px}
+.flink LI{ width:170px; margin-right:16px; float:left; margin-top:16px}
+.flink LI img{ width:170px; height:50px;}
+.flink LI:nth-child(6n){ margin-right:0px}
+.footmenu{ background:#248be7; line-height:40px; height:40px; text-align:center; width:100%}
+.footmenu a{ color:#fff; font-weight:bold; margin-left:10px;}
+.footmenu a:first-child{margin-left:0px;}
+.copyright{ width:1100px; margin:auto; text-align:center; line-height:2; padding:10px}
+.web_main{ width:1100px; padding:10px; margin-top:0px;}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor{ color:#0979E4}
+.ui-tabs .ui-tabs-nav{ border-bottom:1px solid #0979E4}

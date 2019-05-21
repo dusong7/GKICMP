@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+}
+
+@using MvcWebSite.Models;
+
+<div class="indexnews left mtop">
+    <div class="title"><span class="name">@(((Menu)ViewBag.Menu).MName)</span><span class="more"><a href="/List/List/@(((Menu)ViewBag.Menu).MID)">+MORE</a></span></div>
+    <div class="info">
+        <ul class="news">
+            @foreach (New news in ViewBag.NewList)
+            {
+                <li><a href="/List/Article/@news.NID" title="@news.NewsTitle"><span class="newsname">@news.NewsTitle</span><span class="newsdata">@news.CreateDate.ToString("yyyy-MM-dd")</span></a></li>
+            }
+        </ul>
+    </div>
+</div>

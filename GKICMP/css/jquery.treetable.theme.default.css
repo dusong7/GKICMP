@@ -1,0 +1,23 @@
+table.treetable span.indenter{display:block; margin: 0; padding: 0; text-align:center; /* Disable text selection of nodes (for better D&D UX) */ user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; -webkit-user-select: none; /* Force content-box box model for indenter (Bootstrap compatibility) */ -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; width: auto; float:left; height:28px;}
+table.treetable span.treebg{background:url(../images/01.gif) right center no-repeat; float:left; height:28px;}
+table.treetable span.indenter a{background-position: left center; background-repeat: no-repeat; display: inline-block; text-decoration: none; width: 19px;}
+table.treetable span.indenter b1{width: 19px; display:block; background:url(../images/03.gif) left center no-repeat; height:28px}
+table.treetable{border: 1px solid #888; border-collapse: collapse; font-size: .8em; line-height: 1; margin: .6em 0 1.8em 0; width: 100%;}
+table.treetable caption{font-size: .9em; font-weight: bold; margin-bottom: .2em;}
+table.treetable thead{font-size: .9em;}
+table.treetable thead tr th{border: 1px solid #888; font-weight: normal; padding: .3em 1em .1em 1em; text-align: left;}
+table.treetable tbody tr td{cursor: default;}
+table.treetable span{background-position: center left; background-repeat: no-repeat; /*padding: .2em 0 .2em 1.5em;*/}
+table.treetable span.file{}
+table.treetable span.folder{}
+table.treetable tr.collapsed span.indenter a:before{font-family: layui-icon!important;font-size: 24px;font-style: normal;content:"\f0da"; color:#47AE6F}
+table.treetable tr.expanded span.indenter a:before{font-family: layui-icon!important;font-size: 24px;font-style: normal;content:"\f0d7";color:#47AE6F}
+table.treetable tr.expanded span.indenter a{background:url(../images/arrow.png) center bottom no-repeat;}
+table.treetable tr.branch{}
+table.treetable tr.selected{color: #fff;}
+table.treetable tr span.indenter a{outline: none; /* Expander shows outline after upgrading to 3.0 (#141) */}
+table.treetable tr.collapsed.selected span.indenter a{}
+table.treetable tr.expanded.selected span.indenter a{}
+table.treetable tr.accept{color: #fff}
+table.treetable tr.collapsed.accept td span.indenter a{}
+table.treetable tr.expanded.accept td span.indenter a{}

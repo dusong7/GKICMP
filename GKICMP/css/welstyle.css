@@ -1,0 +1,54 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body, div {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background: url(../images/bj_01_01_01.png) top left no-repeat;
+	margin:0 auto;
+}
+.chead1 { float:left;
+	width:591px;
+	height:383px;
+	position:absolute;
+	margin-top:132px;
+	margin-left:176px; background: url(../images/biaoti_01.png) top  center no-repeat;
+	
+}
+.chead2 { float:left;
+	width:591px;
+	height:383px;
+	position:absolute;
+	margin-top:132px;
+	margin-left:176px; background: url(../images/biaoti.png) top  center no-repeat;
+	
+}
+.chead4 { float:left;
+	width:591px;
+	height:383px;
+	position:absolute;
+	margin-top:132px;
+	margin-left:176px; background: url(../images/biaoti_04.png) top  center no-repeat;
+	
+}
+.chead5 { float:left;
+	width:591px;
+	height:383px;
+	position:absolute;
+	margin-top:132px;
+	margin-left:176px; background: url(../images/data_biaoti.png) top  center no-repeat;
+	
+}
+.chead6 { float:left;
+	width:591px;
+	height:383px;
+	position:absolute;
+	margin-top:132px;
+	margin-left:176px; background: url(../images/biaoti_06.png) top  center no-repeat;
+	
+}
+.ct{ margin-top:98px; margin-left:71px; margin-right:63px;font-size:17px; font-family:"微软雅黑" }
+.ct2{ width:240px; float:left; text-indent:36px; display:block; color:#1DA02B; font-weight:bold;font-size:23px; font-family:"微软雅黑"}
+.tname{line-height:36px;  color:000000; font-size:17px;}

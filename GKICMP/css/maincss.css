@@ -1,0 +1,84 @@
+﻿/* CSS Document */
+*{ margin:0px; padding:0px; box-sizing:border-box}
+body{margin: 0px;padding: 0px;color: #66ca7b;background: url(../images/adminbg.png) center top no-repeat; }
+td{color: #888888;font-size: 13px;padding: 0px}
+td a{color: #fff;font-size: 14px;font-weight: 600;text-decoration: none;}
+a, img{border: none}
+body,ul,li{margin: 0;padding: 0;font: 14px normal Arial, Helvetica, sans-serif;;list-style: none;}
+a{text-decoration: none;color: #000;font-size: 12px;}
+#tabbox{overflow:hidden; height:100%;overflow-x:hidden; overflow-y:auto;border-right:1px solid #cdcecf; background:url(../images/line.png) left center repeat-y}
+.tab_conbox{border-top: none; width:160px; margin-left:88px;}
+.tab_con{display:none;}
+.tabs{width:88px; float:left; border-right:1px solid #cdcecf;}
+.tabs li{height:74px; width:88px;line-height:31px; text-align:center;float:left;/*background:url(../images/yjq_09.png) center top no-repeat;*/overflow: hidden;position: relative;box-sizing:border-box; border-bottom:1px solid #cdcecf; overflow-x:hidden}
+.tabs i{ display:block; font-size:25px; padding-top:10px}
+.tabs li img{margin-top:5px;}
+.tabs li a{display: block;outline: none; width:100%; height:100%; color:#2a2b29; font-size:12px; width:88px; margin-left:5px; font-weight:bold}
+.tabs .thistab a{color:#2a2b29; border-radius:5px 0px 0px 5px;background: #fff;}
+.tab_con dl,.tab_con dt,.tab_con .menulist{list-style:none; margin:0px; padding:0px}
+.tab_con dt{line-height:31px; position:relative; text-indent:10px; font-size:18px; color:#3b9b63; font-weight:bold; margin-top:22px; margin-left:12px; margin-bottom:16px}
+.tab_con dt i{ font-size:22px; display:none}
+.tab_con .menulist{border-bottom:1px solid #f5f5f5; text-indent:10px; line-height:50px; font-size:14px; height:auto; float:left; width:100%}
+.tab_con .menulist a{color:#3c9962; display:block; width:100%; height:100%; font-size:14px; font-weight:bold}
+/*.tab_con .menulist a.selecta{background:url(../images/yjq_10.png) #f5f5f5 150px 18px no-repeat; color:#00744e;}*/
+.tab_con .menulist a.selecta{background: #f5f5f5 150px 18px no-repeat; color:#00744e;}
+.tab_con .menulist a.selectb{background:none; color:#3c9962;}
+.tab_con .menulist dl{ float:left; padding:5px;border-top:1px solid #f5f5f5;}
+.tab_con .menulist dd{ display:block; padding:0px; text-indent:0px; float:left; width:auto; height:30px; text-align:left; line-height:30px;margin:5px 0px;padding:5px 0px;
+    margin-top: 0px;
+    padding-top: 0px; border:none;margin-right:5px}
+.tab_con .menulist dd a{line-height:24px; font-size:12px; font-weight:lighter; color:#898989; padding:2px 3px; }
+.tab_con .menulist dd a.selectb{background:none; color:#898989;}
+
+.tab_con .menulist1{ height:50px; border-bottom:1px solid #f5f5f5; text-indent:21px; line-height:50px; font-size:14px;}
+.tab_con .menulist1 a{ color:#898989; display:block; width:100%; height:100%}
+.tab_con .menulist1 a.selecta{ background:url(../images/blue_yjq_10.png) #f5f5f5 150px 18px no-repeat; color:#3870c1;}
+.tab_con .menulist1 a.selectb{background:none; color:#898989;}
+
+
+.toplogo{ height:74px; width:100%; overflow:hidden}
+.toplogo .logo{ float:left; margin-left:20px; margin-top:8px}
+.topimg{ float:right}
+.glyxx{ float:left;border-right:1px solid #118d1e; height:74px; }
+.glyxx div{border-right:1px solid #3abc48; height:100%}
+.glyxx img{ width:34px; height:34px; border-radius:17px; float:left; margin-top:20px;}
+.glyxx span{ display:block; float:left; line-height:74px; color:#cce1ce; margin-right:10px}
+.glyxx .whi{color:#fff; margin-left:10px}
+.topimg li{ float:left; width:84px; border-right:1px solid #118d1e; height:74px; text-align:center; }
+.topimg li:last-child{ border-right:none}
+.topimg li:last-child a{ border-right:none}
+.topimg li a{ display:block; border-right:1px solid #3abc48; height:100%; color:#fff}
+.topimg li i{ display:block; text-align:center; font-size:21px; margin-bottom:8px;padding-top:14px;text-shadow:2px 3px 2px #585858;}
+.menucs{ background:#F6FFFC; position:absolute;width:248px; top:74px; overflow:hidden}
+.maindiv{ width:100%; margin-left:248px;}
+
+
+
+
+@keyframes notice {
+0% {
+box-shadow:0px 0px 4px 2px red
+}
+100% {
+box-shadow:0px 0px 0px 0px red
+}
+}
+[class*="notice"]{
+    position: relative
+}
+[class*="notice"]::after {
+    position: absolute;
+    content: '';
+    display: block;
+    animation: notice .7s infinite alternate;
+    box-shadow: 0px 0px 4px 2px red;
+    background: #f05656;
+    border-color: #f05656;
+    right: 19px;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+        .notice1::after{left: 77px;top:14px}
+        .notice2::after{right: -5px;top:1px}

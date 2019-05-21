@@ -1,0 +1,121 @@
+﻿@using MvcWebSite.Models;
+@using MvcWebSite.Enums;
+@using Webdiyer.WebControls.Mvc;
+@model PagedList<EduResource>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="web_main container">
+    <div style="margin-bottom: 5px;" class="panel panel-danger">
+        <div class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-cloud"></span>校本资源库</h3>
+        </div>
+        <div class="ui-tabs-panel ui-widget-content ui-corner-bottom panel-body">
+            <ul class="horizontal list-inline" style="border-bottom: 1px #ccc solid;">
+                <li class="horizontal_title">学科</li>
+                @foreach (Course course in ViewBag.CourseList)
+                {
+                    if (course.CID.ToString() == ViewBag.CID)
+                    {
+                        <li class="badge"><a href="/Index/Resource?gid=@ViewBag.GID&cid=@course.CID&etype=@ViewBag.EType">@course.CourseName</a></li>
+                    }
+                    else
+                    {
+                        <li class=""><a href="/Index/Resource?gid=@ViewBag.GID&cid=@course.CID&etype=@ViewBag.EType">@course.CourseName</a></li>
+                    }
+                }
+            </ul>
+            <ul class="horizontal list-inline" style="border-bottom: 1px #ccc solid;">
+                <li class="horizontal_title">年级</li>
+                @foreach (GradeLevel gradelevel in ViewBag.GradeLevelList)
+                {
+
+                    if (gradelevel.GLID.ToString() == ViewBag.GID)
+                    {
+                        <li class="badge"><a href="/Index/Resource?gid=@gradelevel.GLID&cid=@ViewBag.CID&etype=@ViewBag.EType">@gradelevel.GradeLevelName</a></li>
+                    }
+                    else
+                    {
+                        <li class=""><a href="/Index/Resource?gid=@gradelevel.GLID&cid=@ViewBag.CID&etype=@ViewBag.EType">@gradelevel.GradeLevelName</a></li>
+                    }
+
+                }
+            </ul>
+            <ul class="horizontal list-inline" style="border-bottom: 1px #ccc solid;">
+                <li class="horizontal_title">类别</li>
+                @foreach (KeyValuePair<int, string> etype in ViewBag.ETypeList)
+                {
+                    if (etype.Key.ToString() == ViewBag.EType)
+                    {
+                        <li class="badge"><a href="/Index/Resource?gid=@ViewBag.GID&cid=@ViewBag.CID&etype=@etype.Key">@etype.Value</a></li>
+                    }
+                    else
+                    {
+                        <li class=""><a href="/Index/Resource?gid=@ViewBag.GID&cid=@ViewBag.CID&etype=@etype.Key">@etype.Value</a></li>
+                    }
+
+                }
+            </ul>
+        </div>
+    </div>
+
+    <ol class="breadcrumb">
+        <li><a href='/Index/Resource'><span class='glyphicon glyphicon-home'></span>全部资源</a></li>
+        @if (ViewBag.GID != "")
+        {
+            <li><a href="/Index/Resource?gid=@ViewBag.GID"><span class='glyphicon glyphicon-home'></span>@(((GradeLevel)ViewBag.GradeLevel).GradeLevelName)</a></li>
+        }
+        @if (ViewBag.CID != "")
+        {
+            <li><a href="/Index/Resource?cid=@ViewBag.CID"><span class='glyphicon glyphicon-home'></span>@(((Course)ViewBag.Course).CourseName)</a></li>
+        }
+        @if (ViewBag.EType != "")
+        {
+            <li><a href="/Index/Resource?etype=@ViewBag.EType"><span class='glyphicon glyphicon-home'></span>@ViewBag.ETypeName</a></li>
+        }
+    </ol>
+    <div id="resourcedata">
+        @if (Model.Count > 0)
+        {
+            <ul class="articlelist chapterlist">
+                @foreach (EduResource resource in Model)
+                {
+
+                    <li style="clear: both;">
+                        <span class="right">@resource.CreateDate.ToString("【yy-MM-dd】")</span>
+                        <span class="articlelist_title">
+                            <span class="articlelist_classname"><a href="/Index/Resource?etype=@resource.EType">@Enum.GetName(typeof(MvcWebSite.Enums.EType), resource.EType)</a></span>
+                            <a href="" target="_blank">
+                                @resource.ResourseName
+                            </a>
+                        </span>
+                    </li>
+                }
+            </ul>
+
+            <div class="mvcpager">
+                @Ajax.Pager(Model, new PagerOptions
+                   {
+                       PageIndexParameterName = "page",
+                       FirstPageText = "首页",
+                       PrevPageText = "上一页",
+                       NextPageText = "下一页",
+                       LastPageText = "末页",
+                       CssClass = "pagination",
+                       ContainerTagName = "div",                       
+                       CurrentPagerItemTemplate = "<a href=\"#\">{0}</a>",
+                       DisabledPagerItemTemplate = "<a>{0}</a>",
+                       PagerItemTemplate = "{0}",
+                       //Id = "badoopager"
+                   }).AjaxOptions(a => a.SetUpdateTargetId("resourcedata"))
+                  
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">当前分类没有资源</div>
+        }
+    </div>
+</div>

@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>智慧校园行政办公平台</title>
+<link href="../css/green_list.css" rel="stylesheet" />
+<link href="../css/green_asyncbox.css" rel="stylesheet" />
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#listdiv").height($(window).height() - 90);
+        $("#rightdiv").height($(window).height() - 89);
+        $(".commentslist").height($("#listdiv").height() - 49);
+        $(window).resize(function () {
+            //$(".commentslist").height($("#commentstd").height())
+            $("#listdiv").height($(window).height() - 90);
+            $("#rightdiv").height($(window).height() - 89);
+            $(".commentslist").height($("#listdiv").height() - 49);
+        })
+        $.ajax({
+            url: "../ashx/Chat.ashx",
+            cache: false,
+            async: false,
+            type: "get",
+            // async: false,
+            data: "id=B80B2545-3FA3-4AB3-BE60-F277814B61B8",
+            dataType: "text",
+            success: function (data) {
+                var src = "../" + data;
+                $("commentsvideo").prop("src", src)
+            },
+            error: function () {
+                alert(2);
+            }
+        })
+    })
+    </script>
+<style>
+.commentslist{margin-bottom: 0px;overflow-y: auto;height: 100%}
+.commentslist li{padding: 5px 10px;line-height: 20px;border-bottom: 1px solid #f9f9f9}
+.commentslist li:hover{background: #E7E7E7}
+.commentslist li span{margin-right: 10px;font-weight:bold}
+.listcent{padding: 10px;position: relative}
+.searclass input{border: 1px solid #138628;text-indent: 0px;background: #138628;color: #fff;padding: 2px 10px;}
+.leftdiv{margin-right: 460px;border: 1px solid #e6e6e6;height: 100%}
+.videodiv{width: 100%;height: 100%;border: 1px solid #e6e6e6;overflow: hidden}
+.rightdiv{position: absolute;right: 10px;width: 450px;border: 1px solid #e6e6e6;top: 10px}
+.rightbotdiv{position:absolute; bottom:0px; left:0px; width:100%; height:50px; border-top:1px solid #e6e6e6; box-sizing:border-box; padding:7px}
+.commentstext{width:330px; height:30px}
+.commentsinput{position:absolute; right:10px; bottom:10px;}
+</style>
+</head>
+<body>
+<div class="positionc">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="18" valign="left" height="30"><span class="zcbz"></span></td>
+      <td class="positiona"><a>首页</a><span>></span><span id="lbl_ParentMenu">课程管理</span><span>></span><span id="lbl_Menuname">课程设置</span></td>
+    </tr>
+  </table>
+</div>
+<div class="listcent searclass" id="listdiv">
+  <div class="leftdiv">
+    <div class="videodiv" id="commentstd">
+      <video src="镜湖小学毕业晚会（下）.mp4" controls width="100%" height="100%" id="commentsvideo">您的浏览器不支持 video 标签。
+        <video></video>
+      </video>
+    </div>
+  </div>
+  <div class="rightdiv" id="rightdiv">
+    <div style="" class="commentslist">
+      <ul>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+        <li> <span>张强</span>2017-10-20 20:20:20<br>
+          镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会镜湖小学毕业晚会 </li>
+      </ul>
+    </div>
+    <div class="rightbotdiv">评论：
+      <textarea class="commentstext"></textarea>
+      <input type="button" value="提交" class="commentsinput" >
+    </div>
+  </div>
+</div>
+</body>
+</html>

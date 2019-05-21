@@ -1,0 +1,18 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body div{margin: 0px;padding: 0px;}
+body{background: url(../images/zhutu_02.png) center 155px no-repeat;}
+.main{width: 1103px;height: 755px;margin: 0 auto;background: url(../gzimages/top.png) left top no-repeat;margin-top: 78px;position: relative}
+.denglu{width: 415px;height: 434px;margin-top: 210px;position: absolute;background: url(../images/denglu.png) left top no-repeat;margin-left: 689px}
+.denglu1{width: 346px;height: 337px;margin-left:34px;margin: auto;}
+.yonghudenglu{width: 100%;line-height: 58px;margin-top: 28px;color: #2e8012;font-family: "微软雅黑";font-size: 22px;border-bottom: 1px #FFFFFF solid;text-align: left;}
+.maininput{width: 100%;height: 56px;background: #FFF;margin-top: 30px;background:url(../images/deng_03.png) left center no-repeat}
+.maininput input, .maininput2 input{border: none;outline: none;background: none;height: 56px;line-height: 56px;width: 100%;font-family:"宋体"; font-size:16px; color:#828282;box-sizing: border-box;padding-left: 60px;}
+.maininput2{background: url(../images/deng_06.png) left center no-repeat;margin-top: 25px}
+.zhaohuimima{line-height:56px;width: 100%;margin: auto;color: #fff;text-align: right}
+.zhaohuimima a{color: #fff;text-decoration: none;font-size: 16px; font-family:"宋体"}
+.banquan{text-align:center; font-size:18px; color:#828282; font-family:"微软雅黑"}
+@media screen and (max-width: 1600px){body{background: url(../images/zhutu_02.png) center 125px no-repeat;background-size:1600px}
+.main{height:640px;    margin-top: 48px;}
+.denglu{margin-top:180px; width:346px; background-size:contain}
+.denglu1{width:277px}}

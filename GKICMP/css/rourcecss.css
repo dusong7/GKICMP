@@ -1,0 +1,186 @@
+/* CSS Document */
+body,div,li,ul{ margin:0px; padding:0px}
+
+a{ text-decoration:none;}
+li,ul{ list-style:none}
+/*body{  background:url(../images/zy_1.png) center top no-repeat}*/
+.headcss{ height:158px;}
+.headlogo{ margin:auto; width:1000px; padding-top:27px; height:89px}
+.headmenu{ height:42px; background:#48bd81}
+.headmenu ul{ margin:auto; width:940px}
+.headmenu li{ float:left; margin:0px 30px;}
+.headmenu li:hover{ background:#fff}
+.headmenu li a{ color:#fff; line-height:42px; display:block; padding:0px 10px}
+.headmenu li:hover a{ color:#218f56;font-weight:bold; background:#c4f5dc}
+.headmenu .selected{ background:#218f56}
+.centcss{ width:1000px; margin:auto; margin-top:10px}
+.leftcss{ float:right; width:270px; margin-top:10px; margin-right:10px }
+.rightcss{ float:left; width:710px;}
+.listcss{ border:1px solid #48bd81; border-top:2px solid #48bd81; margin-bottom:10px}
+.titlecss{ text-align:center; height:28px; line-height:28px; background:#f6fafd; border-bottom:1px solid #48bd81; color:#21aa64; font-weight:bold;}
+.listcss ul{ padding:0px 0px}
+.listcss li{ height:30px; margin-left:10px}
+.listcss li a{    float: left;   width: 95%;    height: 30px;    white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis; color:#666; font-family:Arial, Helvetica, sans-serif;font-size:14px;}
+.listtop{ border:1px solid #e0e0e0; border-top:2px solid #e0e0e0; margin-bottom:10px}
+.titname{ text-align:left; padding-left:10px; color:#0c76d4; height:28px; line-height:28px; background:#f6fafd; position:relative}
+.morecss{ float:right; margin-right:10px}
+.chocss{ line-height:30px}
+.chocss td:first-child{ color:#FF0000}
+.chocss td:nth-child(2) li{ float:left; margin:0px 5px}
+.searcss{border:1px solid #e0e0e0; background:#f7f7f7; height:47px}
+.numcss{ float:left; line-height:45px; color:#0c76d4; margin-left:10px}
+.inpcss{ float:right; margin-right:10px; border:1px solid #0c76d4; height:25px; width:300px; margin-top:10px}
+.inputcss{ width:180px; height:25px; border:none; background:none; margin:0px; padding:0px; padding-left:5px}
+.inputcss:focus{outline:none}
+.btncss{ background:url(../images/zy_4.png) 85px center #0c76d4 no-repeat; border:none; width:107px; height:25px; color:#fff; font-size:16px; text-align:left; text-indent:10px}
+.listmre{  border:1px solid #e0e0e0; border-top:2px solid #e0e0e0; margin-bottom:10px; margin-top:10px}
+.zybs{ position:absolute; top:12px; left:10px}
+.listmre .titname{ padding-left:35px; background:#f7f7f7; height:45px; line-height:45px}
+.infocss{ position:relative}
+.infocss span{ float:left; display:block;
+    height: 30px;
+    width: 80px;
+}
+.infocss span:nth-child(2),.infocss span:nth-child(4){ margin-right:55px}
+.infocss span:nth-child(1),.infocss span:nth-child(3){ color:#989898}
+.infocss span:nth-child(1){ margin-left:60px}
+.infocss div span:nth-child(1),.infocss div span:nth-child(2),.infocss div span:nth-child(3),.infocss div span:nth-child(4){ margin-right:55px; text-indent:20px}
+.infocss div span:nth-child(1),.infocss div span:nth-child(3){ color:#000}
+.infocss div span:nth-child(1){ margin-left:50px; background:url(../images/zy_8.png) left center no-repeat}
+.infocss div span:nth-child(2){ background:url(../images/zy_9.png) left center no-repeat; text-indent:20px}
+.infocss div span:nth-child(3){background:url(../images/zy_10.png) left center no-repeat; text-indent:20px}
+.infocss div span:nth-child(4){  background:url(../images/zy_11.png) left center no-repeat; text-indent:20px}
+.infocss{ line-height:30px}
+.dowcss{ position:absolute; right:10px; width:150px; height:30px; text-align:center; top:25px}
+.dowcss a{color:#FFFFFF; display:block; width:69px; float:left; height:30px;}
+    .dowcss a:first-child {
+     margin-right:10px}
+.dowcss img{ top:7px; left:10px}
+.infocss{ background:#f6fafd; border:1px solid #e0e0e0;padding-bottom:15px}
+.zybs{ position:absolute; top:12px; left:10px}
+.infocss h3{ padding:0px;padding-left:35px; background:#f7f7f7; height:45px; line-height:45px; position:relative; background:none; margin:0px; }
+.leftf{ float:left; width:480px;}
+.leftf ul{ width:95%; margin:auto}
+.leftf li{ border-bottom:1px dashed #86e9b6; height:50px; line-height:50px}
+.leftf li span{ background:none !important; width:50%; display:block; margin:0px !important; padding:0px !important; text-indent:0px !important}
+.leftf li:nth-child(3) span{ width:80%}
+.rightf{ float:left; height:270px; background:url(../images/info_06.png) left center no-repeat; width:220px; box-sizing:border-box;  padding-top:100px;}
+.rightf a{ margin:auto; width:170px; display:block;}
+.leftf li a{ color:#0c76d4}
+
+
+.fy {
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+    background: #f7f7f7;
+    border-radius: 2px;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    color: #000000;
+    
+}
+
+    .fy a, .fy a:hover, .fy a:visited, .fy a:active {
+        
+        color: #000000;
+        text-decoration: none;
+    }
+
+.tzbg {
+    border: 1px solid #e0e0e0;
+    height: 22px;
+    border-radius: 2px;
+}
+
+.tzbt {
+    border: none;
+    padding: 0px 5px;
+    line-height: 22px;
+    height: 22px;
+    margin-right: 13px;
+    border-radius: 2px;
+}
+
+/********************************新的样式**********************/
+.zy-block {
+	height: 80px
+}
+.zy-block li {
+	float: left;
+	width: 320px;
+	margin-right: 20px;
+	padding: 15px;
+	box-sizing: border-box;
+	line-height: 1.5;
+	color: #fff
+}
+.zy-block li img, .zy-block li span {
+	float: left;
+	margin-right: 10px
+}
+.zy-block li h4 {
+	margin: 0px;
+	font-weight: bold
+}
+.zy-block li:nth-child(1) {
+	background: #73736d
+}
+.zy-block li:nth-child(2) {
+	background: #738fa9
+}
+.zy-block li:nth-child(3) {
+	background: #439c91;
+	margin-right: 0px
+}
+.zy-mt-10 {
+	margin-top: 10px
+}
+.zy-chart {
+	height: 450px
+}
+.zy-ranking-title {
+	height: 30px
+}
+.zy-ranking-list th {
+	background: #f6fafd;
+	font-size: 14px;
+	padding: 10px 5px;
+    font-weight:normal;
+    color:#303532
+}
+.zy-ranking-list tr span {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	background: #7C7C7C;
+	display: block;
+	float: left;
+	text-align: center;
+	color: #fff;
+	margin-right: 5px;
+	margin-left: 10px
+}
+.zy-ranking-list tr a{
+
+ color:#666; font-family:Arial, Helvetica, sans-serif; font-size:14px;
+
+}
+.zy-ranking-list tr:nth-child(2) span {
+	background: #e45b44
+}
+.zy-ranking-list tr:nth-child(2) a {
+	 color:#666; font-family:Arial, Helvetica, sans-serif; font-size:14px;
+}
+.zy-ranking-list tr:nth-child(3) span, .zy-ranking-list tr:nth-child(4) span {
+	background: #48bd81
+}
+.zy-ranking-list tr:nth-child(3) a, .zy-ranking-list tr:nth-child(4) a {
+		 color:#666; font-family:Arial, Helvetica, sans-serif; font-size:14px;
+}
+.zy-rmzy .titlecss,.zy-zxzy .titlecss{ text-align:left; padding-left:10px}
+.zy-rmzy ul,.zy-zxzy  ul { padding-top:10px}
+.zy-rmzy ul span,.zy-zxzy  ul span {
+float:right}

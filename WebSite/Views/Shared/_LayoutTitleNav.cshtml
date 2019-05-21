@@ -1,0 +1,32 @@
+﻿@using MvcWebSite.Models;
+
+@*首页图片*@
+<div id="banner" class="web_main">
+    <img src="/Resource/TopImage.jpg" alt="" />
+</div>
+
+@*栏目*@
+<div class="menu">
+    <div id="nav_bg" class="ui-tabs-nav ui-helper-clearfix ui-widget-header">
+        <ul class="nav" style="width: 100%;">
+            <li style="width:@(100 / ViewBag.NavCount)%">
+                <a href="/Index/Index" target="_self">首页</a>
+            </li>
+            @foreach (Menu nav in ViewBag.Nav)
+            {
+                <li style="width:@(100 / ViewBag.NavCount)%">
+                    <a href="@(string.IsNullOrEmpty(nav.LinkUrl)?"/Index/List/"+nav.MID:nav.LinkUrl)" target="_self">@nav.MName</a>
+                    <ul style="width: @(100 / ViewBag.NavCount)%">
+                        @foreach (Menu child in nav.ChildMenu)
+                        {
+                            <li>
+                                <a href="@(string.IsNullOrEmpty(child.LinkUrl) ? "/Index/List/" + child.MID : child.LinkUrl)" target="_self">@child.MName</a>
+                            </li>
+                        }
+                    </ul>
+
+                </li>
+            }
+        </ul>
+    </div>
+</div>

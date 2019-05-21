@@ -1,0 +1,110 @@
+﻿@using MvcWebSite.Models;
+@{
+    Layout = "~/Views/Shared/_Layout_phone.cshtml";
+}
+<div id="pullrefresh">
+
+</div>
+<script>
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+			mui.init({
+				pullRefresh: {
+				    container: '#offCanvasContentScroll',
+				    down: {
+				        contentrefresh: '正在加载...',
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			var menuid = getUrlParam("id");
+			var istop = getUrlParam("istop");
+
+
+			$.ajax({
+			    type: "GET",
+			    url: "/phone/GetNews",
+			    data: "menuid=" + menuid + "&istop=" + istop + "&pageindex=1&pagesize=10",
+			    dataType: "json", async: false,
+			    success: function (data) {
+			        for (var j = 0;j<data.length;j++) {
+			            var intem;
+			            var datatime = new Date(parseInt(data[j].CreateDate.replace("/Date(", "").replace(")/", "")));
+			            if (data[j].ImageUrl == null || data[j].ImageUrl == "") {
+			                intem = "<div class='mui-card'><div class='mui-card-header mui-card-media' style='height:40vw;background-image:url(" + data[j].ImageUrl + ")'></div><div class='mui-card-content'><div class='mui-card-content-inner'><p>" + datatime.getFullYear() + "-" + (datatime.getMonth() + 1) + "-" + datatime.getDate() + "</p>" + data[j].NContent + "</div></div><div class='mui-card-footer'><a class='mui-card-link'>栏目:" + data[j].MName + "</a><a class='mui-card-link' href='Article?" + " + data[j].NID + " + "'>详情</a></div></div>";
+			            }
+			            else {
+			                intem = "<div class='mui-card'><div class='mui-card-header'>" + data[j].NewsTitle + "</div><div class='mui-card-content'><div class='mui-card-content-inner'><p>" + datatime.getFullYear() + "-" + (datatime.getMonth() + 1) + "-" + datatime.getDate() + "</p>" + data[j].NContent + "</div></div><div class='mui-card-footer'><a class='mui-card-link'>栏目:" + data[j].MName + "</a><a class='mui-card-link' href='/phone/Article?id=" + data[j].NID + "'>详情</a></div></div>";
+			            }
+			            $("#pullrefresh").append(intem);
+			        }
+			    }
+			});
+			var i = 2;
+			function pulldownRefresh() {
+			    setTimeout(function () {
+			        window.location.reload();
+			    }, 1500);
+			};
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+			    setTimeout(function () {
+			        var jsondata = "";
+			        $.ajax({
+			            type: "GET",
+			            url: "/phone/GetNews",
+			            data: "menuid=" + menuid + "&istop=" + istop + "&pageindex=" + i + "&pagesize=10",
+			            dataType: "json", async: false,
+			            success: function (data) {
+			                //alert(i);
+			                for (var j = 0;j< data.length;j++) {
+			                        var intem;
+			                        var datatime = new Date(parseInt(data[j].CreateDate.replace("/Date(", "").replace(")/", "")));
+			                        if (data[j].ImageUrl == null || data[j].ImageUrl == "") {
+			                            intem = "<div class='mui-card'><div class='mui-card-header mui-card-media' style='height:40vw;background-image:url(" + data[j].ImageUrl + ")'></div><div class='mui-card-content'><div class='mui-card-content-inner'><p>" + datatime.getFullYear() + "-" + (datatime.getMonth() + 1) + "-" + datatime.getDate() + "</p>" + data[j].NContent + "</div></div><div class='mui-card-footer'><a class='mui-card-link'>栏目:" + data[j].MName + "</a><a class='mui-card-link' href='Article?" + " + data[j].NID + " + "'>详情</a></div></div>";
+			                        }
+			                        else {
+			                            intem = "<div class='mui-card'><div class='mui-card-header'>" + data[j].NewsTitle + "</div><div class='mui-card-content'><div class='mui-card-content-inner'><p>" + datatime.getFullYear() + "-" + (datatime.getMonth() + 1) + "-" + datatime.getDate() + "</p>" + data[j].NContent + "</div></div><div class='mui-card-footer'><a class='mui-card-link'>栏目:" + data[j].MName + "</a><a class='mui-card-link' href='/phone/Article?" + data[j].NID + "'>详情</a></div></div>";
+			                        }
+			                        $("#pullrefresh").append(intem);
+			                    }
+			                    i =i+1;
+			                    jsondata = data;
+			            }
+			        });
+			        if (jsondata.length == 0)
+			        {
+			            mui('#offCanvasContentScroll').pullRefresh().endPullupToRefresh(true);
+			        }
+			        else
+			        {
+			            mui('#offCanvasContentScroll').pullRefresh().endPullupToRefresh(false);
+			        }
+					//mui('#offCanvasContentScroll').pullRefresh().endPullupToRefresh((++count > 100)); //参数为true代表没有更多数据了。
+				}, 1500);
+			}
+//			if (mui.os.plus) {
+//				mui.plusReady(function() {
+//					setTimeout(function() {
+//						mui('#pullrefresh').pullRefresh().pullupLoading();
+//					}, 10);
+//
+//				});
+//			} else {
+//				mui.ready(function() {
+//					mui('#pullrefresh').pullRefresh().pullupLoading();
+//				});
+        //			}
+</script>

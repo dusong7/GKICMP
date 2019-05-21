@@ -1,0 +1,30 @@
+/* CSS Document */
+ body, div {
+	margin: 0px;
+	padding: 0px;
+	color: #66ca7b;
+    background:url(../images/green_logo_01.png) center center no-repeat ;
+}
+td {
+	color: #888888;
+	font-size: 13px; padding:0px
+}
+td a {
+	color: #fff;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none; 
+}
+.topimg{ float:right; background:none; margin-right:39px}
+.topimg a{ font-size:12px; font-weight:lighter;margin-left:20px;display:block; float:left; width:auto;height:37px; line-height:37px;width:41px; position:relative; background:url(../images/green_abg.png) center center no-repeat; padding-left:2px}
+a,img{ border:none}
+.topimg a div{ display:none; margin:0px; padding:0px; width:120px; background:#F0FFF0; height:38px; position:absolute; left:-120px; top:0px; overflow:hidden; line-height:16px; border-radius:3px}
+.topimg a:hover div{ display:block}
+.topimg a div span{ display:block; width:27px; height:27px;float:left; margin-left:10px; margin-top:5px;}
+.topimg a div td{ margin:0px; padding:0px}
+.topimg a div .blue{ background:url(../images/pifu_07.png)}
+.topimg a div .green{ background:url(../images/pifu_05.png)}
+.topimg a div .white{ background:url(../images/pifu_03.png)}
+.glyxx{ background:rgba(0,0,0,0.3); height:20px; width:100%; border-radius:10px; text-align:center; line-height:20px; color:#fff}
+.topimg a:first-child{ margin:0px; margin-bottom:5px}
+

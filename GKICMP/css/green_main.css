@@ -1,0 +1,51 @@
+<!--
+a,img{ border:none}
+.rollBox{width:1103px;overflow:hidden;padding:12px 0 5px 6px;margin:0 auto;}
+.rollBox .LeftBotton{height:66px;width:35px;background:url(../images/main_12.png) no-repeat;overflow:hidden;float:left;display:inline;margin:25px 0 0 0;cursor:pointer;}
+.rollBox .RightBotton{height:66px;width:35px;background:url(../images/main_15.png) no-repeat;overflow:hidden;float:left;display:inline;margin:25px 0 0 0;cursor:pointer;}
+.rollBox .Cont{width:956px;overflow:hidden;float:left; margin:0px 38px}
+.rollBox .ScrCont{width:10000000px;}
+.rollBox .Cont .pic{width:223px;float:left;text-align:center; margin:0px 8px}
+.rollBox .Cont .pic img{display:block;margin:0 auto;}
+.rollBox .Cont .pic p{line-height:26px;color:#505050;}
+.rollBox .Cont a:link,.rollBox .Cont a:visited{color:#626466;text-decoration:none;}
+.rollBox .Cont a:hover{color:#f00;text-decoration:underline;}
+.rollBox #List1,.rollBox #List2{float:left;}
+-->
+.mainbody{ width:98%; margin:auto}
+.mainlist{ width:33%; float:left; border:1px solid #94e7a3; border-radius:2px;box-sizing:border-box; margin-top:15px;box-shadow: 0px 0 0px red, /*左边阴影*/  0px 0 0px yellow, /*右边阴影*/  0 0px 0px blue, /*顶部阴影*/  0 5px 15px #dadada; background:#fff; height:313px}
+.listnews{ width:100%; margin:0px; border-top:1px solid #e3e3e3; padding-bottom:7px}
+.listnews ul,.listnews li{ list-style:none}
+.listnews ul{ width:96%; margin-left:13px}
+.listnews li{ }
+.listnews li a{ font-size:14; line-height:32px; display:block; width:90%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis; float:left;background:url(../images/green_point_28.png) left center no-repeat; text-indent:10px; color:#6f6f6f}
+.listnews li:nth-child(1) a,.listnews li:nth-child(2) a,.listnews li:nth-child(3) a{ color:#42a268}
+.listnews li img{ float:left; margin-top:10px}
+.clsw{ width:66%; float:right; border:1px solid #94e7a3; border-radius:2px;min-height:100px;box-sizing:border-box; margin-top:15px;box-shadow: 0px 0 0px red, /*左边阴影*/  0px 0 0px yellow, /*右边阴影*/  0 0px 0px blue, /*顶部阴影*/  0 5px 15px #dadada;}
+.clswinfo th{ border:1px solid #009e56; border-left:none; border-bottom:none; height:31px; line-height:31px; background:#63d386; font-size:14px; font-size:14px; color:#fff}
+.clswinfo tr{ background:#fff}
+.clswinfo tr td{ border-left:#e4e4e4 1px solid; border-top:#e4e4e4 1px solid; text-align:center; font-size:14px; color:#4f5f6e; line-height:32px; padding:0px 0px; width:14.3%}
+.clswinfo tr td:first-child{ border-left:none}
+.clswinfo tr:first-child td{ border-left:#e4e4e4 1px solid}
+.clswinfo tr:first-child td:first-child{ border-left:none}
+.clswinfo th:first-child{ border-left:1px solid #009e56}
+.clswinfo td span{ display:block; width:100%; height:30px; box-sizing:border-box; line-height:25px}
+.clswinfo td b{ float:right; margin-right:10px}
+.clswinfo td bszy{ float:left; margin-left:10px;}
+.thism:hover{background:#63d386; color:#FFF; border-left:2px solid #009e56; border-bottom:2px solid #009e56;}
+.lastm,.nextm{ color:#CCC}
+.zym,.zym:hover{background:#ff6558; color:#FFF; border-left:2px solid #ee4739; border-bottom:2px solid #ee4739;}
+.ckm{background:#63d386; color:#FFF; border-left:2px solid #009e56; border-bottom:2px solid #009e56;}
+.listinfoi{ margin-right:2px;}
+.listinfoi tr{ background:#fff}
+.listinfoi tr:hover{ background:#f5f5f5}
+.listinfoi tr td{ border-left:#e4e4e4 1px solid; border-top:#e4e4e4 1px solid; text-align:center; font-family: 微软雅黑体; font-size:12px; color:#4f5f6e; line-height:20px; padding:6px 0px}
+.listinfoi tr td:first-child{ border-left:none}
+.listinfoi tr:first-child td{ border-left:#e4e4e4 1px solid}
+.listinfoi tr:first-child td:first-child{ border-left:none}
+.listinfoi th{ border:1px solid #009e56; border-right:none; height:31px; line-height:31px; background:url(../images/green_yjqh_31.png) left center repeat-x; font-size:14px; color:#fff}
+.listinfoi th:first-child{ border-left:none}
+.listadd{ border:1px solid #25a161; border-radius:2px; background:#48bd81; color:#FFFFFF; width:65px; height:26px; line-height:24px; text-align:center; padding:0px; margin-right:13px;  font-size:14px}
+.listdel{border:1px solid #ee4739; border-radius:2px; background:#ff6558; color:#FFFFFF; width:65px; height:26px; line-height:24px; text-align:center; padding:0px; margin-right:13px;  font-size:14px}
+.listinfoi tr td a,.listinfoi tr td a:hover,.listinfoi tr td a:visited,.listinfoi tr td a:active{font-size:14px; color:#4f5f6e; text-decoration:none}
+.listbt td img{ position:relative; top:1px}

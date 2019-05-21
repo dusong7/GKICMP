@@ -1,0 +1,48 @@
+﻿@charset "utf-8";
+body{color:#333; font-family: \5FAE\8F6F\96C5\9ED1;font-size:15px}
+.blue{ color: #09F}
+.mr5{margin-right: 5px}
+.mb5{margin-bottom: 5px!important}
+.nbb::after{height: 0}
+.bl0::after{left: 0}
+.fn-clear:after {  content:"\200B"; display:block; height:0; clear:both; } 
+.fn-clear {*zoom:1;}
+/*签到统计*/
+#datePicker{position: relative;font-size: 20px;border: 0;padding-left: 0;margin-bottom: 8px}
+#datePicker::after{left: 114px;content: '\e581'}
+#datePicker::-webkit-calendar-picker-indicator{-webkit-opacity: 0;-moz-opacity: 0;opacity: 0;filter:alpha(opacity=0);width: 100%;position: absolute;z-index: 1}
+#datePicker::-webkit-clear-button{display: none}
+*{-webkit-tap-highlight-color: rgba(8,106,170,0.4)}
+p{font-size: 12px}
+.st-img{}
+.st-img img{width: 50px;height: 50px;border-radius: 100%;vertical-align: middle}
+.st-name{ display: inline-block;vertical-align: middle;margin: 0 0 0 10px;}
+.st-img a{float: right;height: 50px;line-height: 50px;font-size: 12px}
+
+.mui-icon-extra{vertical-align: middle}
+.sign,.calenda{padding: 44px 0 55px}
+.sign .mui-table-view-cell::after{left: 0}
+.mui-table-view-cell.mui-collapse .mui-collapse-content{background: #fcfcfc;}
+.mui-collapse-content .st_li2{width: 100%;;padding: 0}
+.mui-collapse-content .st_li2 li{padding: 7px 0;text-align: center;float: left;width: 25%;list-style: none}
+.st-inli{padding: 0;margin: -8px -15px}
+.st-inli li{list-style:none;line-height: 42px;padding: 0 15px;border-bottom: 1px solid #ededed}
+.st-inli li:last-child{border: none}
+.sign .mui-navigate-right b{display:inline-block;width: 75px;position: relative;margin-right: 10px;font-weight: normal}
+.sign .mui-navigate-right b::after{position: absolute;display: block;right: 0;width: 1px;background: #e4e3e6;height: 43px;top:-11px;content: ""}
+.sign-bot{text-align: center;margin-top: 15px}
+
+/*签到日历*/
+
+.gre{color: #8f8f94!important}
+.canChoose{position: relative}
+.canChoose::after{content: "";position: absolute;width: 4px;height: 4px;background: #09F;border-radius: 2px;left: 50%;margin-left: -2px;bottom: 0}
+.canblue::after{content: "";position: absolute;width: 4px;height: 4px;background: #09F;border-radius: 2px;left: 50%;margin-left: -2px;bottom: 0}/*控制正常的蓝色点*/
+.gre::after,.canno::after{display: none}/*.gre控制周六周日没有点,.canno控制普通没有点*/
+.canorg::after{background: orange}/*橙色点*/
+.canred::after{background: red}/*红色点*/
+.calendatime-box{padding: 0 0px 20px 29px;position: relative}
+.calendatime-box h3{ font-size: 15px;font-weight: normal;margin-bottom: 10px}
+.calendatime-up{position: absolute;background: #aaa;color: #fff;border-radius: 100%;left: 0px;top:0px;font-size: 12px;width: 20px;height: 20px;text-align: center;line-height: 20px;z-index: 1}
+.calendatime-line{position: absolute;background: #ddd;width: 1px;height: 110%;left: 10px;top:0px}
+.mui-icon-location{font-size: 18px;vertical-align: middle}

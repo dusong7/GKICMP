@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+}
+
+@using MvcWebSite.Models;
+
+        <ul>
+            @foreach (Slide link in ViewBag.LinkList)
+            {
+                <li><a href="@link.SlideUrl" target="_blank">
+                  @if(link.SImage==""||link.SImage==null) {<img src="~/images/00.jpg" /> }
+                   else { <img src="@link.SImage" />}
+                    </a></li>
+            }<div class="clear"></div>
+        </ul>

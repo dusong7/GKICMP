@@ -1,0 +1,239 @@
+﻿@using MvcWebSite.Models;
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="/js/layer.js"></script>
+<div class="centbody">
+    <div class="slider listborder">
+        <div class="section-focus-pic" id="section-focus-pic">
+
+
+            @Html.Action("Marquee", new
+{
+    stype = 3,
+    template
+        = "slide"
+})
+
+
+
+            <div class="controler2" data-scro="controler2"> <a href="javascript:;" class="prev"><i></i></a> <a href="javascript:;" class="next"><i></i></a> </div>
+        </div>
+    </div>
+    @Html.Action("IndexColumn", new
+{
+    menuid = 10,
+    template
+        = "Article_xyxw",
+    pagesize = 5
+})
+
+    <div class="clear"></div>
+    <div class="left">
+        @*@Html.Action("IndexColumn", new { menuid = 32, ischild = true, pagesize = 7 })
+            @Html.Action("IndexColumn", new { menulist = "10,12", ischild = true, pagesize = 10 })
+            @Html.Action("IndexColumn", new { menuid = 10, ischild = true, pagesize = 8 })
+            @Html.Action("IndexColumn", new { menulist = "57,58", pagesize = 8 })*@
+        @Html.Action("IndexColumn", new { isrecommand = true, pagesize = 6 })
+        <div class="clear">@ViewBag.Title</div>
+    </div>
+    <div class="indexright">
+        <ul class="indexpic">
+            <li><a href="/yghd" target="_blank"><img src="images/gk_18.png"></a></li>
+            <li><a id="parentIframe"><img src="images/gk_26.png"></a></li>
+            <li><a href="http://zh.jyj.wuhu.gov.cn/" target="_blank"><img src="images/gk_28.png"></a></li>
+            <li><img src="images/weixin.jpg"></li>
+        </ul>
+        <script>
+
+
+            //官网欢迎页
+            $('#parentIframe').on('click', function () {
+                layer.open({
+                    type: 2,
+                    //skin: 'layui-layer-lan',
+                    title: '校长信箱',
+                    fix: false,
+                    shadeClose: true,
+                    maxmin: true,
+                    area: ['700px', '320px'],
+                    content: 'email.html',
+
+                });
+            });
+
+
+        </script>
+        @Html.Action("IndexColumn", new
+{
+    menuid = 21,
+    template
+        = "Article",
+    pagesize = 6
+})
+
+    </div>
+    <div class="clear"></div>
+    <div class="indexsc">
+        <div class="title"><span class="name">雏鹰风采</span><span class="more"><a href="/List/List/12">+MORE</a></span></div>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th width="50" align="center" valign="middle" style="text-align:center"><img src="images/leftjt.gif" class="pointer" id="arrLeft" border="0" /></th>
+                <td width="900" valign="middle">
+                    <div id="scrollbox">
+                        @Html.Action("IndexColumn", new
+      {
+          menuid = 12,
+          template
+              = "picsc",
+          pagesize = 20
+      })
+                    </div>
+                </td>
+                <th width="50" align="center" valign="middle" style="text-align:center"><img src="images/rightjt.gif" class="pointer" id="arrRight" border="0" /></th>
+            </tr>
+        </table>
+    </div>
+    <div class="indexsc mtop">
+        <div class="title"><span class="name">教师团队</span><span class="more"><a href="/List/List/9">+MORE</a></span></div>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th width="50" align="center" valign="middle" style="text-align:center"><img src="images/leftjt.gif" class="pointer" id="arrLeft1" border="0" /></th>
+                <td width="900" valign="middle">
+                    <div id="scrollbox1">
+                        @Html.Action("IndexColumn", new
+       {
+           menuid = 9,
+           template
+               = "picsc",
+           pagesize = 20
+       })
+                    </div>
+                </td>
+                <th width="50" align="center" valign="middle" style="text-align:center"><img src="images/rightjt.gif" class="pointer" id="arrRight1" border="0" /></th>
+            </tr>
+        </table>
+    </div>
+    <div class="flink mtop">
+        <div class="title">友情链接</div> @Html.Action("FriendLink")
+    </div>
+
+    <div id="UserNewsCount">
+    </div>
+    @if (ViewBag.Details != null)
+    {
+        <p>@(((Details)ViewBag.Details).DZZW)</p>
+    }
+    <input id="Username" type="text" />
+    <input id="Password" type="password" />
+    <input id="Login" type="button" onclick="getlogin()" value="登录" />
+    <script>
+
+        //$(document).ready(function () {
+        //    var realname = getCookie("RealName");
+        //    console.log(realname);
+        //    delCookie("RealName");
+        //    console.log(getCookie("RealName"));
+        //    if (realname != "" & realname != null) {
+        //        //可视为已登录
+
+        //    }
+        //})
+
+
+
+        function delCookie(name) {
+            name = name;
+            var argc = delCookie.arguments.length;
+            var argv = delCookie.arguments;
+            var secure = (argc > 5) ? argv[5] : false;
+            var expire = new Date();
+
+            expire.setTime(expire.getTime() - 1);
+            //document.cookie = name + "=" + escape("") + ("; path=" + "/") + ("; domain=" + "localhost") + ((secure == true) ? "; secure" : "") + ";expires=" + expire.toGMTString();
+            document.cookie = name + "=; expires=" + expire.toUTCString() + "; path=/";
+
+        }
+
+        function getCookie(c_name) {
+            if (document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=")
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1
+                    c_end = document.cookie.indexOf(";", c_start)
+                    if (c_end == -1) c_end = document.cookie.length
+                    return unescape(document.cookie.substring(c_start, c_end))
+                }
+            }
+            return ""
+        }
+
+        //function getCookie(name) {
+        //    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+        //    if (arr = document.cookie.match(reg)) {
+
+        //        return decodeURIComponent(arr[2]);
+        //    }
+
+        //    else
+        //        return null;
+        //}
+
+        //$.getJSON("/Index/GetUserNewsCount", null, function (item) {
+        //    if (item != null) {
+        //        var html = "";
+        //        console.log(item);
+        //        for (var i = 0; i < item.length; i++) {
+        //            html = html + "<div>" + item[i].Value + ":" + item[i].Key + "</div>";
+        //        }
+        //        $("#UserNewsCount").html(html);
+        //    }
+        //});
+
+        function getlogin() {
+            var Username = $("#Username").val();
+            var Password = $("#Password").val();
+
+            $.getJSON("/Index/GetLogin?username=" + Username + "&password=" + Password, null, function (item) {
+                if (item != null && item == "success") {
+                    alert("登陆成功");
+                    window.location.href = "/yghd/WebMain.aspx";
+                }
+            });
+        }
+
+    </script>
+
+
+
+</div>
+
+<script src="/js/jQuery.1.8.2.min.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
+<script language=javascript type=text/javascript>
+    var scrollPic_02 = new ScrollPic();
+    scrollPic_02.scrollContId = "scrollbox"; //内容容器ID
+    scrollPic_02.arrLeftId = "arrLeft";//左箭头ID
+    scrollPic_02.arrRightId = "arrRight"; //右箭头ID
+    scrollPic_02.frameWidth = 1000;//显示框宽度
+    scrollPic_02.pageWidth = 1000; //翻页宽度
+    scrollPic_02.speed = 8; //移动速度(单位毫秒，越小越快)
+    scrollPic_02.space = 8; //每次移动像素(单位px，越大越快)
+    scrollPic_02.autoPlay = true; //自动播放
+    scrollPic_02.autoPlayTime = 3; //自动播放间隔时间(秒)
+    scrollPic_02.initialize(); //初始化
+
+    var scrollPic_03 = new ScrollPic();
+    scrollPic_03.scrollContId = "scrollbox1"; //内容容器ID
+    scrollPic_03.arrLeftId = "arrLeft1";//左箭头ID
+    scrollPic_03.arrRightId = "arrRight1"; //右箭头ID
+    scrollPic_03.frameWidth = 1000;//显示框宽度
+    scrollPic_03.pageWidth = 1000; //翻页宽度
+    scrollPic_03.speed = 8; //移动速度(单位毫秒，越小越快)
+    scrollPic_03.space = 8; //每次移动像素(单位px，越大越快)
+    scrollPic_03.autoPlay = true; //自动播放
+    scrollPic_03.autoPlayTime = 3; //自动播放间隔时间(秒)
+    scrollPic_03.initialize(); //初始化
+</script>

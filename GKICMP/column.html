@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>btable</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+    <style>
+        #myMenu {
+            border: 1px solid #D8D8D8;
+            background: #fff;
+            padding: 10px 0px;
+            box-shadow: #939393 3px 3px 3px;
+        }
+
+            #myMenu li {
+                border-bottom: 1px dashed #DDDDDD;
+                width: 150px;
+                text-indent: 20px;
+                line-height: 30px;
+            }
+
+                #myMenu li:hover {
+                    background: #5FB878;
+                }
+
+                #myMenu li a {
+                    display: block;
+                }
+
+                #myMenu li:hover a {
+                    color: #fff;
+                }
+
+        .layui-table tr:nth-child(2n) {
+            background-color: #f8f8f8;
+        }
+
+        .layui-table td {
+            padding: 0 0.5em;
+            line-height: 40px;
+        }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery.treetable.js"></script>
+</head>
+
+<body style="background-color: gainsboro;">
+    <div style="margin: 0px; background-color: white; margin: 0 10px;">
+        <div id="content" style="width: 100%; height: 684px;">
+            <div class="btable">
+                <div id="main">
+                    <table border="0" cellpadding="0" cellspacing="0" class="layui-table layui-form" id="example-advanced">
+                        <caption>
+                            <a href="#" onclick="jQuery(&#39;#example-advanced&#39;).treetable(&#39;expandAll&#39;); return false;">全部展开</a> <a href="#" onclick="jQuery(&#39;#example-advanced&#39;).treetable(&#39;collapseAll&#39;); return false;">全部收起</a>
+                        </caption>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>栏目名称</th>
+                            <th>类别</th>
+                            <th>Size</th>
+                        </tr>
+                        <tbody class="btable-content">
+                            <tr data-tt-id="1" class="collapsed" oncontextmenu="mymenu('myDiv1')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">Acknowledgements.rtf</span></td>
+                                <td>File</td>
+                                <td>480.95 KB</td>
+                            </tr>
+                            <tr data-tt-id="2" class="collapsed" oncontextmenu="mymenu('myDiv2')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">CHUD</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="2-1" data-tt-parent-id="2" class="branch" style="display: none;" oncontextmenu="mymenu('myDiv3')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">amber</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="2-1-1" data-tt-parent-id="2-1" style="display: none;" oncontextmenu="mymenu('myDiv4')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">AmberTraceFormats.pdf</span></td>
+                                <td>File</td>
+                                <td>124.46 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-1-1-1" data-tt-parent-id="2-1-1" style="display: none;" oncontextmenu="mymenu('myDiv41')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">AmberTraceFormats.pdf</span></td>
+                                <td>File</td>
+                                <td>124.46 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-1-1-1-1" data-tt-parent-id="2-1-1-1" style="display: none;" oncontextmenu="mymenu('myDiv42')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">AmberTraceFormats.pdf</span></td>
+                                <td>File</td>
+                                <td>124.46 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-1-1-1-2" data-tt-parent-id="2-1-1-1" style="display: none;" oncontextmenu="mymenu('myDiv42')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">AmberTraceFormats.pdf</span></td>
+                                <td>File</td>
+                                <td>124.46 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-1-1-1-3" data-tt-parent-id="2-1-1-1" style="display: none;" oncontextmenu="mymenu('myDiv42')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">AmberTraceFormats.pdf</span></td>
+                                <td>File</td>
+                                <td>124.46 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-1-1-1-4" data-tt-parent-id="2-1-1-1" style="display: none;" oncontextmenu="mymenu('myDiv42')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">AmberTraceFormats.pdf</span></td>
+                                <td>File</td>
+                                <td>124.46 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-2" data-tt-parent-id="2" class="branch" style="display: none;" oncontextmenu="mymenu('myDiv5')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">BigTop</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="2-2-1" data-tt-parent-id="2-2" class="leaf" style="display: none;" oncontextmenu="mymenu('myDiv6')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">BigTopUserGuide.pdf</span></td>
+                                <td>File</td>
+                                <td>1314.71 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-3" data-tt-parent-id="2" class="branch" style="display: none;" oncontextmenu="mymenu('myDiv7')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">Saturn</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="2-3-1" data-tt-parent-id="2-3" class="leaf" style="display: none;" oncontextmenu="mymenu('myDiv8')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">SaturnUserGuide.pdf</span></td>
+                                <td>File</td>
+                                <td>694.29 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-4" data-tt-parent-id="2" class="branch" style="display: none;" oncontextmenu="mymenu('myDiv9')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">Shark</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="2-4-1" data-tt-parent-id="2-4" class="leaf" style="display: none;" oncontextmenu="mymenu('myDiv10')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="file">SharkUserGuide.pdf</span></td>
+                                <td>File</td>
+                                <td>12902.51 KB</td>
+                            </tr>
+                            <tr data-tt-id="2-5" data-tt-parent-id="2" class="leaf" style="display: none;" oncontextmenu="mymenu('myDiv11')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">simg4</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="2-6" data-tt-parent-id="2" class="leaf" style="display: none;" oncontextmenu="mymenu('myDiv12')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">simg4_plus</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="2-7" data-tt-parent-id="2" class="leaf" style="display: none;" oncontextmenu="mymenu('myDiv13')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">simg5</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="3" class="collapsed" oncontextmenu="mymenu('myDiv14')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">DocSets</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="3-1" data-tt-parent-id="3" class="branch" style="display: none;" oncontextmenu="mymenu('myDiv15')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">com.apple.ADC_Reference_Library.CoreReference.docset</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                            <tr data-tt-id="3-1-1" data-tt-parent-id="3-1" class="branch" style="display: none;" oncontextmenu="mymenu('myDiv16')">
+                                <td>&nbsp;</td>
+                                <td><span class='treebg'>
+                                    <b1></b1>
+                                </span><span class="folder">Contents</span></td>
+                                <td>Folder</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <script>
+                    $("#example-advanced").treetable({ expandable: true });
+                    window.onload = function () {
+                        jQuery('#example-advanced').treetable('expandAll'); return false;
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

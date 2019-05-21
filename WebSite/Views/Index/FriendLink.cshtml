@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+
+@using MvcWebSite.Models;
+
+<div class="link">
+    <div class="link_img">
+        <ul></ul>
+    </div>
+    <div class="link_a">
+        <ul>
+            @foreach (Slide link in ViewBag.LinkList)
+            {
+                <li><a href="@link.SlideUrl" target="_blank">@link.SlideName</a></li>
+            }
+        </ul>
+    </div>
+</div>

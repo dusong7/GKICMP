@@ -1,0 +1,11 @@
+﻿@{
+    Layout =null;
+}
+
+@using MvcWebSite.Models;
+<ul>@foreach (New news in ViewBag.NewList)
+{
+              <li><A href="/List/Article/@news.NID" title="@news.NewsTitle"><IMG src="@news.ImageUrl" border="0" ><br />
+                @news.NewsTitle</A></li>
+}
+      </ul>

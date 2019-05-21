@@ -1,0 +1,105 @@
+﻿@using MvcWebSite.Models;
+@using Webdiyer.WebControls.Mvc;
+@model PagedList<New>
+@{
+    Layout = null;
+}
+
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+        <li class="ui-tabs-selected ui-state-default ui-corner-top ui-tabs-active ui-state-active"><a href="#" class="ui-tabs-anchor">@(((Menu)ViewBag.Menu).MName)</a></li>
+        @if ((bool)ViewBag.IsMore)
+        {
+            <li class="more" style="float:right;margin-top:5px;"><a href="/List/List/@(((Menu)ViewBag.Menu).MID)"><img src="/Resource/more.gif"></a></li>
+        }
+    </ul>
+
+
+    @if (ViewBag.Type == "Column")
+    {
+        @*文字*@
+        <div class="ui-tabs-panel ui-widget-content ui-corner-bottom" style="padding: 5px;" id="MvcList">
+            <ul class="articlelist">
+                @if (Model.Count > 0)
+                {
+                    foreach (New news in Model)
+                    {
+                        <li>
+                            <span class="right">@news.CreateDate.ToString("yyyy-MM-dd")</span>
+                            <span class="articlelist_title" style="">
+                                <a href="/List/Article/@news.NID" target="_blank" title="@news.NewsTitle">
+                                    @news.NewsTitle
+                                </a>
+
+                            </span>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li>指定版块暂时没有任何内容</li>
+                }
+
+            </ul>
+            @if (!(bool)ViewBag.IsMore)
+            {
+                <div class="mvcpager">
+                    @Ajax.Pager(Model, new PagerOptions
+                   {
+                       PageIndexParameterName = "page",
+                       FirstPageText = "首页",
+                       PrevPageText = "上一页",
+                       NextPageText = "下一页",
+                       LastPageText = "末页",
+                       CssClass = "pagination",
+                       ContainerTagName = "div",
+                       CurrentPagerItemTemplate = "<a href=\"#\">{0}</a>",
+                       DisabledPagerItemTemplate = "<a>{0}</a>",
+                       PagerItemTemplate = "{0}",
+                       //Id = "badoopager"
+                   }).AjaxOptions(a => a.SetUpdateTargetId("web_right"))
+                </div>
+            }
+        </div>
+
+    }
+    else if (ViewBag.Type == "Image")
+    {
+        @*图片*@
+        <div class="schoolreward web_main container">
+            <img src="@(((Menu)ViewBag.Menu).MNanner)" style="width: 100%;" />
+            <ul>
+                @foreach (New news in Model)
+                {
+                    <li class="ui-corner-all">
+                        <a href="/List/Article/@news.NID"><img src="@news.ImageUrl" /></a>
+                        <label>@news.NewsTitle</label><br />
+                        <label>@news.CreateDate.ToString("yyyy/MM/dd")</label><br />
+                    </li>
+                }
+            </ul>
+            @if (!(bool)ViewBag.IsMore)
+            {
+                <div class="mvcpager">
+                    @Ajax.Pager(Model, new PagerOptions
+                   {
+                       PageIndexParameterName = "page",
+                       FirstPageText = "首页",
+                       PrevPageText = "上一页",
+                       NextPageText = "下一页",
+                       LastPageText = "末页",
+                       CssClass = "pagination",
+                       ContainerTagName = "div",
+                       CurrentPagerItemTemplate = "<a href=\"#\">{0}</a>",
+                       DisabledPagerItemTemplate = "<a>{0}</a>",
+                       PagerItemTemplate = "{0}",
+                       //Id = "badoopager"
+                   }).AjaxOptions(a => a.SetUpdateTargetId("web_right"))
+
+                </div>
+            }
+        </div>
+    }
+
+</div>

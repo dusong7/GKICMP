@@ -1,0 +1,22 @@
+﻿/* CSS Document */
+
+body,ul,li{margin: 0;padding: 0;font: 14px normal "微软雅黑", Arial, Helvetica, sans-serif;list-style: none;}
+a{text-decoration: none;color: #000;font-size: 12px;}
+a,img { border:none}
+body{ background:url(../images/green_1b.png) left center repeat-y; overflow-x:hidden}
+#tabbox{ width:247px; overflow:hidden;}
+.tab_conbox{border-top: none; float:left; width:180px;}
+.tab_con{ display:none;}
+.tabs{width:67px; float:left;}
+.tabs li{height:70px; width:67px;line-height:31px; text-align:center;float:left;background:url(../images/green_yjq_09.png) center top no-repeat;overflow: hidden;position: relative;box-sizing:border-box}
+.tabs li img{ margin-top:5px;}
+.tabs li a {display: block;outline: none; width:100%; height:100%; color:#fff; font-size:12px;}
+.tabs .thistab{background: #fff;border-bottom:1px solid #38935d}
+.tabs .thistab a{ color:#3e9e65}
+.tab_con dl,.tab_con dt,.tab_con dd{ list-style:none; margin:0px; padding:0px}
+.tab_con dt{ line-height:31px; position:relative; text-indent:35px; font-size:18px; color:#3b9b63; font-weight:bold; margin-top:22px; margin-left:12px; margin-bottom:16px}
+.tab_con dt img{ position:absolute; left:0px}
+.tab_con dd{ height:50px; border-bottom:1px solid #f5f5f5; text-indent:21px; line-height:50px; font-size:14px;}
+.tab_con dd a{ color:#898989; display:block; width:100%; height:100%}
+.tab_con dd a.selecta{ background:url(../images/green_yjq_10.png) #f5f5f5 150px 18px no-repeat; color:#3c9962;}
+.tab_con dd a.selectb{background:none; color:#898989;}

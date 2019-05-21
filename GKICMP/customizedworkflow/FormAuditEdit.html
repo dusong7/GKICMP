@@ -1,0 +1,515 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>工作流审核流程</title>
+    <link href="../css/green_list.css" rel="stylesheet" />
+    <link href="../css/alidesignAudit.css" rel="stylesheet" />
+    <link href="../css/green_asyncbox.css" rel="stylesheet" />
+    <link href="../css/alidesignAudit.css" rel="stylesheet" />
+    <style>
+        .fleft {
+            float: left;
+        }
+
+            .fleft .node-avatar {
+                line-height: 29px;
+                padding-right: 15px;
+                position: relative;
+            }
+
+                .fleft .node-avatar span {
+                    cursor: pointer;
+                }
+
+        .approval-sorted .approval-stream-card:hover {
+            background: none;
+        }
+
+        .fleft .node-avatar img {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            cursor: pointer;
+        }
+
+        .widtha {
+            width: auto;
+        }
+
+        .fleft .stream-user-content-approval {
+            padding-left: 20px;
+            background: url(../images/arrowright.png) left 5px no-repeat;
+            margin-left: 5px;
+        }
+
+        .fleftclose {
+            float: left;
+        }
+
+            .fleftclose .stream-user {
+                line-height: 29px;
+            }
+
+            .fleftclose span {
+                background: url(../images/close.png) right 1px no-repeat;
+                margin-left: 5px;
+                padding-right: 20px;
+                padding-left: 5px;
+                height: 29px;
+                display: inline-block;
+            }
+
+            .fleftclose .notifier-chunk {
+                border: 1px solid #d4d4d4;
+                border-radius: 2px;
+                padding-right: 1px;
+            }
+
+            .fleftclose .stream-user-content-approval {
+                margin-right: 5px;
+                cursor: pointer;
+            }
+
+        .fleft .stream-user-content-approval:first-child {
+            padding-left: 0px;
+            background: none;
+        }
+
+        .fleft .plus {
+            height: 29px;
+        }
+
+        .fleft .stream-user-content-approval {
+            height: auto;
+        }
+
+        .fleftclose .stream-user-content-approval {
+            height: auto;
+        }
+
+        .widtha .plus-icon {
+            margin-top: 0px;
+            margin-left: 5px;
+        }
+
+        .common-row-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="positionc">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="18" valign="left" height="30">
+                    <span class="zcbz"></span>
+                </td>
+                <td class="positiona">
+                    <a>首页</a><span>></span><asp:label id="lbl_ParentMenu" runat="server" text="">OA办公</asp:label><span>></span><asp:label id="lbl_Menuname" runat="server" text="">流程管理</asp:label>
+                </td>
+            </tr>
+        </table>
+        <div class="listcent pad10 padbot" style="padding: 10px">
+            <h2>审批流程</h2>
+            <div class="ant-row">
+                <div class="approval-sorted fleft widtha"></div>
+                <div class="ant-col-24 fleft widtha">
+                </div>
+            </div>
+            <h2>抄送人</h2>
+            <div class="ant-row">
+                <div class="approval-sorted widtha fleftclose"></div>
+                <div class="ant-col-24 fleft widtha">
+                </div>
+            </div>
+            <div>
+                <div class="ant-row-flex ant-row-flex-middle common-row" style="margin-top: 24px; align-items: inherit;">
+                    <div class="common-row-title">
+                        审批类别：
+                    </div>
+                    <div class="ant-col-20 common-row-content">
+                        <div class="ant-radio-group">
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="cut-line-small"></div>-->
+                <div class="cut-line-large" style="margin: 25px 0px"></div>
+                <div class="slideFormBtn">
+                    <button type="button" class="ant-btn node-saveBtn ant-btn-primary ant-btn-lg listadd"><span>确 定</span></button>
+                    <button type="button" class="ant-btn node-cancelBtn ant-btn-lg listdel" onclick="javascript:history.back();"><span>返 回</span></button>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+    <div>
+    </div>
+</body>
+</html>
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../js/AsyncBox.v1.4.js"></script>
+<script src="../js/AsyncBox.v1.4.5.js"></script>
+<script src="../js/choice.js"></script>
+<script src="../js/WF.js"></script>
+<script>
+    var auditlist = [];
+
+    $(function () {
+        var collist = getClass("div", "ant-row", "ant-col-24")[0];
+        var collist2 = getClass("div", "ant-row", "ant-col-24")[1];
+
+        var addnode = InitNode("div", "ant-col-2 plus");
+        addnode.addEventListener("click", AddAudit);
+        addnode.innerHTML = "<span class=\"plus-icon\"></span>";
+        collist.appendChild(addnode);
+
+        var addnode2 = InitNode("div", "ant-col-2 plus");
+        addnode2.addEventListener("click", AddSend);
+        addnode2.innerHTML = "<span class=\"plus-icon\"></span>";
+        collist2.appendChild(addnode2);
+
+        var auditnodelist = getClass("div", "ant-col-20 common-row-content", "ant-radio-group")[0];
+        auditnodelist.appendChild(GetAudit("指定成员", 1));
+        auditnodelist.appendChild(GetAudit("角色（一组固定成员）", 2));
+        //auditlist.appendChild(GetAudit("发起人自己", 3));
+        auditnodelist.children[0].children[0].checked = 1;
+
+        //var node = getClass("div", "ant-row-flex ant-row-flex-middle common-row", "ant-col-20 common-row-content")[1];
+        //RemoveChild(node);
+
+        //var textnode = InitNode("div", "");
+        //textnode.innerHTML = "选择指定成员";
+        //textnode.style = "color: rgb(153, 153, 153)";
+
+        //var editnode = InitNode("div", "ant-row-flex ant-row-flex-middle");
+        //editnode.innerHTML = "<a>修改</a>";
+        //editnode.addEventListener("click", GetAuditUser);
+
+        //node.appendChild(textnode);
+        //node.appendChild(editnode);
+
+        var savebtn = getClass("button", "slideFormBtn", "node-saveBtn");
+        if (savebtn.length > 0) {
+            savebtn[0].addEventListener("click", SaveFormAuditData);
+        }
+
+        //需要初始化数据
+        $.getJSON("../ashx/WF.ashx?method=GetFormAuditByID&WFFID=" + GetURL("WFFID"), function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].AuditType != 4) {
+                    //审核
+                    //var text = (parseInt(data[i].AuditType) == 1) ? "用户组" : "角色";
+                    var text = GetName(data[i].FavPart);
+
+
+                    var flowlist = getClass("div", "ant-row", "approval-sorted")[0];
+                    flowlist.appendChild(BuildPara(text, 1, ""));
+                    var node = {};
+                    var seldata = [];
+                    for (var j = 0; j < data[i].FavPart.length; j++) {
+                        var selnode = {};
+                        selnode.type = (parseInt(data[i].AuditType) == 1 ? "user" : "role");
+                        selnode.name = data[i].FavPart[j].Name;
+                        selnode.id = data[i].FavPart[j].URID;
+                        seldata.push(selnode);
+                    }
+                    node.Data = seldata;
+                    node.Type = parseInt(data[i].AuditType);
+                    node.flowtype = parseInt(data[i].FlowType);
+                    auditlist.push(node);
+                } else {
+                    //抄送
+                    var flowlist = getClass("div", "ant-row", "approval-sorted")[1];
+                    for (var j = 0; j < data[i].FavPart.length; j++) {
+                        flowlist.appendChild(BuildPara(data[i].FavPart[j].Name, 2, data[i].FavPart[j].URID));
+                    }
+                }
+            }
+            console.log(auditlist);
+        })
+    })
+
+
+    function GetAudit(text, value) {
+        var node = InitNode("label", "approval-radio ant-radio-wrapper");
+
+        var checkbox = InitNode("input", "ant-radio-input");
+        checkbox.name = "auditradio";
+        checkbox.type = "radio";
+        checkbox.value = value;
+
+        var span = InitNode("span", "");
+        span.innerHTML = text;
+
+        node.appendChild(checkbox);
+        node.appendChild(span);
+        node.addEventListener("click", ChangeAuditSel);
+        return node;
+    }
+
+    function ChangeTypeSel() {
+        var count = GetNodeCount(this.parentElement, this);
+
+
+
+    }
+
+    function ChangeAuditSel() {
+        console.log(this);
+        var count = GetNodeCount(this.parentElement, this);
+        if (count == 0) {
+            //指定成员
+            //var node = getClass("div", "ant-row-flex ant-row-flex-middle common-row", "ant-col-20 common-row-content")[1];
+            //RemoveChild(node);
+
+            //var textnode = InitNode("div", "");
+            //textnode.innerHTML = "选择指定成员";
+            //textnode.style = "color: rgb(153, 153, 153)";
+
+            //var editnode = InitNode("div", "ant-row-flex ant-row-flex-middle");
+            //editnode.innerHTML = "<a>修改</a>";
+            //editnode.addEventListener("click", GetAuditUser);
+
+            //node.appendChild(textnode);
+            //node.appendChild(editnode);
+
+        } else if (count == 1) {
+            //角色
+            //var node = getClass("div", "ant-row-flex ant-row-flex-middle common-row", "ant-col-20 common-row-content")[1];
+            //RemoveChild(node);
+
+            //var textnode = InitNode("div", "");
+            //textnode.innerHTML = "选择指定角色";
+            //textnode.style = "color: rgb(153, 153, 153)";
+
+            //var editnode = InitNode("div", "ant-row-flex ant-row-flex-middle");
+            //editnode.innerHTML = "<a>修改</a>";
+            //editnode.addEventListener("click", GetAuditRole);
+
+            //node.appendChild(textnode);
+            //node.appendChild(editnode);
+
+        } else {
+            //自己，这个暂时不做了
+            //var node = getClass("div", "ant-row-flex ant-row-flex-middle common-row", "ant-col-20 common-row-content")[1];
+
+            //RemoveChild(node);
+
+        }
+    }
+
+    function RemoveChild(node) {
+        while (node.hasChildNodes()) {
+            node.removeChild(node.firstChild);
+        }
+    }
+
+
+    function AddAudit() {
+        var checklist = getClass("input", "approval-radio ant-radio-wrapper", "ant-radio-input");
+        var type = 1;
+        if (checklist[1].checked)
+            type = 2;
+
+        open_async('A_id', 'FormAuditSel.html', (type == 1 ? '添加审核用户' : '添加审核角色'), 'type=' + type + '&audittype=1&count=-1', 840, 400, 1);
+    }
+
+    function AddSend() {
+        open_async('A_id', 'FormAuditSel.html', '添加抄送人', 'type=1&audittype=2&count=-1', 840, 400, 1);
+
+
+    }
+
+    function GetAuditRole() {
+        open_async('A_id', 'FormAuditSel.html', '添加审核角色', 'type=2&audittype=1&count=-1', 840, 400, 1);
+
+    }
+
+    function GetAuditUser() {
+        open_async('A_id', 'FormAuditSel.html', '添加审核用户', 'type=1&audittype=1&count=-1', 840, 400, 1);
+    }
+
+    function GetFlow() {
+        console.log(this.className);
+        if (this.className == "AuditFlow") {
+            //审批流程
+            var count = GetNodeCount(this.parentElement.parentElement.parentElement.parentElement.parentElement, this.parentElement.parentElement.parentElement.parentElement);
+            console.log(count);
+            open_async('A_id', 'FormAuditSel.html', '修改审核流程', 'type=' + auditlist[count].Type + '&audittype=1&count=' + count, 840, 400, 1);
+
+
+
+        } else {
+            //抄送人
+            this.parentElement.removeChild(this);
+        }
+    }
+
+
+    function DelFlow() {
+        var count = GetNodeCount(this.parentElement.parentElement.parentElement.parentElement.parentElement, this.parentElement.parentElement.parentElement.parentElement);
+        console.log(count);
+        this.parentElement.parentElement.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement.parentElement.parentElement);
+
+
+        auditlist.splice(count, 1);
+        console.log(auditlist);
+
+    }
+
+
+    function GetUserResult(data, type, audittype, count) {
+        //console.log(data);
+        if (data.seldata.length > 0) {
+            var html = "";
+            if (count < 0) {
+                //添加
+                if (audittype == 1) {
+                    PushAuditList(data, type);
+                    //console.log(data);
+                    var text = GetName(data.seldata);
+                    //var text = (parseInt(type) == 1) ? "用户组" : "角色";
+                    var flowlist = getClass("div", "ant-row", "approval-sorted")[0];
+                    flowlist.appendChild(BuildPara(text, 1, ""));
+
+
+                } else {
+                    for (var i = 0; i < data.seldata.length; i++) {
+                        var text = data.seldata[i].name;
+
+                        var flowlist = getClass("div", "ant-row", "approval-sorted")[1];
+                        flowlist.appendChild(BuildPara(text, 2, data.seldata[i].id));
+                    }
+                    //var text = ;
+                    //var flowlist = getClass("div", "ant-row", "approval-sorted")[0];
+                    //flowlist.appendChild(BuildPara(text));
+                }
+            } else {
+                //修改
+                var selnode = getClass("span", "node-avatar", "AuditFlow");
+                console.log(selnode[count]);
+                var text = GetName(data.seldata);
+                selnode[count].title = text;
+                selnode[count].innerHTML = text.length > 10 ? text.split(',')[0] + "……" : text;
+                //selnode[count].addEventListener("click", GetFlow);
+                auditlist[count].Data = data.seldata;
+                auditlist[count].Type = type;
+                auditlist[count].flowtype = data.flowtype;
+            }
+
+
+            //页面添加
+        }
+        $.close("A_id");
+    }
+
+    function GetName(namelist) {
+        var name = "";
+        for (var i = 0; i < namelist.length; i++) {
+            if (namelist[i].name != null && namelist[i].name != "") {
+                name = name + namelist[i].name + ",";
+            } else {
+                name = name + namelist[i].Name + ",";
+            }
+        }
+        return name.substring(0, name.length - 1);
+    }
+
+    function PushAuditList(data, type) {
+        var node = {};
+        node.Data = data.seldata;
+        node.Type = type;
+        node.flowtype = data.flowtype;
+        auditlist.push(node);
+    }
+
+    function BuildPara(text, type, id) {
+        var rootnode = InitNode("div", "stream-user-content-approval");
+        var secnode = InitNode("div", "stream-user");
+        var delnode = InitNode("i", "anticon anticon-close stream-user-close");
+        delnode.style = "font-size: 14px; color: rgb(167, 163, 163)";
+        var paranode = InitNode("div", "ant-col-24 approval-stream-card");
+        secnode.appendChild(delnode);
+        secnode.appendChild(paranode);
+        rootnode.appendChild(secnode);
+        var flownode = InitNode("div", (type == 1 ? "node-avatar" : "notifier-chunk"));
+        if (type == 2) {
+            flownode.addEventListener("click", GetFlow);
+        }
+        if (id != "" && id != null) {
+            flownode.innerHTML = "<span title=\"" + text + "\" id=\"" + id + "\">" + (text.length > 10 ? text.split(',')[0] + "……" : text) + "</span>";
+        } else {
+            var closenode = InitNode("img", "");
+            closenode.setAttribute("src", "../images/close.png");
+            closenode.addEventListener("click", DelFlow);
+            var textnode = InitNode("span", "AuditFlow");
+            textnode.title = text;
+            textnode.innerHTML = text.length > 10 ? text.split(',')[0] + "……" : text;
+            textnode.addEventListener("click", GetFlow);
+            flownode.appendChild(closenode);
+            flownode.appendChild(textnode);
+            //flownode.innerHTML = "<img src='../images/close.png'><span>" + text + "</span>";
+        }
+
+        //flownode.addEventListener("click", GetFlow);
+        paranode.appendChild(flownode);
+
+        return rootnode;
+
+    }
+
+    function SaveFormAuditData() {
+        var wffid = GetURL("WFFID");
+        //获取抄送的数据
+        var sendlist = getClass("div", "ant-col-24 approval-stream-card", "notifier-chunk");
+
+        var seldata = [];
+        var node = {};
+        for (var i = 0; i < sendlist.length; i++) {
+            var selnode = {};
+            selnode.type = 0;
+            selnode.name = sendlist[i].children[0].innerHTML;
+            selnode.id = sendlist[i].children[0].getAttribute("id");
+            seldata.push(selnode);
+
+        }
+        node.Data = seldata;
+        node.Type = 4;
+        node.flowtype = 0;
+        auditlist.push(node);
+
+
+
+        $.ajax({
+            url: '../ashx/WF.ashx?method=SaveFormAuditData',
+            data: { "formauditdata": JSON.stringify(auditlist), "wffid": wffid },
+            type: "post",
+            dataType: 'json',
+            success: function (Data) {
+                if (Data.result == "success") {
+                    //添加成功
+                    window.location.href = "../customizedworkflow/WFManage.aspx";
+                } else {
+                    alert(Data.result);
+                }
+            }
+        });
+    }
+
+
+    function GetNodeCount(parentnode, targetnode) {
+        var count = -1;
+        for (var i = 0; i < parentnode.children.length; i++) {
+
+            if (parentnode.children[i] == targetnode) {
+                count = i;
+                break;
+            }
+        }
+        return count;
+    }
+
+</script>

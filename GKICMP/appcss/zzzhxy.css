@@ -1,0 +1,64 @@
+*{margin: 0;padding: 0}
+h3,h4,p{margin: 0}
+body{background: #f3f3f3;font-family:  verdana, \5FAE\8F6F\96C5\9ED1}
+i{display:inline-block;* display:inline;zoom:1;vertical-align: middle;font-style: normal}
+p{font-size: 12px}
+em{font-style: normal}
+.vam{vertical-align: middle}
+.fn-clear:after {  content:"\200B"; display:block; height:0; clear:both; } 
+.fn-clear {*zoom:1;}
+.flt{float: left}
+.blk{display: block}
+.tll{text-align: left}.tlr{text-align: right}.tlc{text-align: center}
+.re{position: relative}
+.click{position: relative}
+.click::after{content: ' '; width: 100%;height: 100%;display: block;position: absolute;left: 0;top:0}
+.act::after{background: rgba(0,0,0,.15);}
+.p1{line-height: 18px}/*多行p文本*/
+.mui-table-view-cell:after{left: 0}/*分隔横线贴边*/
+
+/*定义颜色*/
+.comain{color: #06a4f9}.cofff,.cofff::after{color: #fff}
+.cotwo{color:#fcb53f}.cofff,.cofff::after{color: #fff}
+.bg1{background: #36d6a8}.bg2{background: #fcb53f}.bg3{background: #6067fd}.bg4{background: #28b4ff}.bg5{background: #a374ff}.bg6{background: #ff6766}.bg7{background: #68d03a}.bg8{background: #a17acd}.bg9{background: #dcb830}.bg10{background: #f16060}  .bg11{background: #6f8dd0}.bg12{background: #6c6f71} .bg14{background: #698B69} .bg13{background: #02d9c7!important}
+.bgfff{background: #fff}
+
+/*首页*/
+.tit{color: #3a3b3d;font-size: 16px;font-weight: 600;padding: 11px 15px 5px}
+.zz1_part1_box_wrapper{padding: 0 3.5px}
+.zz1_part1_box{width: 33.3%;padding: 3.5px;color: #fff;}
+.zz1_part1_box>div{height: 100%;padding: 10px 10px 12px 10px;position: relative}
+.zz1_part1_box em{width: 18px;height: 18px;background: #e60012;position: absolute;right: 10px;top:10px;font-size: 12px;line-height: 18px;border-radius: 50%}
+.zz1_part1_box h3{font-size: 14px;font-weight: normal}
+.zz1_part1_box i{font-size: 35px;line-height: normal;margin-bottom: 7px}
+.zz1_part2_box_wrapper{border-top: 3px solid #e4e4e4;border-bottom: 3px solid #e4e4e4;}
+.zz1_part2_box{width: 33.3%;border-right: 3px solid #e4e4e4;padding: 9px 0}
+.zz1_part2_box:last-child{border-right: 0}
+.zz1_part2_box_icon{background: #f0f1f3;border: 1px solid #e6e6e6;width: 53px;height: 53px;text-align: center;border-radius: 50%; margin: 0 auto 7px}
+.zz1_part2_box_icon i{line-height: 53px;font-size: 30px}
+.zz1_part2_box_add{background: #dbe0e6}
+.zz1_part2_box_add i{font-size: 46px;font-weight: 600}
+.zz1_part2_box h4{font-weight: normal;text-align: center;color: #7f7f7f;font-size: 14px}
+.zz1_part3_box_wrapper{border-top: 3px solid #e4e4e4;border-bottom: 3px solid #e4e4e4;}
+.zz1_part3_box{width: 40%;text-align: center;padding: 25px 0;}
+.zz1_part3_box_icon{display:inline-block;* display:inline;zoom:1;width: 40px;height: 40px;border-radius: 50%;}
+.zz1_part3_box_icon i{line-height: 40px;font-size: 20px}
+.zz1_part3_box label{color: #4d4d4d;margin-left: 8px;font-size: 14px}
+.zz1_part3_box_add i{font-size: 40px}
+.zz1_part4_box_wrapper{padding: 0 7px;}
+.zz1_part4_box{border-radius: 2px;margin-bottom: 10px}
+.zz1_part4_box_tit{padding: 7px 15px;font-size: 15px}
+.zz1_part4_box h4{padding: 15px 15px 10px;color: #2d2d2d;font-size: 15px}
+.zz1_part4_box_p1{color: #8b8b8b;padding: 0 15px 5px;font-size: 14px;width: 100%}
+.zz1_part4_box_p2{padding: 0 15px 15px;}
+
+/*尾部*/
+.mui-bar-tab .mui-tab-item.mui-active{color: #06a4f9}
+/*.mui-bar{box-shadow: 0 0 1px rgba(0,0,0,.4);overflow: visible;}
+.mui-bar-tab .mui-tab-item{height: 67px;background: #efefef}
+.mui-bar-tab .mui-tab-item .mui-icon~.mui-tab-label{display: inline-block;font-size: 22px;line-height: normal}
+.mui-bar-tab .wgw{position: relative;overflow: visible;}
+.mui-bar-tab .wgw .iconfont{font-size: 46px;width: 46px;height: auto;font-weight: 500}
+.mui-bar-tab .wgw i{height: 100%}
+.mui-bar-tab .wgw .wgw_in{position: absolute;left: 50%;margin-left: -45px;top:-22px;background: linear-gradient( rgba(0,0,0,.3) , rgba(0,0,0,.0));width: 90px;height: 89px;border-radius: 8px 8px 0 0;box-shadow: 0 -2px 3px rgba(0,0,0,.1);}
+.mui-bar-tab .wgw .wgw_in_in{width: 88px;height: 88px;background: #efefef;margin:1px 1px;border-radius: 8px 8px 0 0}*/

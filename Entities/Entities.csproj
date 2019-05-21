@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4353289D-2CC9-4C6D-B1D6-2EC5E136B247}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Entities</RootNamespace>
+    <AssemblyName>Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbsentEntity.cs" />
+    <Compile Include="AccessoryEntity.cs" />
+    <Compile Include="AfficheEntity.cs" />
+    <Compile Include="AppointmentEntity.cs" />
+    <Compile Include="AssetTypeEntity.cs" />
+    <Compile Include="Asset_AccountEntity.cs" />
+    <Compile Include="Asset_Account_InfoEntity.cs" />
+    <Compile Include="Asset_AllocationEntity.cs" />
+    <Compile Include="Asset_BorrowEntity.cs" />
+    <Compile Include="AssetsEntity.cs" />
+    <Compile Include="Asset_RepairEntity.cs" />
+    <Compile Include="Asset_ScrapEntity.cs" />
+    <Compile Include="AttendRecordEntity.cs" />
+    <Compile Include="AttendSet1Entity.cs" />
+    <Compile Include="AttendSetEntity.cs" />
+    <Compile Include="AttendVacationEntity.cs" />
+    <Compile Include="BaseDataEntity.cs" />
+    <Compile Include="BuildApplyEntity.cs" />
+    <Compile Include="BuildingEntity.cs" />
+    <Compile Include="CampusEntity.cs" />
+    <Compile Include="AttendMachineEntity.cs" />
+    <Compile Include="ClassRoomEntity.cs" />
+    <Compile Include="ClassStuEntity.cs" />
+    <Compile Include="ComCourseEntity.cs" />
+    <Compile Include="ComputerRegEntity.cs" />
+    <Compile Include="ComputersEntity.cs" />
+    <Compile Include="ComRecordEntity.cs" />
+    <Compile Include="CourseEntity.cs" />
+    <Compile Include="CourseSelectionEntity.cs" />
+    <Compile Include="Course_HourEntity.cs" />
+    <Compile Include="DepartmentEntity.cs" />
+    <Compile Include="DriverEntity.cs" />
+    <Compile Include="ECourseEntity.cs" />
+    <Compile Include="EduResourceEntity.cs" />
+    <Compile Include="EduResourceUserEntity.cs" />
+    <Compile Include="EgovernmentEntity.cs" />
+    <Compile Include="Egovernment_FlowEntity.cs" />
+    <Compile Include="ElectiverEntity.cs" />
+    <Compile Include="Electiver_CourseEntity.cs" />
+    <Compile Include="Electiver_CourseGradeEntity.cs" />
+    <Compile Include="Electiver_ScoreEntity.cs" />
+    <Compile Include="Electiver_StuEntity.cs" />
+    <Compile Include="EmailEntity.cs" />
+    <Compile Include="Email_UserEntity.cs" />
+    <Compile Include="ExamEntity.cs" />
+    <Compile Include="ExamPaperEntity.cs" />
+    <Compile Include="ExamPaper_EeStuEntity.cs" />
+    <Compile Include="ExamPaper_PracticeEntity.cs" />
+    <Compile Include="ExamPaper_PractStuEntity.cs" />
+    <Compile Include="ExamSetEntity.cs" />
+    <Compile Include="Exam_CJ.cs" />
+    <Compile Include="Exam_RoomEntity.cs" />
+    <Compile Include="Exam_StudentEntity.cs" />
+    <Compile Include="Exam_SubjectEntity.cs" />
+    <Compile Include="Exam_TeacherEntity.cs" />
+    <Compile Include="ExerciseEntity.cs" />
+    <Compile Include="FileBoxEntity.cs" />
+    <Compile Include="FloorEntity.cs" />
+    <Compile Include="GradeEntity.cs" />
+    <Compile Include="GradeLevelEntity.cs" />
+    <Compile Include="GrantEntity.cs" />
+    <Compile Include="Group_UserEntity.cs" />
+    <Compile Include="HomeWorkEntity.cs" />
+    <Compile Include="HomeWork_ClassEntity.cs" />
+    <Compile Include="IFlyResource.cs" />
+    <Compile Include="IntegralInfoEntity.cs" />
+    <Compile Include="InvoiceEntity.cs" />
+    <Compile Include="Invoice_InfoEntity.cs" />
+    <Compile Include="JZProjectManageEntity.cs" />
+    <Compile Include="LDapEntity.cs" />
+    <Compile Include="LeaveEntity.cs" />
+    <Compile Include="Leave_AuditEntity.cs" />
+    <Compile Include="LectureEntity.cs" />
+    <Compile Include="LectureScoreEntity.cs" />
+    <Compile Include="LectureStandardEntity.cs" />
+    <Compile Include="LedBase.cs" />
+    <Compile Include="LEDEntity.cs" />
+    <Compile Include="LedFontEntity.cs" />
+    <Compile Include="LED_IssueEntity.cs" />
+    <Compile Include="LessonEntity.cs" />
+    <Compile Include="LessonPlanDetailEntity.cs" />
+    <Compile Include="LessonPlanEntity.cs" />
+    <Compile Include="LessonPlanTeacherEntity.cs" />
+    <Compile Include="Lesson_EvaluateEntity.cs" />
+    <Compile Include="MeetingEntity.cs" />
+    <Compile Include="MessageConfigEntity.cs" />
+    <Compile Include="MusicLibEntity.cs" />
+    <Compile Include="NetworkTeachEntity.cs" />
+    <Compile Include="NetworkTeach_ClassEntity.cs" />
+    <Compile Include="NetworkTeach_LoginEntity.cs" />
+    <Compile Include="NetworkTeach_MessEntity.cs" />
+    <Compile Include="NoCardApplyEntity.cs" />
+    <Compile Include="OverTimeEntity.cs" />
+    <Compile Include="OverTime_UserEntity.cs" />
+    <Compile Include="PayBackEntity.cs" />
+    <Compile Include="PayItemEntity.cs" />
+    <Compile Include="PayProjectEntity.cs" />
+    <Compile Include="PayProject_ItemEntity.cs" />
+    <Compile Include="PayRegistrationEntity.cs" />
+    <Compile Include="PerformanceEntity.cs" />
+    <Compile Include="Project_CheckEntity.cs" />
+    <Compile Include="Project_ContractEntity.cs" />
+    <Compile Include="Project_FileEntity.cs" />
+    <Compile Include="Project_TenderEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseEntity.cs" />
+    <Compile Include="Purchase_AuditEntity.cs" />
+    <Compile Include="Purchase_BillEntity.cs" />
+    <Compile Include="Purchase_FileTypeEntity.cs" />
+    <Compile Include="QuestionnaireEntity.cs" />
+    <Compile Include="Questionnaire_AnswerEntity.cs" />
+    <Compile Include="Questionnaire_OptionEntity.cs" />
+    <Compile Include="Questionnaire_RoleEntity.cs" />
+    <Compile Include="Questionnaire_SubjectEntity.cs" />
+    <Compile Include="RemarkEntity.cs" />
+    <Compile Include="RestTimeEntity.cs" />
+    <Compile Include="ScheduleCourseEntity.cs" />
+    <Compile Include="ScheduleSetEntity.cs" />
+    <Compile Include="SchoolChangeEntity.cs" />
+    <Compile Include="SchoolLogEntity.cs" />
+    <Compile Include="ScoreLevelEntity.cs" />
+    <Compile Include="ScreenImagesEntity.cs" />
+    <Compile Include="SpaceCommentEntity.cs" />
+    <Compile Include="SpaceLogEntity.cs" />
+    <Compile Include="SpacePhotosEntity.cs" />
+    <Compile Include="SpaceThumbsEntity.cs" />
+    <Compile Include="StuAttendEntity.cs" />
+    <Compile Include="StudentActivityEntity.cs" />
+    <Compile Include="StudentEntity.cs" />
+    <Compile Include="StuDivideClassEntity.cs" />
+    <Compile Include="StuElderEntity.cs" />
+    <Compile Include="StuLeaveEntity.cs" />
+    <Compile Include="Stu_EvaluateEntity.cs" />
+    <Compile Include="Stu_PhysicalEntity.cs" />
+    <Compile Include="Stu_QualityEntity.cs" />
+    <Compile Include="Stu_RewardEntity.cs" />
+    <Compile Include="SubstituteEntity.cs" />
+    <Compile Include="SupplierEntity.cs" />
+    <Compile Include="SysData1Entity.cs" />
+    <Compile Include="SysDataEntity.cs" />
+    <Compile Include="SysLogEntity.cs" />
+    <Compile Include="SysModuleEntity.cs" />
+    <Compile Include="SysNoticeEntity.cs" />
+    <Compile Include="SysRoleEntity.cs" />
+    <Compile Include="SysSetConfigEntity.cs" />
+    <Compile Include="SystTempEntity.cs" />
+    <Compile Include="SysUserEntity.cs" />
+    <Compile Include="SysUser_TypeEntity.cs" />
+    <Compile Include="TeacherActivityEntity.cs" />
+    <Compile Include="TeacherEntity.cs" />
+    <Compile Include="TeacherImportEntity.cs" />
+    <Compile Include="TeacherPlaneEntity.cs" />
+    <Compile Include="TeacherPlane_InfoEntity.cs" />
+    <Compile Include="Teacher_AssessmentEntity.cs" />
+    <Compile Include="Teacher_ChangesEntity.cs" />
+    <Compile Include="Teacher_ClassHourEntity.cs" />
+    <Compile Include="Teacher_ContractEntity.cs" />
+    <Compile Include="Teacher_EducationEntity.cs" />
+    <Compile Include="Teacher_GuidanceEntity.cs" />
+    <Compile Include="Teacher_HolidayEntity.cs" />
+    <Compile Include="Teacher_JournalEntity.cs" />
+    <Compile Include="Teacher_PaperEntity.cs" />
+    <Compile Include="Teacher_RewardEntity.cs" />
+    <Compile Include="Teacher_TrainEntity.cs" />
+    <Compile Include="Teacher_WorkExperienceEntity.cs" />
+    <Compile Include="TeachMaterialChapterEntity.cs" />
+    <Compile Include="TeachMaterialEntity.cs" />
+    <Compile Include="TeachMaterialImport.cs" />
+    <Compile Include="TeachMaterialVersionEntity.cs" />
+    <Compile Include="VehicleEntity.cs" />
+    <Compile Include="Vehicle_AduitEntity.cs" />
+    <Compile Include="Vehicle_ApplyEntity.cs" />
+    <Compile Include="VideoEntity.cs" />
+    <Compile Include="VisitEntity.cs" />
+    <Compile Include="WageEntity.cs" />
+    <Compile Include="Web_CommentEntity.cs" />
+    <Compile Include="Web_MenuEntity.cs" />
+    <Compile Include="Web_NewsEntity.cs" />
+    <Compile Include="Web_SiteEntity.cs" />
+    <Compile Include="Web_SlideEntity.cs" />
+    <Compile Include="Web_SlideTypeEntity.cs" />
+    <Compile Include="WeiXinInfoEntity.cs" />
+    <Compile Include="WeiXinUser.cs" />
+    <Compile Include="WF_CustomizedEntity.cs" />
+    <Compile Include="WF_CustomizedFlowEntity.cs" />
+    <Compile Include="WF_FormAuditEntity.cs" />
+    <Compile Include="WF_FormAuditValueEntity.cs" />
+    <Compile Include="WF_FormFlowDataEntity.cs" />
+    <Compile Include="WF_FormDataEntity.cs" />
+    <Compile Include="WF_FormDValueEntity.cs" />
+    <Compile Include="WF_FormEntity.cs" />
+    <Compile Include="WF_FormPartEntity.cs" />
+    <Compile Include="WF_FormUserEntity.cs" />
+    <Compile Include="WorkPlanEntity.cs" />
+    <Compile Include="WX.CS">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WX.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WX.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WX.CS</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

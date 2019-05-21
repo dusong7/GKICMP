@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A82EF766-9445-4737-B949-7FD70F816F79}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="gk.rjb_Y.DatabaseProvider">
+      <HintPath>..\Access\gk.rjb_Y.DatabaseProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="gk.rjb_Y.DataEntityProvider">
+      <HintPath>..\Access\gk.rjb_Y.DataEntityProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="gk.rjb_Y.DBAccessConvertorProvider">
+      <HintPath>..\Access\gk.rjb_Y.DBAccessConvertorProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="gk.rjb_Y.Libraries">
+      <HintPath>..\Access\gk.rjb_Y.Libraries.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbsentDAL.cs" />
+    <Compile Include="AccessoryDAL.cs" />
+    <Compile Include="AfficheDAL.cs" />
+    <Compile Include="AppointmentDAL.cs" />
+    <Compile Include="AssetTypeDAL.cs" />
+    <Compile Include="Asset_AccountDAL.cs" />
+    <Compile Include="Asset_Account_InfoDAL.cs" />
+    <Compile Include="Asset_AllocationDAL.cs" />
+    <Compile Include="Asset_BorrowDAL.cs" />
+    <Compile Include="AssetDAL.cs" />
+    <Compile Include="Asset_ScrapDAL.cs" />
+    <Compile Include="AttendMachineDAL.cs" />
+    <Compile Include="AttendRecordDAL.cs" />
+    <Compile Include="AttendSetDAL.cs" />
+    <Compile Include="AttendVacationDAL.cs" />
+    <Compile Include="BaseDataDAL.cs" />
+    <Compile Include="BigDataDAL.cs" />
+    <Compile Include="BuildApplyDAL.cs" />
+    <Compile Include="BuildingDAL.cs" />
+    <Compile Include="CampusDAL.cs" />
+    <Compile Include="ClassRoomDAL.cs" />
+    <Compile Include="ComCourseDAL.cs" />
+    <Compile Include="ComputerRegDAL.cs" />
+    <Compile Include="ComputersDAL.cs" />
+    <Compile Include="ComRecordDAL.cs" />
+    <Compile Include="CourseDAL.cs" />
+    <Compile Include="CourseSelectionDAL.cs" />
+    <Compile Include="Course_HourDAL.cs" />
+    <Compile Include="DriverDAL.cs" />
+    <Compile Include="ECourseDAL.cs" />
+    <Compile Include="EduRescourceDAL.cs" />
+    <Compile Include="EduResourceUserDAL.cs" />
+    <Compile Include="ElectiverDAL.cs" />
+    <Compile Include="Electiver_CourseDAL.cs" />
+    <Compile Include="Electiver_CourseGradeDAL.cs" />
+    <Compile Include="Electiver_ScoreDAL.cs" />
+    <Compile Include="Electiver_StuDAL.cs" />
+    <Compile Include="EmailDAL.cs" />
+    <Compile Include="ExamDAL.cs" />
+    <Compile Include="ExamPaperDAL.cs" />
+    <Compile Include="ExamPaper_EeStuDAL.cs" />
+    <Compile Include="ExamPaper_PracticeDAL.cs" />
+    <Compile Include="ExamPaper_PractStuDAL.cs" />
+    <Compile Include="Exam_RoomDAL.cs" />
+    <Compile Include="Exam_StudentDAL.cs" />
+    <Compile Include="Exam_SubjectDAL.cs" />
+    <Compile Include="Exam_TeacherDAL.cs" />
+    <Compile Include="ExerciseDAL.cs" />
+    <Compile Include="FileBoxDAL.cs" />
+    <Compile Include="GradeDAL.cs" />
+    <Compile Include="DepartmentDAL.cs" />
+    <Compile Include="EgovernmentDAL.cs" />
+    <Compile Include="Egovernment_FlowDAL.cs" />
+    <Compile Include="FloorDAL.cs" />
+    <Compile Include="GradeLevelDAL.cs" />
+    <Compile Include="GrantDAL.cs" />
+    <Compile Include="Group_UserDAL.cs" />
+    <Compile Include="HomeWorkDAL.cs" />
+    <Compile Include="IntegralInfoDAL.cs" />
+    <Compile Include="InvoiceDAL.cs" />
+    <Compile Include="InvoiceInfoDAL.cs" />
+    <Compile Include="JZProjectManageDAL.cs" />
+    <Compile Include="LeaveAuditDAL.cs" />
+    <Compile Include="LeaveDAL.cs" />
+    <Compile Include="LectureDAL.cs" />
+    <Compile Include="LectureScoreDAL.cs" />
+    <Compile Include="LectureStandardDAL.cs" />
+    <Compile Include="LEDDAL.cs" />
+    <Compile Include="LED_IssueDAL.cs" />
+    <Compile Include="LessonDAL.cs" />
+    <Compile Include="LessonPlanDAL.cs" />
+    <Compile Include="LessonPlanDetailDAL.cs" />
+    <Compile Include="Lesson_EvaluateDAL.cs" />
+    <Compile Include="MainDAL.cs" />
+    <Compile Include="MeetingDAL.cs" />
+    <Compile Include="MessageConfigDAL.cs" />
+    <Compile Include="MusicLibDAL.cs" />
+    <Compile Include="NetworkTeachDAL.cs" />
+    <Compile Include="NetworkTeach_LoginDAL.cs" />
+    <Compile Include="NetworkTeach_MessDAL.cs" />
+    <Compile Include="NoCardApplyDAL.cs" />
+    <Compile Include="OverTimeDAL.cs" />
+    <Compile Include="PayBackDAL.cs" />
+    <Compile Include="PayItemDAL.cs" />
+    <Compile Include="PayProjectDAL.cs" />
+    <Compile Include="PayProject_ItemDAL.cs" />
+    <Compile Include="PayRegistrationDAL.cs" />
+    <Compile Include="PerformanceDAL.cs" />
+    <Compile Include="Project_CheckDAL.cs" />
+    <Compile Include="Project_ContractDAL.cs" />
+    <Compile Include="Project_FileDAL.cs" />
+    <Compile Include="Project_TenderDAL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Asset_RepairDAL.cs" />
+    <Compile Include="PurchaseDAL.cs" />
+    <Compile Include="Purchase_AuditDAL.cs" />
+    <Compile Include="Purchase_BillDAL.cs" />
+    <Compile Include="Purchase_FileTypeDAL.cs" />
+    <Compile Include="QuestionnaireDAL.cs" />
+    <Compile Include="Questionnaire_AnswerDAL.cs" />
+    <Compile Include="Questionnaire_OptionDAL.cs" />
+    <Compile Include="Questionnaire_SubjectDAL.cs" />
+    <Compile Include="RemarkDAL.cs" />
+    <Compile Include="RestTimeDAL.cs" />
+    <Compile Include="ScheduleCourseDAL.cs" />
+    <Compile Include="ScheduleSetDAL.cs" />
+    <Compile Include="SchoolChangeDAL.cs" />
+    <Compile Include="SchoolLogDAL.cs" />
+    <Compile Include="ScoreLevelDAL.cs" />
+    <Compile Include="ScreenImagesDAL.cs" />
+    <Compile Include="SpaceCommentDAL.cs" />
+    <Compile Include="SpaceLogDAL.cs" />
+    <Compile Include="SpacePhotosDAL.cs" />
+    <Compile Include="SpaceThumbsDAL.cs" />
+    <Compile Include="StuAttendDAL.cs" />
+    <Compile Include="StudentActivityDAL.cs" />
+    <Compile Include="StudentDAL.cs" />
+    <Compile Include="StuElderDAL.cs" />
+    <Compile Include="StuLeaveDAL.cs" />
+    <Compile Include="Stu_EvaluateDAL.cs" />
+    <Compile Include="Stu_PhysicalDAL.cs" />
+    <Compile Include="Stu_QualityDAL.cs" />
+    <Compile Include="Stu_RewardDAL.cs" />
+    <Compile Include="SubstituteDAL.cs" />
+    <Compile Include="SupplierDAL.cs" />
+    <Compile Include="SysData1DAL.cs" />
+    <Compile Include="SysDataDAL.cs" />
+    <Compile Include="SysLogDAL.cs" />
+    <Compile Include="SysModuleDAL.cs" />
+    <Compile Include="SysNoticeDAL.cs" />
+    <Compile Include="SysRoleDAL.cs" />
+    <Compile Include="SysSetConfigDAL.cs" />
+    <Compile Include="SystTempDAL.cs" />
+    <Compile Include="SysUserDAL.cs" />
+    <Compile Include="SysUser_TypeDAL.cs" />
+    <Compile Include="TeacherActivityDAL.cs" />
+    <Compile Include="TeacherChangesDAL.cs" />
+    <Compile Include="TeacherDAL.cs" />
+    <Compile Include="TeacherEducationDAL.cs" />
+    <Compile Include="TeacherPlaneDAL.cs" />
+    <Compile Include="TeacherPlane_InfoDAL.cs" />
+    <Compile Include="Teacher_AssessmentDAL.cs" />
+    <Compile Include="Teacher_ClassHourDAL.cs" />
+    <Compile Include="Teacher_ContractDAL.cs" />
+    <Compile Include="Teacher_GuidanceDAL.cs" />
+    <Compile Include="Teacher_HolidayDAL.cs" />
+    <Compile Include="Teacher_JournalDAL.cs" />
+    <Compile Include="Teacher_PaperDAL.cs" />
+    <Compile Include="Teacher_RewardDAL.cs" />
+    <Compile Include="Teacher_TrainDAL.cs" />
+    <Compile Include="Teacher_WorkExperienceDAL.cs" />
+    <Compile Include="TeachMaterialChapterDAL.cs" />
+    <Compile Include="TeachMaterialDAL.cs" />
+    <Compile Include="TeachMaterialVersionDAL.cs" />
+    <Compile Include="VehicleDAL.cs" />
+    <Compile Include="Vehicle_AduitDAL.cs" />
+    <Compile Include="Vehicle_ApplyDAL.cs" />
+    <Compile Include="VisitDAL.cs" />
+    <Compile Include="WF_CustomizedFlowDAL.cs" />
+    <Compile Include="WF_FormAuditValueDAL.cs" />
+    <Compile Include="WF_FormAuditDAL.cs" />
+    <Compile Include="WF_CustomizedDAL.cs" />
+    <Compile Include="WF_FormFlowDataDAL.cs" />
+    <Compile Include="WF_FormDValueDAL.cs" />
+    <Compile Include="WF_FormDataDAL.cs" />
+    <Compile Include="WF_FormDAL.cs" />
+    <Compile Include="WF_FormPartDAL.cs" />
+    <Compile Include="VideoDAL.cs" />
+    <Compile Include="WageDAL.cs" />
+    <Compile Include="Web_CommentDAL.cs" />
+    <Compile Include="Web_MenuDAL.cs" />
+    <Compile Include="Web_NewsDAL.cs" />
+    <Compile Include="Web_SiteDAL.cs" />
+    <Compile Include="Web_SlideDAL.cs" />
+    <Compile Include="Web_SlideTypeDAL.cs" />
+    <Compile Include="WorkPlanDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{4353289d-2cc9-4c6d-b1d6-2ec5e136b247}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

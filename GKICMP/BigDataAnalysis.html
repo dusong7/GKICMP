@@ -1,0 +1,1010 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>大数据管理平台</title>
+    <link rel="stylesheet" href="css/layui1.css">
+    <link rel="stylesheet" href="css/safemain.css">
+    <link rel="stylesheet" href="css/w_fullchart.css">
+</head>
+
+<body class="layui-layout-body ">
+    <div class="fullchart h100">
+        <div class="full_head">
+            <div class="tit"><div><span>智慧校园大数据分析平台</span></div></div>
+            <div class="head_btn">
+                <a class="year checked">本年</a>
+                <a class="quarter">本季度</a>
+                <a class="month">本月</a>
+            </div>
+        </div>
+        <div class="full_body h100 w_space">
+            <div style="width: 100%;height: 100%;position: relative">
+
+                <!--上面条条-->
+
+                <div class="full_tiao layui-row">
+                    <div class="full_tiaobox h100 czmid full_tiaobox1 k3"><div><p class="full_p1">班级总数:</p><p class="full_p2 co7" id="classcount"></p><p class="co7">个</p></div></div>
+                    <div class="full_tiaobox h100 czmid full_tiaobox2 k3"><div><p class="full_p1">学生总数:</p><p class="full_p2 co7" id="studentcount"></p><p class="co7">人</p></div></div>
+                    <div class="full_tiaobox h100 czmid k3 full_tiaobox3"><div><p class="full_p1">教师总数:</p><p class="full_p2 co7" id="teachercount"></p><p class="co7">人</p></div></div>
+                    <div class="full_tiaobox h100 czmid full_tiaobox4 "><div><p class="full_p1">教师请假人数</p><p class="full_p2 co8" id="teacherleavecount"></p><p class="co7">人</p></div></div>
+                    <div class="full_tiaobox h100 czmid full_tiaobox5"><div><p class="full_p1">学生请假人数</p><p class="full_p2 co9" id="studentleavecount"></p><p class="co7">人</p></div></div>
+                </div>
+
+                <div class="fenge"></div>
+                <!--左侧中间2个-->
+                <div id="box_wapper1" class="">
+                    <div style="width: 100%;height: 100%;position: relative">
+                        <div class="full_box_sty1 full_box1">
+                            <p class="tit2 co7">教职工考勤情况统计</p>
+                            <div>
+                                <div id="chart1" style="width: 100%;height: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="full_box_sty1 full_box2">
+                            <h5 class="full_tit"><div class="czmid"><i class="iconfont icon-rili"></i>OA情况</div></h5>
+                            <div>
+                                <div class="layui-tab">
+                                    <ul class="layui-tab-title" id="titleList">
+                                       
+                                        <!--<li>全员公告</li>
+        <i>|</i>
+        <li>班级公告</li>
+        <i>|</i>
+        <li>通知</li>
+        <i>|</i>-->
+
+                                    </ul>
+                                    <div class="layui-tab-content" id="after">
+                                        <div class="layui-tab-item layui-show">
+                                            <div class="box_in1 czmid">
+                                            </div>
+                                        </div>
+                                        <!--<div class="layui-tab-item">
+            <div class="box_in1 czmid">
+                <ul>
+                    <li><i>发送公告:</i><b><b style="width: 100%"></b></b><strong class="co7" id="afficheallcount"></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-tab-item">
+            <div class="box_in1 czmid">
+                <ul>
+                    <li><i>发送公告:</i><b><b style="width: 100%"></b></b><strong class="co7" id="afficheclasscount"></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-tab-item">
+            <div class="box_in1 czmid">
+                <ul>
+                    <li><i>发送公告:</i><b><b style="width: 100%"></b></b><strong class="co7" id="affichealertcount"></strong></li>
+                </ul>
+            </div>
+        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!--右侧中间-->
+                <div class="full_box_wapper">
+                    <div class="full_box_sty2 full_box3_1">
+                        <h5 class="full_tit"><div class="czmid"><i class="iconfont icon-rili"></i>学生统计分析</div></h5>
+                        <div>
+                            <div id="chart5" style="width: 100%;height: 80%"></div>
+                            <div class="box_in1 czmid">
+                                <ul>
+                                    <li><i>男生总数:</i><b><b id="boypercent"></b></b><strong class="co7" id="boycount"></strong></li>
+                                    <li><i>女生总数:</i><b><b id="girlpercent"></b></b><strong class="co7" id="girlcount"></strong></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="full_box_sty2 full_box3">
+                        <h5 class="full_tit"><div class="czmid"><i class="iconfont icon-rili"></i>教师情况统计</div></h5>
+                        <div>
+
+                            <div id="chart6" style="width: 100%;height: 80%"></div>
+                            <div class="box_in2">
+                                <ul id="education" class="fc h100"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="full_box_sty1 full_box4">
+                        <h5 class="full_tit"><div class="czmid"><i class="iconfont icon-rili"></i>报修情况统计</div></h5>
+                        <div>
+                            <div id="chart4" style="width: 100%;height: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="full_box_sty1 full_box5">
+                        <h5 class="full_tit"><div class="czmid"><i class="iconfont icon-rili"></i>固定资产情况</div></h5>
+                        <div>
+                            <ul class="fc h100">
+                                <li class="czmid " style="width: 28.5%"><div><p class="co10 czmid"><span>教学楼</span></p><strong class="co7" id="jxl"></strong></div></li>
+                                <li class="czmid " style="width: 35.5%"><div><p class="co10 czmid"><span>教室数</span></p><strong class="co7" id="js"></strong></div></li>
+                                <li class="czmid k4 "><div><p class="co10 czmid"><span>多功能教室</span></p><strong class="co7" id="dgnjs"></strong></div></li>
+                                <div class="k5"></div>
+                                <li class="czmid "><div><p class="co10 czmid"><span>固定资产</span></p><strong class="co7" id="zc"></strong></div></li>
+                                <li class="czmid k4"><div><p class="co10 czmid"><span>资产总金额</span></p><strong class="co7" id="je"></strong></div></li>
+                                <li class="czmid k4"><div><p class="co10 czmid"><span>资产报废数</span></p><strong class="co7" id="bf"></strong></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenge"></div>
+                <!--表格区-->
+                <div class="full_botbox_wapper layui-row">
+                    <div class="full_botbox k2  h100">
+                        <h5 class="full_tit"><div class="czmid"><i class="iconfont icon-zhenggaijiancha"></i>教科研情况</div></h5>
+                        <div class="layui-tab">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">论文</li>
+                                <i>|</i>
+                                <li>获奖</li>
+                                <i>|</i>
+                                <li>著作</li>
+                                <i>|</i>
+                                <li>指导学生获奖</li>
+                                <i>|</i>
+
+                            </ul>
+                            <div class="layui-tab-content" id="jky">
+                                <div class="layui-tab-item layui-show">
+                                    <div class="box_in1 czmid">
+                                        <ul id="lw">
+                                            <!--<li><i>独立完成:</i><b><b style="width: 95%"></b></b><strong class="co7">63件</strong></li>
+                                            <li><i>第一作者:</i><b><b style="width:70%; background: linear-gradient(to right, #0050B3, #093c7c ); "></b></b><strong class="co7">57件</strong></li>
+                                            <li><i>通讯作者:</i><b><b style="width: 50%; background: linear-gradient(to right,#C70448, #990A3C ); "></b></b><strong class="co7">54件</strong></li>
+
+                                            <li><i>其他:</i><b><b style="width:40%; background: linear-gradient(to right,#04C728, #0f9228 ); "></b></b><strong class="co7">30件</strong></li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <div class="box_in1 czmid">
+                                        <ul id="hj">
+                                            <!--<li><i>特等奖:</i><b><b style="width: 95%"></b></b><strong class="co7">63件</strong></li>
+                                            <li><i>一等奖:</i><b><b style="width:70%; background: linear-gradient(to right, #0050B3, #093c7c ); "></b></b><strong class="co7">57件</strong></li>
+                                            <li><i>四等奖:</i><b><b style="width: 80%; background: linear-gradient(to right,#04C728, #0f9228 ); "></b></b><strong class="co7">54件</strong></li>
+                                            <li><i>二等奖:</i><b><b style="width: 80%; background: linear-gradient(to right,#C70448, #990A3C ); "></b></b><strong class="co7">54件</strong></li>
+                                            <li><i>三等奖:</i><b><b style="width: 80%; background: linear-gradient(to right,#04C728, #0f9228 ); "></b></b><strong class="co7">54件</strong></li>-->
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <div class="box_in1 czmid">
+                                        <ul id="zz">
+                                            <!--<li><i>发送公告:</i><b><b style="width: 95%"></b></b><strong class="co7">45607</strong></li>
+                                            <li><i>全省处罚总2:</i><b><b style="width: 40%"></b></b><strong class="co7">45607</strong></li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <div class="box_in1 czmid">
+                                        <ul id="zdxs">
+                                            <!--<li><i>发送公告:</i><b><b style="width: 95%"></b></b><strong class="co7">45607</strong></li>
+                                            <li><i>全省处罚总2:</i><b><b style="width: 40%"></b></b><strong class="co7">45607</strong></li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="full_botbox k2 h100">
+                        <h5 class="full_tit"><div class="czmid"><i class="iconfont icon-rili"></i>资源上传排行榜</div></h5>
+                        <div>
+                            <div>
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th>
+                                                课件
+                                            </th>
+                                            <th>
+                                                教案
+                                            </th>
+                                            <th>
+                                                试卷
+                                            </th>
+                                            <th>素材</th>
+                                            <th>微课程</th>
+                                            <th>其他</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="zy"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="full_botbox  h100">
+                        <h5 class="full_tit"><div class="czmid"><i class="iconfont icon-rili"></i>教师工作量统计</div></h5>
+                        <div>
+                            <div>
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>部门</th>
+                                            <th>
+                                                姓名
+                                            </th>
+                                            <th>
+                                                代课-
+                                            </th>
+                                            <th>
+                                                代课+
+                                            </th>
+
+                                            <th>合计</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="gzl"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/layui.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/data.js"></script>
+    <script>
+        var myDate = new Date();
+        var begin = myDate.getFullYear() + "-01-01";
+        var end = myDate.getFullYear() + "-12-31";
+        $(document).ready(function () {
+            var data = $(".checked").first().attr("class").replace("checked", "").replace(" ", "");
+            Init();
+            InitData();
+            //window.setInterval(Init, 5000);
+        })
+        function Init() {
+            //console.log($(".checked").first().attr("class"));
+            $.ajax({
+                url: "ashx/BigData.ashx?method=GetTeacherAndStudent&type=" + $(".checked").first().attr("class").replace("checked", "").replace(" ", ""),
+                success: function (data, textStatus) {
+                    if (textStatus == "success") { // 请求成功
+                        data = JSON.parse(data);
+                        //console.log(data);
+                        $("#classcount").html(data.ClassCount);
+                        $("#studentcount").html(data.StudentCount);
+                        $("#teachercount").html(data.TeacherCount);
+
+
+                        $("#teacherleavecount").html(data.TeacherLeaveCount);
+                        $("#studentleavecount").html(data.StudentLeaveCount);
+
+                     
+
+                        var html = '<li class="layui-this">电子政务</li><i>|</i>';
+                        var html1 = '<div class="layui-tab-item layui-show"><div class="box_in1 czmid"><ul><li><i>发送文件:</i><b><b id="egovermentpercent"></b></b><strong class="co7" id="egovermentcount"></strong></li><li><i>已处理数:</i><b><b id="completedegovermentpercent"></b></b><strong class="co7" id="completedegovermentcount"></strong></li><li><i>已阅读数:</i><b><b id="readegovermentpercent"></b></b><strong class="co7" id="readegovermentcount"></strong></li></ul></div></div>';
+                        for (var i = 0; i < data.Affiche.length; i++) {
+                            if (i != data.Affiche.length - 1) {
+                            html += "<li>" + data.Affiche[i][0] + "</li><i>|</i>";
+                            } else {
+                                html += "<li>" + data.Affiche[i][0] + "</li>";
+                            }
+                            html1 += '<div class="layui-tab-item"><div class="box_in1 czmid"><ul><li><i>发送:</i><b><b style="width: 100%"></b></b><strong class="co7" id="afficheallcount">' + data.Affiche[i][1] + '</strong></li></ul></div></div>'
+                        }
+                        $("#titleList").html(html);                        
+                        $("#after").html(html1);
+                       
+                        $("#egovermentcount").html(data.EGovermentCount);
+                        $("#completedegovermentcount").html(data.CompletedEGovermentCount);
+                        $("#readegovermentcount").html(data.ReadEGovermentCount);
+                        var b1 = "width:" + data.EGovermentCount / (data.EGovermentCount + data.CompletedEGovermentCount + data.ReadEGovermentCount) * 100 + "%";
+                        var b2= "width:" + data.CompletedEGovermentCount / (data.EGovermentCount + data.CompletedEGovermentCount + data.ReadEGovermentCount) * 100 + "%; background: linear-gradient(to right, #0050B3, #093c7c );";
+                        var b3="width:" + data.ReadEGovermentCount / (data.EGovermentCount + data.CompletedEGovermentCount + data.ReadEGovermentCount) * 100 + "%;background: linear-gradient(to right,#04C728, #0f9228 );";
+                        $("#egovermentpercent").attr("style", b1);
+                        $("#completedegovermentpercent").attr("style", b2);
+                        $("#readegovermentpercent").attr("style", b3);
+
+                        //$("#afficheallcount").html(data.AfficheAllCount);
+                        //$("#afficheclasscount").html(data.AfficheClassCount);
+                        //$("#affichealertcount").html(data.AfficheAlertCount);
+
+                        $("#egovermentpercent").attr("style", "width:" + data.EGovermentCount / (data.EGovermentCount + data.CompletedEGovermentCount + data.ReadEGovermentCount) * 100 + "%");
+                        $("#completedegovermentpercent").attr("style", "width:" + data.CompletedEGovermentCount / (data.EGovermentCount + data.CompletedEGovermentCount + data.ReadEGovermentCount) * 100 + "%; background: linear-gradient(to right, #0050B3, #093c7c );");
+                        $("#readegovermentpercent").attr("style", "width:" + data.ReadEGovermentCount / (data.EGovermentCount + data.CompletedEGovermentCount + data.ReadEGovermentCount) * 100 + "%;background: linear-gradient(to right,#04C728, #0f9228 );");
+
+
+                        var boycount = 0;
+                        var girlcount = 0;
+                        for (var i = 0; i < data.StudentBoyDetail.length; i++) {
+                            boycount = boycount + data.StudentBoyDetail[i];
+                            girlcount = girlcount + data.StudentGirlDetail[i];
+                        }
+                        $("#boycount").html(boycount);
+                        $("#girlcount").html(girlcount);
+
+                        $("#boypercent").attr("style", "width:" + boycount / (boycount + girlcount) * 100 + "%");
+                        $("#girlpercent").attr("style", "width:" + girlcount / (boycount + girlcount) * 100 + "%;background: linear-gradient(to right, #C70448, #980a3c );");
+
+                        BuildStudentDetail(data.GradeArray, data.StudentBoyDetail, data.StudentGirlDetail);
+
+
+                        var educationhtml = "";
+                        for (var i = 0; i < data.TeacherByEducationArray.length; i++) {
+                            educationhtml = educationhtml + "<li class=\"czmid\"><div><p class=\"co10\">" + data.TeacherByEducationArray[i] + "<br>人数</p><strong class=\"co7\">" + data.TeacherByEducationDataArray[i] + "</strong></div></li>";
+                        }
+                        $("#education").html(educationhtml);
+
+
+                        var professional = [
+                            { value: data.TeacherByCurrentProfessionalArray[0], name: '正高级', itemStyle: { normal: { color: '#C70448' } } },
+                            { value: data.TeacherByCurrentProfessionalArray[1], name: '高级', itemStyle: { normal: { color: '#0050B3' } } },
+                            { value: data.TeacherByCurrentProfessionalArray[2], name: '一级', itemStyle: { normal: { color: '#008BFF' } } },
+                            { value: data.TeacherByCurrentProfessionalArray[3], name: '二级', itemStyle: { normal: { color: '#00C1FF' } } },
+                            { value: data.TeacherByCurrentProfessionalArray[4], name: '三级', itemStyle: { normal: { color: '#00FFFF' } } },
+                            { value: data.TeacherByCurrentProfessionalArray[5], name: '未定级', itemStyle: { normal: { color: '#04C728' } } }
+                        ];
+
+
+                        BuildProfessional(professional);
+
+                        var teacherleavedetail = [];
+                        for (var i = 0; i < data.TeacherLeaveStateArray.length; i++) {
+                            var teacherleave = {};
+                            teacherleave.name = data.TeacherLeaveStateArray[i];
+                            teacherleave.type = "line";
+                            teacherleave.stack = "总量";
+                            teacherleave.data = data.TeacherLeaveDetail[i];
+                            teacherleavedetail.push(teacherleave);
+                        }
+                        //console.log(teacherleavedetail);
+                        BuildTeacherLeaveDetail(data.TeacherLeaveStateArray, teacherleavedetail, data.TeacherLeaveXDetail);
+                    }
+                }
+            });
+        }
+        $(".year").click(function () {
+            $(".year").removeClass("checked");
+            $(".quarter").removeClass("checked");
+            $(".month").removeClass("checked");
+            $(".year").addClass("checked");
+            begin = myDate.getFullYear() + "-01-01";
+            end = myDate.getFullYear() + "-12-31";
+            Init();
+            InitData();
+        });
+
+        $(".quarter").click(function () {
+            $(".year").removeClass("checked");
+            $(".quarter").removeClass("checked");
+            $(".month").removeClass("checked");
+            $(".quarter").addClass("checked");
+            begin = getQuarterStartDate(myDate);
+            end = getQuarterEndDate(myDate);
+            Init();
+            InitData();
+        });
+
+        $(".month").click(function () {
+            $(".year").removeClass("checked");
+            $(".quarter").removeClass("checked");
+            $(".month").removeClass("checked");
+            $(".month").addClass("checked");
+            begin = getMonthStartDate();
+            end = getMonthEndDate();
+            Init(); InitData();
+        });
+
+
+        function BuildStudentDetail(grade, boy, girl) {
+            var tab2 = echarts.init(document.getElementById("chart5"));
+            var option2 = {
+                title: {
+                    text: '',
+                    x: 'center',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 14
+                    },
+                    center: '10%'
+                },
+                color: ['#00FFFF', '#C70448'],
+                legend: {
+                    data: ['男生', '女生'],
+                    top: 26,
+                    textStyle: {
+                        fontSize: 15,
+                        color: '#fff'
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        //data: ['一年级', '二年级', '三年级', '四年级', '五年级', '六年级'],
+                        data: grade,
+                        axisLine: {
+                            lineStyle: {
+                                color: '#ccc' //控制颜色
+                            }
+                        },
+                        axisTick: {
+                            alignWithLabel: true
+                        }
+                    }
+                ],
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ccc' //控制颜色
+                        }
+                    },
+                },
+                series: [
+                    {
+                        name: '男生',
+                        type: 'bar',
+                        barWidth: '18%',
+                        data: boy
+
+                    },
+                {
+                    name: '女生',
+                    type: 'bar',
+                    barWidth: '18%',
+                    data: girl
+                }
+
+                ]
+            };
+            tab2.setOption(option2);
+        }
+
+        function BuildProfessional(professional) {
+            var dom = document.getElementById("chart6");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            var labelRight = {
+                normal: {
+                    position: 'right'
+                }
+            };
+            option = {
+                title: {
+                    text: '教师专业技术职务统计',
+                    subtext: '',
+                    x: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    x: 'left',
+                    data: ['正高级', '高级', '一级', '二级', '三级', '未定级']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        magicType: {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'left',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                calculable: true,
+                series: [
+                    {
+                        name: '专业技术职务',
+                        type: 'pie',
+                        radius: '55%',
+                        center: ['50%', '60%'],
+                        data: professional
+                    }
+                ]
+            };
+
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+
+        function BuildTeacherLeaveDetail(state, teacherleavedata, xdata) {
+            /*折线图*/
+            var dom = document.getElementById("chart1");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            option = {
+                tooltip: {
+                    trigger: 'axis'
+                },
+                title: {
+                    text: '',
+                    x: 'center',
+                    textStyle: {
+                        color: '#00FFFF',
+                        fontSize: 14
+                    },
+                    center: '10%'
+                },
+                legend: {
+                    data: state,
+                    textStyle: {
+                        fontSize: 12,
+                        color: '#fff'
+                    }
+                },
+                color: ['#00FFFF', '#C70448', '#04C728', '#E4E803', '#0050B3'],
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: false, type: ['line', 'bar', 'stack', 'tiled'] },
+                        restore: { show: false },
+                        saveAsImage: { show: false }
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: xdata,
+                        axisLine: {
+                            lineStyle: {
+                                color: '#ccc' //控制颜色
+                            }
+                        },
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: teacherleavedata
+            };
+
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+    </script>
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function () {
+            var element = layui.element;
+        });
+
+        //日期
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            //日期范围
+            laydate.render({
+                elem: '#test6'
+              , range: true
+            });
+        })
+        //day + "日";
+        //	$(".full_data span").text(newdate);
+        $(function () {
+            
+        });
+        function InitData() {
+            jiaokeyan(begin, end); ziyuan(begin, end); gongzuoliang(begin, end); jiaowu(begin, end);
+        }
+    </script>
+
+    <script>
+        /*堆叠*/
+        var dom = document.getElementById("chart2");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        app.title = '堆叠条形图';
+
+        option = {
+
+            legend: {
+                textStyle: {
+                    color: '#fff'
+                },
+                //orient:'vertical',
+                right: '10',
+                top: 10,
+                data: ['直接访问', '邮件营销', '联盟广告']
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',       // 默认为直线，可选为：'line' | 'shadow'
+
+                },
+            },
+
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                axisLine: {
+                    lineStyle: {
+                        color: '#ccc'
+                    }
+                },
+            },
+            yAxis: {
+                type: 'category',
+                data: ['周一', '周二', '周三'],
+                axisLine: {
+                    lineStyle: {
+                        color: '#ccc'
+                    }
+                },
+            },
+            series: [
+                {
+                    name: '直接访问',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [320, 302, 301]
+                },
+                {
+                    name: '邮件营销',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [120, 132, 101]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [220, 182, 191]
+                },
+
+            ]
+        };
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    </script>
+
+    <script>
+        var dat = new Array();
+        var bcolor = ["background: linear-gradient(to right, #0050B3, #093c7c );", "background: linear-gradient(to right,#C70448, #990A3C );", "background: linear-gradient(to right,#04C728, #0f9228 );", "background: linear-gradient(to right, #0050B3, #093c7c ); ", "background: linear-gradient(to right,#04C728, #0f9228 );", "background: linear-gradient(to right,#C70448, #990A3C );", "background: linear-gradient(to right,#04C728, #0f9228"];
+        var color = ['#8e123d', '#C70448', '#04C728', '#07f1f1', '#0050B3', '#00FFFF'];
+        /*教科研*/
+        function jiaokeyan(begin, end) {
+            $.ajax({
+                url: "ashx/BigData.ashx",
+                type: "get",
+                data: { "method": "jky", "begin": begin, "end": end },
+                async: false,
+                dataType: "json",
+                success: function (data) {
+                    var da = data.data[0];
+                    var html1 = ""; var html2 = ""; var html3 = ""; var html4 = "";
+                    var count1 = 0; var count2 = 0; var count3 = 0; var count4 = 0;
+                    var bx = new Array();
+                    for (var i = 0; i < data.data.length; i++) {
+                        if (data.data[i].fl == 1) {
+                            count1 = count1 + parseInt(data.data[i].sl);
+                        }
+                        else if (data.data[i].fl == 2)
+                            count2 = count2 + parseInt(data.data[i].sl);
+                        else if (data.data[i].fl == 3)
+                            count3 = count3 + parseInt(data.data[i].sl);
+                        else if (data.data[i].fl == 4)
+                            count4 = count4 + parseInt(data.data[i].sl);
+                    }
+                    var l = 0; var m = 0; var n = 0; var k = 0; var b = 0;
+                    dat = new Array();
+                    for (var i = 0; i < data.data.length; i++) {
+
+                        if (data.data[i].fl == 1) {
+                            if (i == 0)
+                                html1 = html1 + '<li><i>' + data.data[i].lxmc + ':</i><b><b style="width: ' + (parseInt(data.data[i].sl) / count1) * 100 + '%"  ></b></b><strong class="co7">' + data.data[i].sl + '件</strong></li>';
+                            else {
+                                html1 = html1 + '<li><i>' + data.data[i].lxmc + ':</i><b><b style="width: ' + (parseInt(data.data[i].sl) / count1) * 100 + '%;  ' + bcolor[l] + '"  ></b></b><strong class="co7">' + data.data[i].sl + '件</strong></li>';
+                                l++;
+                            }
+                        }
+                        else if (data.data[i].fl == 2) {
+
+                            html2 = html2 + '<li><i>' + data.data[i].lxmc + ':</i><b><b style="width:' + parseInt(data.data[i].sl) * 100 / count2 + '%;  ' + bcolor[m] + '"></b></b><strong class="co7">' + data.data[i].sl + '件</strong></li>';
+                            m++;
+                            //html2 = html2 + '<li><i>' + data.data[i].lxmc + ':</i><b><b style="width:' + parseInt(data.data[i].sl) * 100 / count2 + '%;  ' + color[parseInt(Math.random() * 7)] + '"></b></b><strong class="co7">' + data.data[i].sl + '件</strong></li>';
+                        }
+                        else if (data.data[i].fl == 3) {
+                            html3 = html3 + '<li><i>' + data.data[i].lxmc + ':</i><b><b style="width: ' + parseInt(data.data[i].sl) * 100 / count3 + '%;  ' + bcolor[n] + '"></b></b><strong class="co7">' + data.data[i].sl + '件</strong></li>';
+                            n++
+                        }
+                        else if (data.data[i].fl == 4) {
+                            html4 = html4 + '<li><i>' + data.data[i].lxmc + ':</i><b><b style="width: ' + parseInt(data.data[i].sl) * 100 / count4 + '%;  ' + bcolor[k] + '"></b></b><strong class="co7">' + data.data[i].sl + '件</strong></li>';
+                            k++;
+                        }
+                        else if (data.data[i].fl == 5) {
+                            if (data.data[i].lx == -3) {
+                                dat.push({
+                                    value: data.data[i].sl, name: '' + data.data[i].lxmc + '', itemStyle: { normal: { color: '#405959' } }
+                                });
+                            }
+                            else if (data.data[i].lx == -1) {
+                                dat.push({
+                                    value: data.data[i].sl, name: '' + data.data[i].lxmc + '', itemStyle: { normal: { color: '#C70448' } }
+                                });
+                            }
+                            else if (data.data[i].lx == 0) {
+                                dat.push({
+                                    value: data.data[i].sl, name: '' + data.data[i].lxmc + '', itemStyle: { normal: { color: '#8e123d' } }
+                                });
+                            }
+                            else if (data.data[i].lx == 1) {
+                                dat.push({
+                                    value: data.data[i].sl, name: '' + data.data[i].lxmc + '', itemStyle: { normal: { color: '#04C728' } }
+                                });
+                            }
+                            else if (data.data[i].lx == 2) {
+                                dat.push({
+                                    value: data.data[i].sl, name: '' + data.data[i].lxmc + '', itemStyle: { normal: { color: '#0050B3' } }
+                                });
+                            }
+                            else if (data.data[i].lx == 3) {
+                                dat.push({
+                                    value: data.data[i].sl, name: '' + data.data[i].lxmc + '', itemStyle: { normal: { color: '#00FFFF' } }
+                                });
+                            }
+                            bx.push(data.data[i].lx);
+                            //b++;
+                        }
+
+
+                    }
+
+                    $("#lw").html(html1);
+                    $("#hj").html(html2);
+                    $("#zz").html(html3);
+                    $("#zdxs").html(html4);
+                    console.log(dat);
+                    if (dat.length < 6) {
+                        if ($.inArray(-3, bx) < 0)
+                            dat.push({ value: 0, name: '移交', itemStyle: { normal: { color: '#405959' } } });
+                        if ($.inArray(-1, bx) < 0)
+                            dat.push({ value: 0, name: '驳回', itemStyle: { normal: { color: '#C70448' } } });
+                        if ($.inArray(0, bx) < 0)
+                            dat.push({ value: 0, name: '未受理', itemStyle: { normal: { color: '#8e123d' } } });
+                        if ($.inArray(1, bx) < 0)
+                            dat.push({ value: 0, name: '已受理', itemStyle: { normal: { color: '#04C728' } } });
+                        if ($.inArray(2, bx) < 0)
+                            dat.push({ value: 0, name: '完成', itemStyle: { normal: { color: '#0050B3' } } });
+                        if ($.inArray(3, bx) < 0)
+                            dat.push({ value: 0, name: '确认完成', itemStyle: { normal: { color: '#00FFFF' } } });
+                        //for (var i = 0; i < 6; i++)
+                        //{
+                        //}
+                    }
+                    baoxiu();
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        }
+
+
+        function baoxiu() {
+            //圈圈图var llChart = echarts.init(document.getElementById('llChart'));
+            var option1 = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{b}: {c} ({d}%)"
+                },
+                legend: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    orient: 'vertical',
+                    // x: 'right',
+                    y: 'center',
+                    right: 15,
+                    itemWidth: 15,
+                    data: ['移交', '驳回', '未受理', '已受理', '完成', '确认完成']
+                },
+                series: [{
+                    name: '报修处理情况',
+                    type: 'pie',
+                    radius: ['58%', '68%'],
+                    center: ['30%', '50%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: false   //控制标签
+                            },
+                            labelLine: {
+                                show: false   //控制标签线
+                            }
+                        },
+                    },
+                    barWidth: 30,
+                    data: dat
+                }
+                ]
+            };
+            var byId = function (id) {
+                return document.getElementById(id);
+            };
+            var llChart = echarts.init(byId('chart4'));
+            //pieChart.setOption(chartOption1);
+            llChart.setOption(option1);
+
+        }
+    </script>
+    <script>
+        /*资源*/
+        function ziyuan(begin, end) {
+            $.ajax({
+                url: "ashx/BigData.ashx",
+                type: "get",
+                data: { "method": "zy", "begin": begin, "end": end },
+                async: false,
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    if (data != null && data.data.length > 0) {
+                        for (var i = 0; i < data.data.length; i++) {
+                            html = html + "<tr><td>" + data.data[i].UserName
+                                + "</td><td>" + data.data[i].RKJ +
+                                "</td><td>" + data.data[i].RJA +
+                                "</td><td>" + data.data[i].RSJ +
+                                "</td><td>" + data.data[i].RSC +
+                                "</td><td>" + data.data[i].RWKC +
+                                "</td><td>" + data.data[i].RQT
+                            "</td></tr>";
+                        }
+                        $("#zy").html(html);
+                    }
+                },
+                error: function (data) {
+                    alert(data);
+                    //layer.ready(function () {
+                    //    title: false
+                    //    layer.alert("数据提交存在问题，请检查当前网络", {
+                    //        title: false
+                    //    });
+                    //});
+                }
+            })
+        }
+    </script>
+    <script>
+        /*工作量*/
+        function gongzuoliang(begin, end) {
+            $.ajax({
+                url: "ashx/BigData.ashx",
+                type: "get",
+                data: { "method": "gzl", "begin": begin, "end": end },
+                async: false,
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    if (data != null && data.data.length > 0) {
+                        for (var i = 0; i < data.data.length; i++) {
+                            html = html + "<tr><td>" + data.data[i].DepName
+                                + "</td><td>" + data.data[i].SubUserName +
+                                "</td><td>" + data.data[i].Allowance +
+                                "</td><td>" + data.data[i].Plus +
+                                "</td><td>" + data.data[i].ACount
+                            "</td></tr>";
+                        }
+                        $("#gzl").html(html);
+                    }
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        }
+    </script>
+    <script>
+        /*教务*/
+        function jiaowu(begin, end) {
+            $.ajax({
+                url: "ashx/BigData.ashx",
+                type: "get",
+                data: { "method": "jw", "begin": begin, "end": end },
+                async: false,
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    if (data != null && data.data.length > 0) {
+                        $("#jxl").html(data.data[0].louyu + "栋");
+                        $("#js").html(data.data[0].jiaoshi + "间");
+                        $("#dgnjs").html(data.data[0].dgnjiaoshi + "间");
+                        $("#zc").html(data.data[0].zichan + "件");
+                        $("#je").html(data.data[0].jine + "元");
+                        $("#bf").html(data.data[0].baofei + "件");
+                    }
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

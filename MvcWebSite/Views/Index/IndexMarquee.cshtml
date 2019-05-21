@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+
+@using MvcWebSite.Models;
+
+<div class="tuce" style="width: @ViewBag.MarqueeWidth">
+    <div class="title" style="width: @ViewBag.MarqueeWidth; "><span>@(((Menu)ViewBag.Menu).MName)</span><a href="/List/List/@(((Menu)ViewBag.Menu).MID)" class="more"> +MORE</a></div>
+    <div class="tuce_pic" style="width: @ViewBag.MarqueeWidth; ">
+        <div class="MarqueeType">
+            <ul>
+                <li>
+                    @foreach (New news in ViewBag.NewList)
+                    {
+                        <div>
+                            <a href="/List/Article/@news.NID" target="_blank" title="@news.NewsTitle">
+                                <img src="@news.ImageUrl" /><span>@news.NewsTitle</span>
+                            </a>
+                        </div>
+                    }
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        //j('.MarqueeType').jcMarquee({ 'marquee': 'x', 'margin_right': '10px', 'speed': 20 });
+        //j('#Marquee_1').jcMarquee({ 'marquee': 'x', 'margin_right': '10px', 'speed': 20 });
+        //j('#Marquee_2').jcMarquee({ 'marquee': 'x', 'margin_right': '10px', 'speed': 20 });
+        //j('#Marquee_3').jcMarquee({ 'marquee': 'x', 'margin_right': '10px', 'speed': 20 });
+        // DIVCSS5提示：10px代表间距，第二个20代表滚动速度
+    });
+</script>

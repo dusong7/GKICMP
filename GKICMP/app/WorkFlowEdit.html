@@ -1,0 +1,642 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>工作流审核流程</title>
+    <link href="../css/easyui.css" rel="stylesheet" />
+    <link href="../css/green_formcss.css" rel="stylesheet" />
+    <link href="../js/My97/skin/WdatePicker.css" rel="stylesheet" />
+
+    <style>
+        .listadd {
+            border: 1px solid #25a161;
+            border-radius: 2px;
+            background: #48bd81;
+            color: #FFFFFF;
+            width: 65px;
+            height: 26px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0px;
+            margin-right: 13px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .selpara {
+            border: 1px solid #25a161;
+            border-radius: 2px;
+            background: #48bd81;
+            color: #FFFFFF;
+            width: 65px;
+            height: 26px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0px;
+            margin-right: 13px;
+            font-size: 14px;
+            position: relative;
+            float: left;
+            cursor: pointer;
+        }
+
+        .flow {
+            position: relative;
+        }
+
+        .flowtext {
+            position: absolute;
+        }
+
+        ul, li {
+            display: inline;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="listcent pad0">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listinfo">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../js/jquery.easyui.min.js"></script>
+<script src="../js/My97/WdatePicker.js"></script>
+<script src="../js/WF.js"></script>
+<script>
+    $(function () {
+        var wffid = GetURL("WFFID");
+        var cid = GetURL("CID");
+        var node = getClass("table", "listcent pad0", "listinfo")[0].children[0];
+        if (cid != null && cid != "") {
+            //草稿         
+            if (wffid != "" && wffid != null) {
+                //获取相应的数据并显示在页面上
+                $.getJSON("../ashx/WF.ashx?method=GetDraftWF&WFFID=" + wffid + "&CID=" + cid, function (data) {
+                    data = data[0];
+
+                    node.innerHTML = "<tr><th colspan=\"2\" align=\"left\"><p class=\"wfname\" style=\"float: left\">" + data.FormName + "</p></th></tr>";
+                    var userdata = GetRelatedUser();
+                    for (var i = 0; i < data.List.length; i++) {
+                        node.appendChild(BuildNode(parseInt(data.List[i].FDID), parseInt(data.List[i].FPID), AddPara(data.List[i], userdata, data.List[i].DraftValue), data.List[i].FDValue, parseInt(data.List[i].IsRequired)));
+
+                        if (data.List[i].FPID == 5) {
+
+                            for (var j = 0; j < data.List[i].List.length; j++) {
+                                data.List[i].List[j].id = data.List[i].List[j].FDVID;
+                                data.List[i].List[j].text = data.List[i].List[j].FDValue;
+                            }
+
+
+                            $("#" + data.List[i].FDID).combotree({
+                                data: data.List[i].List,
+                                multiple: true,
+                                multiline: true,
+                                onLoadSuccess: function () {
+                                    var seldata = [];
+                                    if (data.List[i].DraftValue.length > 0) {
+                                        for (var k = 0; k < data.List[i].DraftValue.length; k++) {
+                                            seldata.push(data.List[i].DraftValue[k].FDValue);
+                                        }
+                                        console.log(seldata);
+                                        $("#" + data.List[i].FDID).combotree('setValue', seldata);
+                                    }
+                                },
+                            });
+                        }
+
+                        if (data.List[i].FPID == 9 && data.List[i].FDType == 2) {
+                            $("#" + data.List[i].FDID).combotree({
+                                data: userdata,
+                                multiple: true,
+                                multiline: true,
+                                onLoadSuccess: function () {
+                                    var seldata = [];
+                                    if (data.List[i].DraftValue.length > 0) {
+                                        for (var k = 0; k < data.List[i].DraftValue.length; k++) {
+                                            seldata.push(data.List[i].DraftValue[k].FDValue);
+                                        }
+                                        console.log(seldata);
+                                        $("#" + data.List[i].FDID).combotree('setValue', seldata);
+                                    }
+                                },
+                            });
+                        }
+
+                    }
+                    var audittr = InitNode("tr", "");
+                    var audittdname = InitNode("td", "");
+                    var audittd = InitNode("td", "AuditList");
+
+                    audittdname.innerHTML = "审核流程";
+                    audittdname.align = "right";
+                    audittdname.width = "150";
+
+                    audittr.appendChild(audittdname);
+                    audittr.appendChild(audittd);
+                    node.appendChild(audittr);
+
+                    var sendtr = InitNode("tr", "");
+                    var sendtdname = InitNode("td", "");
+                    var sendtd = InitNode("td", "");
+                    sendtd.setAttribute("colspan", 2);
+
+                    sendtdname.innerHTML = "抄送人";
+                    sendtdname.align = "right";
+                    sendtdname.width = "150";
+
+                    sendtr.appendChild(sendtdname);
+                    sendtr.appendChild(sendtd);
+                    node.appendChild(sendtr);
+
+
+                    BuildFlowNode(wffid, cid, audittd, sendtd);
+
+
+                    var submittr = InitNode("tr", "");
+                    var submittd = InitNode("td", "");
+                    submittd.align = "center";
+                    submittd.setAttribute("colspan", 2);
+
+                    var submitbtn = InitNode("button", "submit");
+                    submitbtn.innerHTML = "提交";
+                    submitbtn.addEventListener("click", SubmitWF);
+
+                    var draftbtn = InitNode("button", "editor");
+                    draftbtn.innerHTML = "保存";
+                    draftbtn.addEventListener("click", DraftWF);
+
+                    var closebtn = InitNode("input", "addbtn");
+                    closebtn.type = "button";
+                    closebtn.value = "取消";
+                    closebtn.addEventListener("click", Back);
+
+                    submittd.appendChild(draftbtn);
+                    submittd.appendChild(submitbtn);
+                    submittd.appendChild(closebtn);
+                    submittr.appendChild(submittd);
+                    node.appendChild(submittr);
+
+
+                });
+            }
+        } else {
+            if (wffid != "" && wffid != null) {
+                //获取相应的数据并显示在页面上
+
+                $.getJSON("../ashx/WF.ashx?method=GetWF&WFFID=" + wffid, function (data) {
+                    data = data[0];
+
+                    node.innerHTML = "<tr><th colspan=\"2\" align=\"left\"><p class=\"wfname\" style=\"float: left\">" + data.FormName + "</p></th></tr>";
+
+                    var userdata = GetRelatedUser();
+                    for (var i = 0; i < data.List.length; i++) {
+                        node.appendChild(BuildNode(parseInt(data.List[i].FDID), parseInt(data.List[i].FPID), AddPara(data.List[i], userdata, null), data.List[i].FDValue, parseInt(data.List[i].IsRequired)));
+
+                        if (data.List[i].FPID == 5) {
+
+                            for (var j = 0; j < data.List[i].List.length; j++) {
+                                data.List[i].List[j].id = data.List[i].List[j].FDVID;
+                                data.List[i].List[j].text = data.List[i].List[j].FDValue;
+                            }
+
+
+                            $("#" + data.List[i].FDID).combotree({
+                                data: data.List[i].List,
+                                multiple: true,
+                                multiline: true,
+                            });
+                        }
+
+                        if (data.List[i].FPID == 9 && data.List[i].FDType == 2) {
+                            $("#" + data.List[i].FDID).combotree({
+                                data: userdata,
+                                multiple: true,
+                                multiline: true,
+                            });
+                        }
+                    }
+
+                    var audittr = InitNode("tr", "");
+                    var audittdname = InitNode("td", "");
+                    var audittd = InitNode("td", "AuditList");
+
+                    audittdname.innerHTML = "审核流程";
+                    audittdname.align = "right";
+                    audittdname.width = "150";
+
+                    audittr.appendChild(audittdname);
+                    audittr.appendChild(audittd);
+                    node.appendChild(audittr);
+
+                    var sendtr = InitNode("tr", "");
+                    var sendtdname = InitNode("td", "");
+                    var sendtd = InitNode("td", "");
+                    sendtd.setAttribute("colspan", 2);
+
+                    sendtdname.innerHTML = "抄送人";
+                    sendtdname.align = "right";
+                    sendtdname.width = "150";
+
+                    sendtr.appendChild(sendtdname);
+                    sendtr.appendChild(sendtd);
+                    node.appendChild(sendtr);
+
+                    BuildFlowNode(wffid, "", audittd, sendtd);
+
+
+                    var submittr = InitNode("tr", "");
+                    var submittd = InitNode("td", "");
+                    submittd.align = "center";
+                    submittd.setAttribute("colspan", 2);
+
+                    var submitbtn = InitNode("button", "submit");
+                    submitbtn.innerHTML = "提交";
+                    submitbtn.addEventListener("click", SubmitWF);
+
+                    var draftbtn = InitNode("button", "editor");
+                    draftbtn.innerHTML = "草稿";
+                    draftbtn.addEventListener("click", DraftWF);
+
+                    var closebtn = InitNode("input", "addbtn");
+                    closebtn.type = "button";
+                    closebtn.value = "取消";
+                    closebtn.addEventListener("click", Back);
+
+                    submittd.appendChild(submitbtn);
+                    submittd.appendChild(draftbtn);
+                    submittd.appendChild(closebtn);
+                    submittr.appendChild(submittd);
+                    node.appendChild(submittr);
+
+                });
+            }
+        }
+
+    });
+
+
+    function Back() {
+        window.history.go(-1);
+    }
+
+
+    function BuildFlowNode(wffid, cid, audittd, sendtd) {
+        //初始化流程的部分
+        $.ajaxSettings.async = false;
+        $.getJSON("../ashx/WF.ashx?method=GetFormAudit&WFFID=" + wffid + "&CID=" + cid, function (fadata) {
+
+            for (var i = 0; i < fadata.length; i++) {
+                if (parseInt(fadata[i].FAVType) == 1) {
+                    if (parseInt(fadata[i].FlowType) == 0) {
+                        var auditnode = InitNode("select", "AuditNode");
+                        auditnode.setAttribute("name", fadata[i].FAID);
+                        //console.log(fadata[i].SelData);
+                        for (var j = 0; j < fadata[i].FAVData.length; j++) {
+                            var selnode = InitNode("option", "");
+                            selnode.innerHTML = fadata[i].FAVData[j].Name;
+                            selnode.value = fadata[i].FAVData[j].FAVID;
+                            if (cid != "" && IsExist(fadata[i].SelData, fadata[i].FAVData[j].FAVID)) {
+                                selnode.setAttribute("selected", "selected");
+                            }
+                            auditnode.appendChild(selnode);
+                        }
+                        audittd.appendChild(auditnode);
+                    } else {
+                        var auditnode = InitNode("span", "AuditNode");
+                        auditnode.setAttribute("name", fadata[i].FAID);
+                        var innerhtml = "";
+                        if (parseInt(fadata[i].AuditType) == 1) {
+                            innerhtml = "用户组:";
+                        } else {
+                            innerhtml = "角色:";
+                        }
+                        for (var j = 0; j < fadata[i].FAVData.length; j++) {
+                            innerhtml = innerhtml + fadata[i].FAVData[j].Name + ",";
+                        }
+                        auditnode.innerHTML = innerhtml.substring(0, innerhtml.length - 1);
+                        if (parseInt(fadata[i].FlowType) == 0) {
+                            //可选择系列
+                            auditnode.innerHTML += "(自选)";
+                        } else if (parseInt(fadata[i].FlowType) == 1) {
+                            auditnode.innerHTML += "(会签)";
+                        } else {
+                            auditnode.innerHTML += "(或签)";
+                        }
+                        audittd.appendChild(auditnode);
+                    }
+
+                } else {
+                    var sendnode = InitNode("span", "SendNode");
+                    sendnode.innerHTML = fadata[i].Name;
+                    sendtd.appendChild(sendnode);
+                }
+            }
+        })
+        $.ajaxSettings.async = true;
+    }
+
+
+    function GetRelatedUser() {
+        var result = "";
+        $.ajaxSettings.async = false;
+        $.getJSON("../ashx/GetBaseDate.ashx?method=GetUser&data=js", function (data) {
+            result = data.data;
+        })
+        $.ajaxSettings.async = true;
+        return result;
+    }
+
+    function IsExist(draftvalue, value) {
+        var isexist = false;
+        for (var i = 0; i < draftvalue.length; i++) {
+            if (draftvalue[i].FDValue == value || draftvalue[i].FAVID == value) {
+                isexist = true;
+                break;
+            }
+        }
+        return isexist;
+    }
+
+    function AddPara(data, userdata, draftvalue) {
+
+        var fpid = parseInt(data.FPID);
+        var node = null;
+        if (fpid == 4 || fpid == 5 || fpid == 9) {
+            if (fpid == 9) {
+                //获取人员表的信息
+                if (parseInt(data.FDType) == 1) {
+                    //单选
+                    var html = "";
+                    node = InitNode("select", "");
+                    if (parseInt(data.IsRequired) == 0) {
+                        html = html + "<option value=\"0\">请选择</option>";
+                    }
+
+                    for (var i = 0; i < userdata.length; i++) {
+                        for (var j = 0; j < userdata[i].children.length; j++) {
+                            if (html.indexOf(userdata[i].children[j].id) < 0) {
+                                if (draftvalue != null && IsExist(draftvalue, userdata[i].children[j].id)) {
+                                    html += "<option selected=\"selected\" value=\"" + userdata[i].children[j].id + "\">" + userdata[i].children[j].text + "</option>";
+                                } else {
+                                    html += "<option value=\"" + userdata[i].children[j].id + "\">" + userdata[i].children[j].text + "</option>";
+                                }
+                            }
+                        }
+                    }
+                    node.innerHTML = html;
+
+                } else {
+                    //多选
+                    var html = "";
+                    node = InitNode("input", "easyui-combotree");
+                    node.type = "text";
+                    node.setAttribute("onlyLeafCheck", true);
+                    node.setAttribute("id", data.FDID);
+                }
+            } else {
+                if (fpid == 4) {
+                    //单选
+                    var html = "";
+                    node = InitNode("select", "");
+                    if (parseInt(data.IsRequired) == 0) {
+                        html = html + "<option value=\"0\">请选择</option>";
+                    }
+                    for (var i = 0; i < data.List.length; i++) {
+                        if (draftvalue != null && IsExist(draftvalue, data.List[i].FDVID)) {
+                            html += "<option selected=\"selected\" value=\"" + data.List[i].FDVID + "\">" + data.List[i].FDValue + "</option>";
+                        } else {
+                            html += "<option value=\"" + data.List[i].FDVID + "\">" + data.List[i].FDValue + "</option>";
+                        }
+                        // html += "<option value=\"" + data.List[i].FDVID + "\">" + data.List[i].FDValue + "</option>";
+                    }
+                    node.innerHTML = html;
+                } else {
+                    //多选
+                    var html = "";
+                    node = InitNode("input", "easyui-combotree");
+                    node.type = "text";
+                    node.setAttribute("onlyLeafCheck", true);
+                    node.setAttribute("id", data.FDID);
+                }
+
+            }
+        } else if (fpid == 6) {
+            //日期控件
+            node = InitNode("input", "");
+            if (draftvalue != null)
+                node.value = draftvalue[0].FDValue;
+            node.type = "text";
+            if (parseInt(data.FDType) == 1) {
+                node.onclick = function () {
+                    WdatePicker({ skin: 'whyGreen', dateFmt: 'yyyy-MM-dd HH:mm' });
+                };
+            } else {
+                node.onclick = function () {
+                    WdatePicker({ skin: 'whyGreen' });
+                };
+            }
+            //node.addEventListener("click", WdatePicker({ skin: 'whyGreen' }));
+        } else if (fpid == 7) {
+            node = InitNode("input", "inputfile");
+            node.type = "file";
+            //node.value = "../webupload/WFFile/" + draftvalue;
+        } else if (fpid == 8) {
+            //说明文字
+            node = InitNode("Span", "");
+            node.innerHTML = "";
+        } else {
+            if (fpid == 2) {
+                node = InitNode("textarea", "");
+                node.style = "width:400px;height:100px";
+
+                if (draftvalue != null) {
+                    var str = draftvalue[0].FDValue;
+                    while (str.indexOf("$%$") > 0) {
+                        str = str.replace("$%$", "\r\n")
+                    }
+                    node.value = str;
+                }
+
+            } else {
+                node = InitNode("Input", "");
+                if (draftvalue != null)
+                    node.value = draftvalue[0].FDValue;
+            }
+            //node.type = "text";
+            //node.placeholder = data.List[0].FDValue;
+            //if (draftvalue != null)
+            //    node.value = draftvalue[0].FDValue;
+        }
+        node.fdid = data.FDID;
+        return node;
+    }
+
+    function BuildNode(fdid, fpid, node, fdvvalue, isrequired) {
+        //条目过多可考虑显示顺序
+
+        var trnode = InitNode("tr", "");
+        var namenode = InitNode("td", "");
+        namenode.align = "right";
+        namenode.width = "150";
+        namenode.setAttribute("fpid", fpid);
+        namenode.setAttribute("fdid", fdid);
+        namenode.innerHTML = fdvvalue;
+        if (parseInt(isrequired) == 1) {
+            namenode.innerHTML += "(必填)";
+        }
+
+        var paranode = InitNode("td", "");
+        paranode.align = "left";
+        paranode.appendChild(node);
+
+        trnode.appendChild(namenode);
+        if (parseInt(fpid) != 8) {
+            trnode.appendChild(paranode);
+        } else {
+            namenode.colSpan = 2;
+            namenode.align = "center";
+        }
+
+        return trnode;
+    }
+
+
+    function DoSubmit(isdraft) {
+        var nodelist = getClass("table", "listcent pad0", "listinfo")[0].children[0].children;
+        //忽略标题
+        var ffdlist = [];
+        var filenum = 0;
+        for (var i = 1; i < nodelist.length - 3; i++) {
+            var ffddata = {};
+            var fdid = nodelist[i].children[0].getAttribute("fdid");
+            var fpid = parseInt(nodelist[i].children[0].getAttribute("fpid"));
+            if (fpid != 8) {
+                if (fpid != 7) {
+                    var data = null;
+                    data = nodelist[i].children[1].children[0].value;
+                    ffddata.FDID = fdid;
+                    ffddata.FPID = fpid;
+                    ffddata.Data = data;
+                    ffdlist.push(ffddata);
+                } else {
+                    //文件,草稿状态下会有问题
+                    ffddata.FDID = fdid;
+                    ffddata.FPID = fpid;
+
+                    var fd = new FormData();
+                    fd.append("upload", 1);
+                    fd.append("upfile", $(".inputfile").get(filenum).files[0]);
+
+                    filenum = filenum + 1;
+
+                    $.ajax({
+                        url: "../ashx/WF.ashx?method=UploadFile",
+                        type: "POST",
+                        processData: false,
+                        contentType: false,
+                        data: fd,
+                        async: false,
+                        success: function (data) {
+                            data = JSON.parse(data);
+                            if (data.result == "success") {
+                                ffddata.Data = data.name;
+                            }
+                        }
+                    });
+                    ffdlist.push(ffddata);
+                }
+
+            }
+        }
+
+        //建立所选的人员列表
+        var auditnodelist = getClass("select", "AuditList", "AuditNode");
+        var auditlist = [];
+
+        for (var i = 0; i < auditnodelist.length ; i++) {
+            var auditdata = {};
+            auditdata.FAID = auditnodelist[i].getAttribute("name");
+            auditdata.FAVID = auditnodelist[i].value;
+            auditlist.push(auditdata);
+        }
+
+        var wffid = GetURL("WFFID");
+        var cid = GetURL("CID");
+        if (cid == null || cid == "") {
+            cid = "";
+        }
+        $.ajax({
+            url: '../ashx/WF.ashx?method=SaveWFFormFlowData',
+            data: { "wfformflowdata": JSON.stringify(ffdlist), "auditdata": JSON.stringify(auditlist), "wffid": wffid, "cid": cid, "isdraft": isdraft },
+            type: "post",
+            dataType: 'json',
+            success: function (Data) {
+                if (Data.result == "success") {
+                    //添加成功
+                    //alert("success");
+                    //window.location.href = "../customizedworkflow/WFAuditManage.aspx";
+                    window.location.href = "WFAuditManage.html";
+                } else {
+                    alert(Data.result);
+                }
+            }
+        });
+    }
+
+    function SubmitWF() {
+        DoSubmit(0);
+    }
+
+
+    function DraftWF() {
+        DoSubmit(1);
+    }
+
+
+    function GetNameByType(fpid) {
+        var fpname = "";
+        switch (fpid) {
+            case 1:
+                fpname = "单行文本框";
+                break;
+            case 2:
+                fpname = "多行文本框";
+                break;
+            case 3:
+                fpname = "数字输入框";
+                break;
+            case 4:
+                fpname = "单选框";
+                break;
+            case 5:
+                fpname = "多选框";
+                break;
+            case 6:
+                fpname = "日期";
+                break;
+            case 7:
+                fpname = "附件";
+                break;
+            case 8:
+                fpname = "说明文字";
+                break;
+            case 9:
+                fpname = "联系人";
+                break;
+            case 10:
+                fpname = "金额";
+                break;
+        }
+
+        return fpname;
+    }
+
+</script>

@@ -1,0 +1,25 @@
+@{
+    Layout =null;
+}
+
+@using MvcWebSite.Models;
+
+<div id="web_left">
+    <div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+            <li class="ui-corner-top ui-tabs-active ui-state-active"><a href="#" class="ui-tabs-anchor">@(((Menu)ViewBag.Menu).MName)</a></li>
+        </ul>
+        <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+<ul class="infolist">
+            @foreach (New news in ViewBag.NewList)
+            {
+                <li><a href="/List/Article/@news.NID" target="_blank" title="@news.NewsTitle">@news.NewsTitle</a><span>@news.CreateDate.ToString("yyyy/MM/dd")</span></li>
+               
+            }</ul>
+        </div>
+    </div>
+
+    
+
+
+</div>

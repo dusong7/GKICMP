@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+var i=1;
+var m=1;
+}
+
+@using MvcWebSite.Models;
+<div class="pages" data-scro="list">
+<ul>
+
+    @foreach (Slide slide in ViewBag.SlideList)
+    {
+if(i==1)
+{
+<li class="item" style="left:0px;"> <a href="@slide.SlideUrl" target="_blank"><img src="@slide.SImage"></a>
+            <h3><a href="@slide.SlideUrl" target="_blank" style="color:#FFF;text-decoration:none;">@slide.SlideName</a></h3>
+            <div></div></li>
+}
+else
+{
+<li class="item"> <a href="@slide.SlideUrl" target="_blank"><img src="@slide.SImage"></a>
+            <h3><a href="@slide.SlideUrl" target="_blank" style="color:#FFF;text-decoration:none;">@slide.SlideName</a></h3>
+            <div></div></li>
+}
+   i=i+1;    
+    }
+<ul>
+</div>
+ <div class="controler" data-scro="controler">    @foreach (Slide slide in ViewBag.SlideList)
+    {
+if(m==1)
+{
+ <b class="down">1</b>
+}
+else
+{
+ <b>@m</b>
+}
+   m=m+1;    
+    } </div>

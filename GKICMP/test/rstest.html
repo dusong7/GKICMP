@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../js/jquery-1.8.2.min.js"></script>
+    <script src="../js/highcharts.js"></script>
+</head>
+<body>
+    <div id="container" style="min-width: 400px; height: 400px">
+         <script>  
+             $(function () {
+                $('#container').highcharts(
+                    {chart: {type: 'column'},
+                    title: {text: '教师获奖统计'},
+                    subtitle: {text: '数据截止 2017-03， '},
+                    xAxis: {
+                        type: 'category',
+                        labels: {rotation: -45,style: {fontSize: '13px',fontFamily: 'Verdana, sans-serif'}}},
+                    yAxis: {min: 0,title: {text: '次数'}},
+                    legend: {enabled: false},
+                    tooltip: {pointFormat: '共: <b>{point.y:1f} 次</b>'},
+                    series: [
+                        {name: '总次数',
+                        data: [['特等', 3],['一等', 5],['二等', 0],['三等', 0],['四等', 0],['未评等级', 0],['其他', 0],],
+                        dataLabels: {
+                            enabled: true,
+                            rotation: -90,
+                            color: '#FFFFFF',
+                            align: 'right',
+                            format: '{point.y:1f}', // one decimaly: 10, // 10 pixels down from the topstyle: {fontSize: '13px',fontFamily: 'Verdana, sans-serif'}
+                        }
+                        }]
+                    });
+            });
+             </script>  
+    </div>
+</body>
+</html>

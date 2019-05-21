@@ -1,0 +1,48 @@
+﻿@using MvcWebSite.Models;
+
+<div id="web_left">
+    <div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+            <li class="ui-corner-top ui-tabs-active ui-state-active"><a href="#" class="ui-tabs-anchor">@(((Menu)ViewBag.LeftMenu).MName)</a></li>
+        </ul>
+        <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+            @foreach (New news in ViewBag.LeftList)
+            {
+                <strong>【<a href="/Index/Article/@news.NID" target="_blank">@news.NewsTitle</a>】</strong>
+                <p style="text-align:right;">@news.CreateDate.ToString("yyyy/MM/dd")</p>
+            }
+        </div>
+    </div>
+
+    @if (ViewBag.LeftType == 1)
+    {
+        <div>
+            <ul class="deptlist"></ul>
+        </div>
+    }
+    else
+    {
+        <div class="ui-tabs ui-widget ui-widget-content ui-corner-all" style="margin-top:5px;">
+            <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+                <li class="ui-tabs-selected ui-state-default ui-corner-top ui-tabs-active ui-state-active"><a href="#" class="ui-tabs-anchor">相关内容</a></li>
+            </ul>
+            <div class="article_list_1 ui-tabs-panel ui-widget-content ui-corner-bottom">
+                <ul class="RelArticleList">
+                    @foreach (New news in ViewBag.RelList)
+                    {
+                        <li>
+                            <a href="/Index/Article/@news.NID" class="thumbnail">
+                                <img src="@news.ImageUrl" style="width:98%;" onerror="javascript:this.src='/Resource/nopic.png';" data-bd-imgshare-binded="1">
+                            </a>
+                            <p style="text-align:center;">@news.NewsTitle</p>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+
+
+
+</div>

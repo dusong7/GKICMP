@@ -1,0 +1,630 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using System;
+
+<#
+    string str="";
+#>
+namespace GK.GKICMP.Entities{  
+    <#/*接收消息*/#>
+    <#/*/接收普通消息*/#>
+
+    /// <summary>
+    /// 接收普通消息
+    /// </summary>
+    public abstract class Receive_Msg
+    {
+        /// <summary>
+        /// 接收方帐号（收到的OpenID）
+        /// </summary>
+        public string ToUserName { get; set; }
+        /// <summary>
+        /// 发送方帐号（一个OpenID）
+        /// </summary>
+        public string FromUserName { get; set; }
+        /// <summary>
+        /// 消息创建时间 （整型）
+        /// </summary>
+        public string CreateTime { get; set; }
+        /// <summary>
+        /// 消息类型
+        /// </summary>
+        public string MsgType { get; set; }
+
+        /// <summary>
+        /// 当前实体的XML字符串
+        /// </summary>
+        public string Xml { get; set; }
+    }
+
+    /// <summary>
+    /// 接收普通消息-文本消息
+    /// </summary>
+    public class Receive_Text:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 text
+Content	 文本消息内容
+MsgId	 消息id，64位整型";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收普通消息-图片消息
+    /// </summary>
+    public class Receive_Image:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 image
+PicUrl	 图片链接
+MediaId	 图片消息媒体id，可以调用多媒体文件下载接口拉取数据。
+MsgId	 消息id，64位整型";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收普通消息-语音消息
+    /// </summary>
+    public class Receive_Voice:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 语音为voice
+MediaId	 语音消息媒体id，可以调用多媒体文件下载接口拉取数据。
+Format	 语音格式，如amr，speex等
+MsgID	 消息id，64位整型";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收普通消息-视频消息
+    /// </summary>
+    public class Receive_Video:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 视频为video
+MediaId	 视频消息媒体id，可以调用多媒体文件下载接口拉取数据。
+ThumbMediaId	 视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
+MsgId	 消息id，64位整型";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收普通消息-地理位置消息
+    /// </summary>
+    public class Receive_Location:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 location
+Location_X	 地理位置维度
+Location_Y	 地理位置经度
+Scale	 地图缩放大小
+Label	 地理位置信息
+MsgId	 消息id，64位整型";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收普通消息-链接消息
+    /// </summary>
+    public class Receive_Link:Receive_Msg
+    {
+<#
+    str=@"ToUserName	 接收方微信号
+FromUserName	 发送方微信号，若为普通用户，则是一个OpenID
+CreateTime	 消息创建时间
+MsgType	 消息类型，link
+Title	 消息标题
+Description	 消息描述
+Url	 消息链接
+MsgId	 消息id，64位整型";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+    <#/*/接收普通消息*/#>
+
+    <#/*接收事件推送*/#>
+
+    /// <summary>
+    /// 接收事件推送-关注/取消关注事件
+    /// </summary>
+    public class Receive_Event:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 消息类型，event
+Event	 事件类型，subscribe(订阅)、unsubscribe(取消订阅)";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收事件推送-扫描带参数二维码事件
+    /// </summary>
+    public class Receive_Event_Scan:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 消息类型，event
+Event	 事件类型，SCAN
+EventKey	 事件KEY值，是一个32位无符号整数，即创建二维码时的二维码scene_id
+Ticket	 二维码的ticket，可用来换取二维码图片";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收事件推送-上报地理位置事件
+    /// </summary>
+    public class Receive_Event_Location:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 消息类型，event
+Event	 事件类型，LOCATION
+Latitude	 地理位置纬度
+Longitude	 地理位置经度
+Precision	 地理位置精度";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收事件推送-自定义菜单事件
+    /// </summary>
+    public class Receive_Event_Click:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 消息类型，event
+Event	 事件类型，CLICK
+EventKey	 事件KEY值，与自定义菜单接口中KEY值对应";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 接收事件推送-点击菜单跳转链接时的事件推送
+    /// </summary>
+    public class Receive_Event_View:Receive_Msg
+    {
+<#
+    str=@"ToUserName	开发者微信号
+FromUserName	 发送方帐号（一个OpenID）
+CreateTime	 消息创建时间 （整型）
+MsgType	 消息类型，event
+Event	 事件类型，VIEW
+EventKey	 事件KEY值，设置的跳转URL";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+    <#/*/接收事件推送*/#>
+
+    <#/*接收消息*/#>
+
+
+    <#/*发送消息*/#>
+
+    /// <summary>
+    /// 发送被动响应消息
+    /// </summary>
+    public abstract class Send_Msg
+    {
+        /// <summary>
+        /// 接收方帐号（收到的OpenID）
+        /// </summary>
+        public string ToUserName { get; set; }
+        /// <summary>
+        /// 发送方帐号（一个OpenID）
+        /// </summary>
+        public string FromUserName { get; set; }
+        /// <summary>
+        /// 消息创建时间 （整型）
+        /// </summary>
+        public string CreateTime { get; set; }
+        /// <summary>
+        /// 消息类型
+        /// </summary>
+        public string MsgType { get; set; }
+    }
+
+    /// <summary>
+    /// 发送被动响应消息-回复文本消息
+    /// </summary>
+    public class Send_Text:Send_Msg
+    {
+<#
+    str=@"ToUserName	 是	 接收方帐号（收到的OpenID）
+FromUserName	 是	开发者微信号
+CreateTime	 是	 消息创建时间 （整型）
+MsgType	 是	 text
+Content	 是	 回复的消息内容（换行：在content中能够换行，微信客户端就支持换行显示）";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[2]#>
+        /// 是否必须：<#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 发送被动响应消息-回复图片消息
+    /// </summary>
+    public class Send_Image:Send_Msg
+    {
+<#
+    str=@"ToUserName	 是	 接收方帐号（收到的OpenID）
+FromUserName	 是	开发者微信号
+CreateTime	 是	 消息创建时间 （整型）
+MsgType	 是	 image
+MediaId	 是	 通过上传多媒体文件，得到的id。";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[2]#>
+        /// 是否必须：<#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 发送被动响应消息-回复语音消息
+    /// </summary>
+    public class Send_Voice:Send_Msg
+    {
+<#
+    str=@"ToUserName	 是	 接收方帐号（收到的OpenID）
+FromUserName	 是	开发者微信号
+CreateTime	 是	 消息创建时间戳 （整型）
+MsgType	 是	 语音，voice
+MediaId	 是	 通过上传多媒体文件，得到的id";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[2]#>
+        /// 是否必须：<#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 发送被动响应消息-回复视频消息
+    /// </summary>
+    public class Send_Video:Send_Msg
+    {
+<#
+    str=@"ToUserName	 是	 接收方帐号（收到的OpenID）
+FromUserName	 是	开发者微信号
+CreateTime	 是	 消息创建时间 （整型）
+MsgType	 是	 video
+MediaId	 是	 通过上传多媒体文件，得到的id
+Title	 否	 视频消息的标题
+Description	 否	 视频消息的描述";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[2]#>
+        /// 是否必须：<#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 发送被动响应消息-回复音乐消息
+    /// </summary>
+    public class Send_Music:Send_Msg
+    {
+<#
+    str=@"ToUserName	 是	 接收方帐号（收到的OpenID）
+FromUserName	 是	开发者微信号
+CreateTime	 是	 消息创建时间 （整型）
+MsgType	 是	 music
+Title	 否	 音乐标题
+Description	 否	 音乐描述
+MusicURL	 否	 音乐链接
+HQMusicUrl	 否	 高质量音乐链接，WIFI环境优先使用该链接播放音乐
+ThumbMediaId	 是	 缩略图的媒体id，通过上传多媒体文件，得到的id";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[2]#>
+        /// 是否必须：<#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+
+    /// <summary>
+    /// 发送被动响应消息-回复图文消息
+    /// </summary>
+    public class Send_News:Send_Msg
+    {
+<#
+    str=@"ToUserName	 是	 接收方帐号（收到的OpenID）
+FromUserName	 是	开发者微信号
+CreateTime	 是	 消息创建时间 （整型）
+MsgType	 是	 news
+ArticleCount	 是	 图文消息个数，限制为10条以内
+Articles	 是	 多条图文消息信息，默认第一个item为大图,注意，如果图文数超过10，则将会无响应
+Title	 否	 图文消息标题
+Description	 否	 图文消息描述
+PicUrl	 否	 图片链接，支持JPG、PNG格式，较好的效果为大图360*200，小图200*200
+Url	 否	 点击图文消息跳转链接";
+#>
+<#
+    foreach(string s in str.Split('\r'))
+    {
+	    if(!string.IsNullOrEmpty(s))
+        {
+			if(s.Split('	')[0].Trim()=="MsgType"||s.Split('	')[0].Trim()=="ToUserName"||s.Split('	')[0].Trim()=="FromUserName"||s.Split('	')[0].Trim()=="CreateTime")
+				continue;
+#>			
+        /// <summary>
+        /// <#=s.Split('	')[2]#>
+        /// 是否必须：<#=s.Split('	')[1]#>
+        /// </summary>
+        public string <#=s.Split('	')[0].Trim()#>{get;set;}
+<#
+	    }
+    }
+#>
+    }
+    <#/*发送消息*/#>
+
+}

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.media.js"></script>
+    <title></title>
+
+</head>
+
+<body>
+    <!--<input id="Button1" type="button" value="button" onclick="ck()" />-->
+    <div id="view" style="margin: 0 auto; text-align: center">
+        <!-- <object height="600" type="video/x-ms-wmv" width="800">
+            <param name="filename" value="\webupload\2.wmv" />
+            <param name="autostart" value="true" />
+            <param name="loop" value="true" />
+
+            <embed type="application/x-mplayerxf" pluginspage="http://www.microsoft.com/windows/mediaplayer/download/default.asp" src="\webupload\2.wmv" Name="Player" width="350" height="320" border="0" SHOWSTATUSBAR="-1" SHOWCONTROLS="0" SHOWGOTOBAR="0" SHOWDISPLAY="-1" INVOKEURLS="-1" AUTOSTART="1" CLICKTOPLAY="0" DisplayForeColor="12945678"></embed>
+        </object>-->
+
+    </div>
+
+</body>
+
+</html>
+<script type="text/javascript">
+
+    $(function () {
+        var a = getUrlParam("id");
+        //var c = encodeURIComponent(window.location.host + a)
+        var c = window.location.host + a;
+        var b = a.substring(a.lastIndexOf('.'));
+        var e = c.replace(/\\/g, "/");
+        var d = "https://view.officeapps.live.com/op/view.aspx?src=" + e;
+        if (b == ".doc" || b == ".docx" || b == ".xls" || b == ".xlsx" || b == ".ppt" || b == ".pptx") {
+            $("<div style='width:95%;' id='viewer' class='panel'><div class='panel-body' ><iframe frameborder=0  style='width:99.9%;border:none;height:800px;' src=" + d + "></iframe></div></div>").insertAfter($("#view"));
+        }
+        else if (b == ".mp4" || b == ".ogg" || b == ".mkv") {
+            $("<div style='margin:0 auto;text-align:center'><video autoplay='autoplay' width='620' height='440' controls='controls'><source src='" + a + "' type='video/mp4'><source src='" + a + "' type='video/mkv'><source src='" + a + "' type='video/ogg'>Your browser does not support the video tag.</video></div>").insertAfter($("#view"));
+            //$("#viewer").remove();
+            //$(" <object id='videoPlayer' width='100%' height='100%' align='middle' data='/webupload/leftf.swf' type='application/x-shockwave-flash'> <param name='flashvars' value='adss=0'> <param name='wmode' value='transparent'> <param name='allowscriptaccess' value='always'> <param name='allowfullscreen' value='true'><div class='no-flash-tips'>您的flash可能被禁用或版本过低,为了能够正常观看视频，请您<a href='http://get.adobe.com/cn/flashplayer/?no_redirect' target='blank' class='a-flash-link'>点此下载最新版本</a></div></object>").insertAfter($("#view"));
+        }
+        else if (b == ".wmv") {
+            $("<div style='margin:0 auto;text-align:center'> <object height='800' type='video/x-ms-wmv' width='800'> <param name='filename' value='" + a + "' /><param name='autostart' value='true'/><param name='loop' value='true' /> </object></div>").insertAfter($("#view"));
+            // $("#viewer").remove();
+            //$(" <object id='videoPlayer' width='100%' height='100%' align='middle' data='/webupload/leftf.swf' type='application/x-shockwave-flash'> <param name='flashvars' value='adss=0'> <param name='wmode' value='transparent'> <param name='allowscriptaccess' value='always'> <param name='allowfullscreen' value='true'><div class='no-flash-tips'>您的flash可能被禁用或版本过低,为了能够正常观看视频，请您<a href='http://get.adobe.com/cn/flashplayer/?no_redirect' target='blank' class='a-flash-link'>点此下载最新版本</a></div></object>").insertAfter($("#view"));
+        }
+        else if (b == ".swf") {
+            $("<div style='margin:0 auto;text-align:center'  <object id='videoPlayer' width='100%' height='100%' align='middle' data='" + a + "' type='application/x-shockwave-flash'> <param name='flashvars' value='adss=0'> <param name='wmode' value='transparent'> <param name='allowscriptaccess' value='always'> <param name='allowfullscreen' value='true'><div class='no-flash-tips'>您的flash可能被禁用或版本过低,为了能够正常观看视频，请您<a href='http://get.adobe.com/cn/flashplayer/?no_redirect' target='blank' class='a-flash-link'>点此下载最新版本</a></div></object></video>").insertAfter($("#view"));
+        }
+        else if (b == ".pdf") {
+            $("<div class='media'>  <object codebase='http://www.apple.com/qtactivex/qtplugin.cab' classid='clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B'> <param name='src' value='sample.mov'> <embed src='sample.mov'  pluginspage='http://www.apple.com/quicktime/download/'></embed> </object>  <div>My Quicktime Movie</div> </div> ").insertAfter($("#view"));
+
+        }
+        else {
+            $("<span>暂不支持此格式文件预览功能，请下载后查看</span>").insertAfter($("#view"));
+        }
+
+    });
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+</script>

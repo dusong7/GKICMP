@@ -1,0 +1,35 @@
+﻿@using MvcWebSite.Models;
+@{
+    Layout = "~/Views/Shared/_Layout_phone.cshtml";
+}<script src="/wapcss/js/check.js"></script>
+<style>    .mui-content { background:#efeff4
+    }
+</style><script>mui('#offCanvasContentScroll').scroll();</script>
+<div class="mui-content">
+    <div class="mui-content-padded" style="margin: 5px;">
+  
+        <form class="mui-input-group">
+            <div class="mui-input-row">
+                <label>邮件内容</label> 
+            </div><textarea id="pmcontent" rows="5" placeholder="邮件内容"></textarea>
+            <div class="mui-input-row">
+                <label>联系人</label>
+                <input type="text" id="realname" placeholder="联系人">
+            </div>
+            <div class="mui-input-row">
+                <label>联系方式</label>
+                <input type="text" id="thislink" placeholder="联系方式">
+            </div>
+
+            <div class="mui-input-row mui-plus-visible">
+                <label>Input</label>
+                <input type="text" class="mui-input-speech mui-input-clear" placeholder="语音输入">
+            </div>
+            <div class="mui-button-row">
+                <button type="button" class="mui-btn mui-btn-primary" onClick="onclickinput()">确认</button>&nbsp;&nbsp;
+                <button type="button" class="mui-btn mui-btn-danger" onclick="return false;">取消</button>
+
+            </div>
+        </form>
+    </div>
+</div>

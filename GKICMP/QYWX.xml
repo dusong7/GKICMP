@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WX CorpID="wxe0b787e4eaa1102c" IsOpen="1">
+  <Agent name="Main" id="1000004">
+    <Secret>hO3Z0iAo9B_S9vh17sL6_QmThmvrvsArrJbW6pn3Ujs</Secret>
+    <Access_Token>DFC5oaSrcwXfPSaAkyMEhoc2oPHHO3Tyt1oT_AymspX7T2MPK-2wkaMtBZTDL1lbWCU8bH-QaU51nLHGGhyx_z8FAkEPuUQmfDlw7TIfpDwz6SVP5WBeVKG7ic0Z4j-L-glVOFI1XVuHak9Q0IB91-kULiWkVgEoPWIUaaMwlwryPKtoiaL9G-AvjdDt5BamcbyfS1RlqS75Ohmkzxq8_incZfVNXmRv5mlHB6Qgksc5S9T_Bn169ZZs2h-yCMig74_fV-pg9SB1cjwo08aYqVZLVtrZAMoREtz7QB4oZmA</Access_Token>
+    <Token_Time>2017/9/4 14:26:49</Token_Time>
+  </Agent>
+  <Agent name="Repair" id="1000005">
+    <Secret>MaCda3po5DjbPs1XLK9rQ8G757lkep5qu-0nMjPUu9g</Secret>
+    <Access_Token>plnsce03bcSE0dzmwV62pxUjo5ydig_hLHmybzJNFRcPX-b6CkKkt62DNNdJCIn_Z9zRVZmehFZHwoKsIjRKXLwZLDhBhGehiWxcmFNPYn1zkmc3iiniL0L5_JxNL8xarCosfg0jVxvRMHXFlgSqynbpM7F6m2hjNxCJYOCF8HUHlh5B5PkLxHfryS7DFPYx5vS6rE_wU2_8ek2PQYW4I0DTkr6FFgH9a5sZRSlec7ZP3z4iN3etaXU3Apd3OGV_DzM9ai7tc005nsbGA0IBb7tsWGy8XikwOUUyqiqXCgU</Access_Token>
+    <Token_Time>2017/8/25 13:44:37</Token_Time>
+  </Agent>
+  <Agent name="Notice" id="1000008">
+    <Secret>TvapnatTPVwpE15FkwMZkbVYWg3POb4ENb6DoxABnm0</Secret>
+    <Access_Token>plnsce03bcSE0dzmwV62pxUjo5ydig_hLHmybzJNFRcPX-b6CkKkt62DNNdJCIn_Z9zRVZmehFZHwoKsIjRKXLwZLDhBhGehiWxcmFNPYn1zkmc3iiniL0L5_JxNL8xarCosfg0jVxvRMHXFlgSqynbpM7F6m2hjNxCJYOCF8HUHlh5B5PkLxHfryS7DFPYx5vS6rE_wU2_8ek2PQYW4I0DTkr6FFgH9a5sZRSlec7ZP3z4iN3etaXU3Apd3OGV_DzM9ai7tc005nsbGA0IBb7tsWGy8XikwOUUyqiqXCgU</Access_Token>
+    <Token_Time>2017/8/25 13:44:37</Token_Time>
+  </Agent>
+  <Agent name="News" id="1000009">
+    <Secret>CQ1dSjLRuob6Xm_fOPqjbWevcYplhpLYwZ6jEqyIoGg</Secret>
+    <Access_Token>plnsce03bcSE0dzmwV62pxUjo5ydig_hLHmybzJNFRcPX-b6CkKkt62DNNdJCIn_Z9zRVZmehFZHwoKsIjRKXLwZLDhBhGehiWxcmFNPYn1zkmc3iiniL0L5_JxNL8xarCosfg0jVxvRMHXFlgSqynbpM7F6m2hjNxCJYOCF8HUHlh5B5PkLxHfryS7DFPYx5vS6rE_wU2_8ek2PQYW4I0DTkr6FFgH9a5sZRSlec7ZP3z4iN3etaXU3Apd3OGV_DzM9ai7tc005nsbGA0IBb7tsWGy8XikwOUUyqiqXCgU</Access_Token>
+    <Token_Time>2017/8/25 13:44:37</Token_Time>
+  </Agent>
+  <Agent name="Attend" id="3010011">
+    <Secret>226QZkNidh9Jz44oV0I0npo6O17RgmWlI4s-NqcC5wQ</Secret>
+    <Access_Token>plnsce03bcSE0dzmwV62pxUjo5ydig_hLHmybzJNFRcPX-b6CkKkt62DNNdJCIn_Z9zRVZmehFZHwoKsIjRKXLwZLDhBhGehiWxcmFNPYn1zkmc3iiniL0L5_JxNL8xarCosfg0jVxvRMHXFlgSqynbpM7F6m2hjNxCJYOCF8HUHlh5B5PkLxHfryS7DFPYx5vS6rE_wU2_8ek2PQYW4I0DTkr6FFgH9a5sZRSlec7ZP3z4iN3etaXU3Apd3OGV_DzM9ai7tc005nsbGA0IBb7tsWGy8XikwOUUyqiqXCgU</Access_Token>
+    <Token_Time>2017/8/25 13:44:37</Token_Time>
+  </Agent>
+  <TXL>
+    <Secret>ViB7SkZbHDGFp0RgYq1YQTEae4EmFSW6tSjvlQqk1UI</Secret>
+    <Access_Token>1-ZQ9U4MpPtbSCKRLWVGZ9FGpYxtF8zSWp1yP8syu8agfDfn9GB8z1nxe9Pz0sQ-HhsuYNyyQnn6Ezyqe9Kmw1Ay4OvAFgjv_naODrBEow16bEAkwKrsH_zmS2v93tRrWqr24oa8wrzTpn13cBEK0t-qjkS49muQh2oJm8hATEvL4lNkW5hivLT8H6xnINJwcbYnhWw-pZoaa8l1EGzC54__s6fZXFrHkYYa-W8JkJLOatGrL-W53nMOQPM3DZG4uOtaOiW9Mb1DiofAJCgErozGxte3-mAX9JX8vlbyB8A</Access_Token>
+    <Token_Time>2017/9/4 9:21:28</Token_Time>
+  </TXL>
+  <HD TYPE="TXL">
+    <Token>YGHD</Token>
+    <EncodingAESKey>cPBWvWk1y2NFIBRAVOj4ehH3DVV2ihGBORS8q1BcBs8</EncodingAESKey>
+  </HD>
+  <HD TYPE="Agent">
+    <Token>YGHD</Token>
+    <EncodingAESKey>cPBWvWk1y2NFIBRAVOj4ehH3DVV2ihGBORS8q1BcBs8</EncodingAESKey>
+  </HD>
+  <Url name="Main">APPMain.aspx</Url>
+  <StuUrl name="Main">../appstu/Stu_AppMain.aspx</StuUrl>
+  <Url name="Repair">AppRepair.aspx?id=1</Url>
+</WX>

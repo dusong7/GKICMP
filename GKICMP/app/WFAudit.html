@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>工作流审核</title>
+
+    <link href="../css/easyui.css" rel="stylesheet" />
+    <link href="../css/green_formcss.css" rel="stylesheet" />
+    <link href="../js/My97/skin/WdatePicker.css" rel="stylesheet" />
+
+    <link href="../appcss/mui.min.css" rel="stylesheet" />
+    <link href="../appcss/new_file.css" rel="stylesheet" />
+     <script src="../appjs/mui.min.js"></script>
+    <script src="../js/mui.min.js"></script>
+
+    <style>
+        .listadd {
+            border: 1px solid #25a161;
+            border-radius: 2px;
+            background: #48bd81;
+            color: #FFFFFF;
+            width: 65px;
+            height: 26px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0px;
+            margin-right: 13px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .selpara {
+            border: 1px solid #25a161;
+            border-radius: 2px;
+            background: #48bd81;
+            color: #FFFFFF;
+            width: 65px;
+            height: 26px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0px;
+            margin-right: 13px;
+            font-size: 14px;
+            position: relative;
+            float: left;
+            cursor: pointer;
+        }
+
+        .flow {
+            position: relative;
+        }
+
+        .flowtext {
+            position: absolute;
+        }
+
+        ul, li {
+            display: inline;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="mui-content">
+        <div class="mui-content-padded w100">
+        </div>
+    </div>
+
+    <div class="listcent pad0">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listinfo">
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <nav class="mui-bar mui-bar-tab">
+        <a href="/phone" class="mui-tab-item ">
+            <span class="mui-icon mui-icon-home"></span>
+            <span class="mui-tab-label">网站</span>
+        </a>
+        <a href="UserInfo.aspx" class="mui-tab-item">
+            <span class="mui-icon iconfont icon-wd"></span>
+            <span class="mui-tab-label">我的</span>
+        </a>
+        <a href="AppMain.aspx" class="mui-tab-item  mui-active">
+            <span class="mui-icon iconfont icon-zhxy"></span>
+            <span class="mui-tab-label">智慧校园</span>
+        </a>
+    </nav>
+
+
+</body>
+</html>
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../js/jquery.easyui.min.js"></script>
+<script src="../js/My97/WdatePicker.js"></script>
+<script src="../js/WF.js"></script>
+<script>
+    $(function () {
+        var wffid = GetURL("WFFID");
+        var cid = GetURL("CID");
+        if (wffid != "" && wffid != null && cid != "" && cid != null) {
+            //获取相应的数据并显示在页面上
+            $.getJSON("../ashx/WF.ashx?method=GetFormFlowData&WFFID=" + wffid + "&CID=" + cid, function (data) {
+                // var node = getClass("table", "listcent pad0", "listinfo")[0].children[0];
+
+                //node.innerHTML = "<tr><th colspan=\"2\" align=\"left\"><p class=\"wfname\" style=\"float: left\">审核</p></th></tr>";
+
+                //for (var i = 0; i < data.length; i++) {
+                //    node.appendChild(BuildNode(parseInt(data[i].FDID), parseInt(data[i].FPID), AddPara(data[i]), data[i].FDValue, parseInt(data[i].IsRequired)));
+                //}
+
+                var node = getClass("div", "mui-content", "mui-content-padded w100")[0];
+                // node.innerHTML = "<tr><th colspan=\"2\" align=\"left\"><p class=\"wfname\" style=\"float: left\">审核</p></th></tr>";
+                for (var i = 0; i < data.length; i++) {
+                    node.appendChild(BuildNode(parseInt(data[i].FDID), parseInt(data[i].FPID), AddPara(data[i]), data[i].FDValue, parseInt(data[i].IsRequired)));
+                }
+
+
+
+                var remarktr = InitNode("tr", "");
+                var remarklefttd = InitNode("td", "");
+                remarklefttd.align = "right";
+
+                remarklefttd.innerHTML = "审核原因";
+
+                var remarknode = InitNode("textarea", "remark");
+                remarknode.value = "通过";
+                remarknode.width = "500";
+
+                var remarkrighttd = InitNode("td", "");
+                remarkrighttd.align = "left";
+                remarkrighttd.width = "500";
+                remarkrighttd.appendChild(remarknode);
+
+                remarktr.appendChild(remarklefttd);
+                remarktr.appendChild(remarkrighttd);
+                node.appendChild(remarktr);
+
+                var submittr = InitNode("tr", "");
+                var submittd = InitNode("td", "");
+                submittd.align = "center";
+                submittd.setAttribute("colspan", 2);
+
+                var okbtn = InitNode("button", "submit");
+                okbtn.innerHTML = "通过";
+                okbtn.addEventListener("click", SubmitWF);
+
+                var unpassbtn = InitNode("button", "addbtn");
+                unpassbtn.innerHTML = "不通过";
+                unpassbtn.addEventListener("click", SubmitWF);
+
+
+                var closebtn = InitNode("input", "editor");
+                closebtn.type = "button";
+                closebtn.value = "返回";
+                closebtn.addEventListener("click", Back);
+
+                submittd.appendChild(okbtn);
+                submittd.appendChild(unpassbtn);
+                submittd.appendChild(closebtn);
+                submittr.appendChild(submittd);
+                node.appendChild(submittr);
+
+            });
+
+        }
+    });
+
+    function Back() {
+        window.history.go(-1);
+    }
+
+    function AddPara(data) {
+        var fpid = parseInt(data.FPID);
+        var html = "";
+        for (var i = 0; i < data.List.length; i++) {
+            html = html + data.List[i].FDValue + ",";
+        }
+        var node = InitNode("Span", "");
+        node.innerHTML = html.substring(0, html.length - 1);
+        node.fdid = data.FDID;
+        if (fpid == 7) {
+            node.style.cursor = "pointer";
+            node.addEventListener("click", Download);
+        }
+        return node;
+    }
+
+    function Download() {
+        window.location.href = "../webupload/WFFile/" + this.innerText;
+    }
+
+    function BuildNode(fdid, fpid, node, fdvvalue, isrequired) {
+        //条目过多可考虑显示顺序
+        var trnode = InitNode("div", "mui-input-group linght40");
+        var namenode = InitNode("div", "mui-input-row");
+        namenode.setAttribute("fpid", fpid);
+        namenode.setAttribute("fdid", fdid);
+        namenode.innerHTML = fdvvalue;
+        if (parseInt(isrequired) == 1) {
+            namenode.innerHTML += "(必填)";
+        }
+
+        var paranode = InitNode("td", "");
+        paranode.align = "left";
+        paranode.appendChild(node);
+
+        trnode.appendChild(namenode);
+        if (parseInt(fpid) != 8) {
+            trnode.appendChild(paranode);
+        } else {
+            namenode.colSpan = 2;
+            namenode.align = "center";
+        }
+
+
+        return trnode;
+    }
+
+    //function BuildNode(fdid, fpid, node, fdvvalue, isrequired) {
+    //    //条目过多可考虑显示顺序
+
+    //    var trnode = InitNode("tr", "");
+    //    var namenode = InitNode("td", "");
+    //    namenode.align = "right";
+    //    namenode.width = "150";
+    //    namenode.setAttribute("fpid", fpid);
+    //    namenode.setAttribute("fdid", fdid);
+    //    namenode.innerHTML = fdvvalue;
+    //    if (parseInt(isrequired) == 1) {
+    //        namenode.innerHTML += "(必填)";
+    //    }
+
+    //    var paranode = InitNode("td", "");
+    //    paranode.align = "left";
+    //    paranode.appendChild(node);
+
+    //    trnode.appendChild(namenode);
+    //    if (parseInt(fpid) != 8) {
+    //        trnode.appendChild(paranode);
+    //    } else {
+    //        namenode.colSpan = 2;
+    //        namenode.align = "center";
+    //    }
+
+    //    return trnode;
+    //}
+
+
+    function SubmitWF() {
+        var csstate = -1;
+        if (this.innerText == "通过") {
+            csstate = 2;
+        } else {
+            csstate = 3;
+        }
+
+        var remark = $(".remark").val();
+        var cid = GetURL("CID");
+        var faid = GetURL("FAID");
+
+        $.getJSON("../ashx/WF.ashx?method=WFAudit&FAID=" + faid + "&CState=" + csstate + "&CID=" + cid + "&Remark=" + remark, function (data) {
+            if (data.result == "success") {
+                //添加成功
+                window.location.href = "../customizedworkflow/WFUserAuditManage.aspx";
+            } else {
+                alert(Data.result);
+            }
+
+        })
+
+    }
+
+
+    function GetNameByType(fpid) {
+        var fpname = "";
+        switch (fpid) {
+            case 1:
+                fpname = "单行文本框";
+                break;
+            case 2:
+                fpname = "多行文本框";
+                break;
+            case 3:
+                fpname = "数字输入框";
+                break;
+            case 4:
+                fpname = "单选框";
+                break;
+            case 5:
+                fpname = "多选框";
+                break;
+            case 6:
+                fpname = "日期";
+                break;
+            case 7:
+                fpname = "附件";
+                break;
+            case 8:
+                fpname = "说明文字";
+                break;
+            case 9:
+                fpname = "联系人";
+                break;
+            case 10:
+                fpname = "金额";
+                break;
+        }
+
+        return fpname;
+    }
+
+</script>

@@ -1,0 +1,20 @@
+﻿@using MvcWebSite.Models;
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+<link href="~/Css/pagerstyles.css" rel="stylesheet" />
+
+@if (((Menu)ViewBag.Menu).ChildMenu.Count > 0)
+{
+    foreach (Menu menu in ((Menu)ViewBag.Menu).ChildMenu)
+    {        
+        @Html.Action("ListColumn", new { menuid = menu.MID, pagesize = 20, type = "Column", ismore = true })
+    }
+}
+else
+{
+    @Html.Action("ListColumn", new { menuid = (((Menu)ViewBag.Menu).MID), pagesize = 20, type = "Column", ismore = false })
+}
+
+

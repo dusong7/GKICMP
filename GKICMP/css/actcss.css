@@ -1,0 +1,40 @@
+﻿/* CSS Document */
+body,div,li,ul{ margin:0px; padding:0px}
+a{ text-decoration:none}
+li,ul{ list-style:none}
+body{  background:url(../images/hdztbg.png) center top repeat-y}
+h3{color:#3C9A50}
+.menucs{ width:100%; height:45px; line-height:45px; background:#0c76d4; margin-top:5px;}
+.menucs ul{ width:1000px; margin:auto}
+.menucs li{ float:left; padding:0px 30px; line-height:45px; height:45px}
+.menucs .selected{ background:#005696}
+.menucs li a{ color:#fff; font-size:14px; text-decoration:none}
+.bancs{  width:1000px; margin:auto; margin-top:20px; padding:10px; box-sizing:border-box}
+.bancent{ float:left; margin-left:20px; width:880px}
+.bantit{ text-align:center; font-size:45px; padding-top:15px; color:#3E9350}
+.baninfo{ width:600px; line-height:1.5; font-size:18px; text-shadow:#FFFFFF 1px 1px}
+.centcss{ width:1000px; margin:auto; margin-top:10px}
+.leftcss{ float:left; width:270px; height:100%}
+.rightcss{ float:right; width:710px;}
+.listcss{ border:1px solid #e0e0e0; border-top:2px solid #0c76d4; margin-bottom:10px;height:100%}
+.titlecss{ text-align:center; height:28px; line-height:28px; background:#f6fafd; border-bottom:1px solid #ddf0fa}
+.listcss ul{ padding:10px 0px}
+.listcss li{ height:30px; margin-left:10px}
+.listcss li a{    float: left;   width: 95%;    height: 30px;    white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis; color:#0f7db9}
+.listmre .titname{ padding-left:35px; height:45px; line-height:45px}
+.infocss{ position:relative}
+.centcss{ border-bottom:1px solid #e0e0e0; padding-bottom:10px}
+.listm{ border-bottom:1px dashed #DBDBDB; padding:20px 10px}
+.listt span:nth-child(1){ color:#3C9A50; font-weight:bold}
+.listt span:nth-child(2){ color:#0a9468; font-weight:bold; font-size:12px}
+.listd{ color:#666666; line-height:2}
+.listi{ color:#000000}
+.listb{ height:30px; line-height:30px}
+.listb span:nth-child(1){ float:left; color:#7bb310}
+.listb span:nth-child(2){ float:right; color:#00704c}
+.pagemore{height:45px; line-height:45px; width:1000px; padding-bottom:20px; margin:auto}
+.infocss{ border:1px solid #e0e0e0; padding:20px;}
+.infocss h3{ text-align:center;color:#0c76d4}
+.infodiv{ line-height:1.5}
+.infoo{ float:right; text-align:left; width:auto; margin-top:20px; color:#666666}
+ .divcss5{border:1px dashed #000; height:50px;width:350px}

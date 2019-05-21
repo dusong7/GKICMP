@@ -1,0 +1,44 @@
+
+@font-face {font-family: "iconfont";
+  src: url('../font/iconfontapp.eot'); /* IE9*/
+  src: url('../font/iconfontapp.eot') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/iconfontapp.woff') format('woff'), /* chrome, firefox */
+  url('../font/iconfontapp.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../font/iconfontapp.svg') format('svg'); /* iOS 4.1- */
+}
+.iconfont {  font-family:"iconfont" !important;font-size:16px;font-style:normal;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+.icon-wd:before { content: "\e65c"; font-size: 20px;}
+.icon-cjfx:before { content: "\e608";}
+.icon-cjfx-color{
+     color:#BEC1EC; font-size:25px;
+}
+.icon-jgqd:before { content: "\e674"; color:#9BDEF9}
+.icon-dzzw:before { content: "\e664"; color:#4FA868}
+.icon-tzgg:before { content: "\e632"; }
+.icon-wdkj:before { content: "\e621"; }
+.icon-txl:before { content: "\e6e2";color:#93CFD9  }
+.icon-zbrz:before { content: "\e613";color:#E4BE3F }
+.icon-dxqf:before { content: "\e640";color:#2E7BA5 }
+.icon-bzzy:before { content: "\e679";color:#23aca8 }
+.icon-qjwc:before { content: "\e6ce";color:#64C52F }
+.icon-zxbx:before { content: "\e6ed";color:#DDBB64 }
+.icon-bzrgzs:before { content: "\e622";color:#FF6666 }
+.icon-zhxy:before { content: "\e600";  font-size: 20px; }
+.icon-shqr:before { content: "\e704";color:#687CA2 }
+.icon-bj:before { content: "\e703";  font-size: 20px;}
+.icon-zjh:before { content: "\e896";color:#E27937 }
+
+
+
+
+
+.pading5{ padding: 5px;}
+.padbot{ padding-bottom: 52px;}
+.centmenu li{ float: left; width: 50%;}
+.centmenu li a{ color: #fff; display: block; height: 50px; line-height: 50px; padding-left: 20px; font-size: 18px; font-weight: bold;}
+.centmenu li span{ float: right; margin-right: 20px; font-size: 30px; font-weight:lighter ;}
+.bgc1{ background: #fcdc53 !important;}
+.bgc2{ background: #91e0fe !important;}
+.mgr5{ margin-right: 2px !important;}
+.mgl5{ margin-left: 2px !important;}
+li,ul{ list-style: none; padding: 0px; margin: 0px;}

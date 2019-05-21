@@ -1,0 +1,13 @@
+﻿@{
+    Layout =null;
+}
+
+@using MvcWebSite.Models;
+<div class="djxx">
+      <div class="title"><span class="name">@(((Menu)ViewBag.Menu).MName)</span><a href="/List/List/@(((Menu)ViewBag.Menu).MID)"><span class="more"></span></a></div>
+      <ul class="news">@foreach (New news in ViewBag.NewList)
+                {
+ <li><a href="/List/Article/@news.NID" title="@news.NewsTitle"><span class="newsname">@news.NewsTitle</span></a></li>                  
+                }
+      </ul>
+    </div>

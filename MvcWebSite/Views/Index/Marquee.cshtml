@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+}
+
+@using MvcWebSite.Models;
+
+<div class="linkimg" style="margin-top: 15px; margin-bottom: 15px;">
+
+    @foreach (Slide slide in ViewBag.SlideList)
+    {
+        <a href="@slide.SlideUrl" target="_blank">
+            <img src="@slide.SImage">
+        </a>
+    }
+</div>

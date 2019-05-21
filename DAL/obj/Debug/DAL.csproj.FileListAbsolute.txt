@@ -1,0 +1,11 @@
+D:\GKICMP\D.实现阶段\GKICMP\DAL\bin\Debug\DAL.dll
+D:\GKICMP\D.实现阶段\GKICMP\DAL\bin\Debug\DAL.pdb
+D:\GKICMP\D.实现阶段\GKICMP\DAL\bin\Debug\Entities.dll
+D:\GKICMP\D.实现阶段\GKICMP\DAL\bin\Debug\gk.rjb_Y.DatabaseProvider.dll
+D:\GKICMP\D.实现阶段\GKICMP\DAL\bin\Debug\gk.rjb_Y.DataEntityProvider.dll
+D:\GKICMP\D.实现阶段\GKICMP\DAL\bin\Debug\gk.rjb_Y.DBAccessConvertorProvider.dll
+D:\GKICMP\D.实现阶段\GKICMP\DAL\bin\Debug\gk.rjb_Y.Libraries.dll
+D:\GKICMP\D.实现阶段\GKICMP\DAL\bin\Debug\Entities.pdb
+D:\GKICMP\D.实现阶段\GKICMP\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\GKICMP\D.实现阶段\GKICMP\DAL\obj\Debug\DAL.dll
+D:\GKICMP\D.实现阶段\GKICMP\DAL\obj\Debug\DAL.pdb

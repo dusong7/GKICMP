@@ -1,0 +1,102 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>校长信箱</title>
+<link rel="stylesheet" href="/css/layer/css/min.css">
+<link rel="stylesheet" href="/css/layer/css/min_123.css">
+<script type="text/javascript" src="/js/jQuery.1.8.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('.reginpblu-yqm').hide();
+    $(".regerror2").toggle(function(){
+        $(this).find("span").attr("class","nle-sicon2")
+        $(this).parent().find(".reginpblu-yqm").show();  
+    },function(){
+        $(this).find("span").attr("class","nle-sicon")   
+        $(this).parent().find(".reginpblu-yqm").hide();   
+    })
+})  
+</script>
+</head>
+<body id="invest_content">
+<div class="ctn-960 mg shadow-5">
+  <form  action="#" class="js-form-validate" method="post" onSubmit="return false" data-arg-one="#" data-arg-two="100">
+    <div class="confirm-info-list mgt clearfix" style="position: relative; margin:0 auto;">
+     
+      <dl class="confirm-info-list-dl">
+        <dd>
+          <div class="confirmationForm clearfix">
+            <div id="invest-paypwd">
+              <ul class="agree-protocol">
+                <li style=" height:80px"><span class="td-name" style="font-weight:bolder; padding-bottom:10px">邮件内容：</span><textarea style="width:575px; height:80px" id="pmcontent"></textarea>
+                </li>
+                <li><span class="td-name" style="font-weight:bolder;">　联系人：</span>
+                    <input class="valicode_1 input-fucus" type="text" maxlength="6" style="width:150px;margin-right:10px" tabindex="2" id="realname">
+                </li>
+                <li><span class="td-name" style="font-weight:bolder;">联系方式：</span>
+                    <input class="valicode_1 input-fucus" type="text" maxlength="13" style="width:150px;margin-right:10px" tabindex="2" id="thislink">
+                </li>              </ul>
+              <div class="invest-btn-line">
+                <input tabindex="3" id="confirm-btn" type="button" value="确认发送" class="i-p-c-i-btn clearButton" onClick="onclickinput()">
+                <script>
+
+function isEmail(name) {
+ var pattern = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+ return pattern.test(name);
+}
+function isPhoneNo(phone) { 
+ var pattern = /^1[3456789]\d{9}$ /; 
+ return pattern.test(phone); 
+}
+ 
+function isTel(card) { 
+ var pattern = /^(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}/; 
+ return pattern.test(card); 
+}
+
+				function onclickinput()
+				{
+					pmcontent=$("#pmcontent").val();			
+				thislink=$("#thislink").val();
+				realname=$("#realname").val();
+				if(pmcontent == null || pmcontent == undefined || pmcontent == '')
+				{
+					alert("请输入邮件内容");
+					return;
+					}
+else if(realname == null || realname == undefined || realname == '')					
+					{
+						alert("请输入联系人");
+						return;
+						}
+					else if(isPhoneNo(thislink) == false || isTel(thislink) == false || isEmail(thislink) == false || thislink == null || thislink == undefined || thislink == '')
+					{
+						alert("请输入正确的联系方式!只能输入手机、电话或邮箱");					
+						return;
+					}					;
+                $.getJSON("/Index/PrinMailbox?pmcontent="+pmcontent+"&link="+thislink+"&realname="+realname, null, function (item) {
+        if (item != null&&item=="success") {
+            alert("邮件发送成功");
+$(window.parent.document).find("#layui-layer-shade1").css("display","none");
+$(window.parent.document).find("#layui-layer1").css("display","none");
+$(window.parent.document).find("#layui-layer-shade2").css("display","none");
+$(window.parent.document).find("#layui-layer2").css("display","none");
+$(window.parent.document).find("#layui-layer-shade3").css("display","none");
+$(window.parent.document).find("#layui-layer3").css("display","none");
+        }
+    });
+					}
+                </script>
+                <span id="confirmERR" class="error" style="vertical-align:top;color:#CB282D;padding-left:20px;line-height:45px"></span> </div>
+            </div>
+          </div>
+        </dd>
+      </dl>
+    </div>
+  </form>
+</div>
+
+<!--投资确认页结束-->
+
+</body>
+</html>
